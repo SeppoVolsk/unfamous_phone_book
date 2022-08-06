@@ -3,16 +3,21 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' show json;
 
-// GoogleSignIn _googleSignIn = GoogleSignIn(scopes: [
-//   'email',
-//   'https://www.googleapis.com/auth/contacts',
-// ]);
+/*
+Получаем SHA1 ключ:
+cd android
+.\gradlew signinReport
+
+Создаём OAuth 2.0 Client ID в GoogleClouds.
+
+clientId: 405640864065-md0l5rmma6ajimg6mvifpvfoicjf9qgg.apps.googleusercontent.com
+*/
 
 // GoogleSignInAccount? _currentUser;
 
 GoogleSignIn _googleSignIn = GoogleSignIn(
   // Optional clientId
-  // clientId: '479882132969-9i9aqik3jfjd7qhci1nqf0bm2g71rm1u.apps.googleusercontent.com',
+  // clientId: '40564...........apps.googleusercontent.com',
   scopes: <String>[
     'email',
     'https://www.googleapis.com/auth/contacts.readonly',
@@ -72,6 +77,8 @@ class SignInDemoState extends State<SignInDemo> {
     }
     final Map<String, dynamic> data =
         json.decode(response.body) as Map<String, dynamic>;
+    print('JSON:\n');
+    print(data);
     final String? namedContact = _pickFirstNamedContact(data);
     setState(() {
       if (namedContact != null) {
