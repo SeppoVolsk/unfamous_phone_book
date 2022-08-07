@@ -3,6 +3,8 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' show json;
 
+import 'package:unfamous_phone_book/data/google_api_client/google_api_client.dart';
+
 /*
 Получаем SHA1 ключ:
 cd android
@@ -62,24 +64,25 @@ class SignInDemoState extends State<SignInDemo> {
     setState(() {
       _contactText = 'Loading contact info...';
     });
-    final http.Response response = await http.get(
-      Uri.parse('https://people.googleapis.com/v1/people/me/connections'
-          '?requestMask.includeField=person.names'),
-      headers: await user.authHeaders,
-    );
-    if (response.statusCode != 200) {
-      setState(() {
-        _contactText = 'People API gave a ${response.statusCode} '
-            'response. Check logs for details.';
-      });
-      print('People API ${response.statusCode} response: ${response.body}');
-      return;
-    }
-    final Map<String, dynamic> data =
-        json.decode(response.body) as Map<String, dynamic>;
-    print('JSON:\n');
-    print(data);
-    final String? namedContact = _pickFirstNamedContact(data);
+    // final http.Response response = await http.get(
+    //   Uri.parse('https://people.googleapis.com/v1/people/me/connections'
+    //       '?requestMask.includeField=person.names'),
+    //   headers: await user.authHeaders,
+    // );
+    // if (response.statusCode != 200) {
+    //   setState(() {
+    //     _contactText = 'People API gave a ${response.statusCode} '
+    //         'response. Check logs for details.';
+    //   });
+    //   print('People API ${response.statusCode} response: ${response.body}');
+    //   return;
+    // }
+    // final Map<String, dynamic> data =
+    //     json.decode(response.body) as Map<String, dynamic>;
+    // print('JSON:\n');
+    // print(data);
+    final data = await GoogleApiClient.getContacts(currentUser: user);
+    final String? namedContact = _pickFirstNamedContact(data!);
     setState(() {
       if (namedContact != null) {
         _contactText = 'I see you know $namedContact!';
