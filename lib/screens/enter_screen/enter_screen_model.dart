@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert' show json;
 
 import 'package:unfamous_phone_book/data/google_api_client/google_api_client.dart';
+import 'package:unfamous_phone_book/domain/contact/conatct.dart';
 
 /*
 Получаем SHA1 ключ:
@@ -93,21 +94,24 @@ class SignInDemoState extends State<SignInDemo> {
   }
 
   String? _pickFirstNamedContact(Map<String, dynamic> data) {
-    final List<dynamic>? connections = data['connections'] as List<dynamic>?;
-    final Map<String, dynamic>? contact = connections?.firstWhere(
-      (dynamic contact) => contact['names'] != null,
-      orElse: () => null,
-    ) as Map<String, dynamic>?;
-    if (contact != null) {
-      final Map<String, dynamic>? name = contact['names'].firstWhere(
-        (dynamic name) => name['displayName'] != null,
-        orElse: () => null,
-      ) as Map<String, dynamic>?;
-      if (name != null) {
-        return name['displayName'] as String?;
-      }
-    }
-    return null;
+    // final List<dynamic>? connections = data['connections'] as List<dynamic>?;
+    // final Map<String, dynamic>? contact = connections?.firstWhere(
+    //   (dynamic contact) => contact['names'] != null,
+    //   orElse: () => null,
+    // ) as Map<String, dynamic>?;
+    // if (contact != null) {
+    //   final Map<String, dynamic>? name = contact['names'].firstWhere(
+    //     (dynamic name) => name['displayName'] != null,
+    //     orElse: () => null,
+    //   ) as Map<String, dynamic>?;
+    //   if (name != null) {
+    //     return name['displayName'] as String?;
+    //   }
+    // }
+    // return null;
+    final testContact = Conatct.fromJson(data);
+    //return data['connections'][0]['names'][0]['givenName'];
+    return testContact.connections?[20].names?[0].displayNameLastFirst;
   }
 
   Future<void> _handleSignIn() async {

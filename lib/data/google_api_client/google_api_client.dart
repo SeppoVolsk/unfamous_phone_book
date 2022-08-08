@@ -2,12 +2,10 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class GoogleApiClient {
-  static final _apiHost = 'https://people.googleapis.com';
-
   static Future<Map<String, dynamic>?> getContacts({currentUser}) async {
+    Query.assembleStandartQuery();
     final http.Response response = await http.get(
-      Uri.parse(
-          '$_apiHost/v1/people/me/connections?personFields=names,emailAddresses'),
+      Uri.parse(Query.fetchNamePhonePhoto),
       headers: await currentUser.authHeaders,
     );
     if (response.statusCode != 200) {
@@ -24,16 +22,12 @@ class GoogleApiClient {
   writeData({data}) {}
 }
 
-abstract class Query {
-  static const _apiHost = 'https://people.googleapis.com/v1/',
-      _method = 'people/me/connections?',
-      _params = 'personFields=names,photos,phoneNumber';
-
-  static const fetchNamePhotoPhone = '${_apiHost}';
-}
-
-abstract class personFields {
-  static const names = 'names';
-  static const photos = 'photos';
-  static const phoneNumbers = 'phoneNumbers';
+class Query {
+  final apiHost = 'https://people.googleapis.com/v1/',
+      method = 'people/me/connections?',
+      params = 'personFields=names,photos,phoneNumbers';
+  static late final String fetchNamePhonePhoto;
+  Query.assembleStandartQuery() {
+    fetchNamePhonePhoto = '$apiHost$method$params';
+  }
 }
