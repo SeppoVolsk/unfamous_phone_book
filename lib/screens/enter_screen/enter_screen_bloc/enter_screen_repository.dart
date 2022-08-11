@@ -1,4 +1,6 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:google_sign_in/google_sign_in.dart';
+
 import 'package:unfamous_phone_book/screens/enter_screen/enter_screen_bloc/enterscreenentity.dart';
 
 class IEnterScreenRepository {
@@ -11,21 +13,30 @@ class IEnterScreenRepository {
     ],
   );
 
-  GoogleSignInAccount? currentUser;
+  GoogleSignInAccount? _currentUser;
 
-  EnterScreenEntity logIn() {
-    _googleSignIn.signInSilently();
-    return EnterScreenEntity(user: currentUser);
+  IEnterScreenRepository() {
+    _googleSignIn.onCurrentUserChanged.listen((account) {
+      _currentUser = account;
+    });
+  }
+
+  Future<EnterScreenEntity> logIn() async {
+    if (_currentUser != null) {
+      _googleSignIn.signInSilently();
+    } else {
+      try {
+        await _googleSignIn.signIn();
+      } catch (error) {
+        print('ОШИБКА signIn');
+        print(error);
+      }
+    }
+    return EnterScreenEntity(user: _currentUser);
   }
 
   Future<EnterScreenEntity> logOut() async {
     await _googleSignIn.disconnect();
     return EnterScreenEntity(user: null);
-  }
-
-  void checkCurrentUser() {
-    _googleSignIn.onCurrentUserChanged.listen((account) {
-      currentUser = account;
-    });
   }
 }

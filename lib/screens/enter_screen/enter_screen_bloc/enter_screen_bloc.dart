@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-//import 'package:bloc_concurrency/bloc_concurrency.dart' as bloc_concurrency;
+import 'package:bloc_concurrency/bloc_concurrency.dart' as bloc_concurrency;
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:unfamous_phone_book/screens/enter_screen/enter_screen_bloc/enter_screen_repository.dart';
 import 'package:unfamous_phone_book/screens/enter_screen/enter_screen_bloc/enterscreenentity.dart';
@@ -70,7 +70,7 @@ class EnterScreenBLoC extends Bloc<EnterScreenEvent, EnterScreenState>
   })  : _repository = repository,
         super(
           initialState ??
-              EnterScreenState.loginCompleted(
+              EnterScreenState.notEnterd(
                 data: EnterScreenEntity(user: null),
                 message: 'Initial idle state',
               ),
@@ -80,7 +80,7 @@ class EnterScreenBLoC extends Bloc<EnterScreenEvent, EnterScreenState>
         logIn: (event) => _logIn(event, emit),
         logOut: (event) => _logOut(event, emit),
       ),
-      //transformer: bloc_concurrency.sequential(),
+      transformer: bloc_concurrency.sequential(),
       //transformer: bloc_concurrency.restartable(),
       //transformer: bloc_concurrency.droppable(),
       //transformer: bloc_concurrency.concurrent(),
@@ -94,14 +94,12 @@ class EnterScreenBLoC extends Bloc<EnterScreenEvent, EnterScreenState>
       logInEnterScreenEvent event, Emitter<EnterScreenState> emit) async {
     try {
       emit(EnterScreenState.processing(data: state.data));
-      //final newData = await _repository.();
-      emit(EnterScreenState.notEnterd(data: newData));
+      final newData = await _repository.logIn();
+      emit(EnterScreenState.loginCompleted(data: newData));
     } on Object catch (err, stackTrace) {
       print('В EnterScreenBLoC произошла ошибка: $err stackTrace');
       emit(EnterScreenState.error(data: state.data));
       rethrow;
-    } finally {
-      emit(EnterScreenState.loginCompleted(data: state.data));
     }
   }
 
@@ -110,14 +108,12 @@ class EnterScreenBLoC extends Bloc<EnterScreenEvent, EnterScreenState>
       logOutEnterScreenEvent event, Emitter<EnterScreenState> emit) async {
     try {
       emit(EnterScreenState.processing(data: state.data));
-      //final newData = await _repository.();
+      final newData = await _repository.logOut();
       emit(EnterScreenState.notEnterd(data: newData));
     } on Object catch (err, stackTrace) {
       print('В EnterScreenBLoC произошла ошибка: $err $stackTrace');
       emit(EnterScreenState.error(data: state.data));
       rethrow;
-    } finally {
-      emit(EnterScreenState.loginCompleted(data: state.data));
     }
   }
 }
