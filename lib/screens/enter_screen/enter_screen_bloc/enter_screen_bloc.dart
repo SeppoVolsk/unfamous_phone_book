@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart' as bloc_concurrency;
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:unfamous_phone_book/screens/enter_screen/enter_screen_bloc/enter_screen_repository.dart';
 import 'package:unfamous_phone_book/screens/enter_screen/enter_screen_bloc/enterscreenentity.dart';
 
@@ -13,6 +14,8 @@ part 'enter_screen_bloc.freezed.dart';
 @freezed
 class EnterScreenEvent with _$EnterScreenEvent {
   const EnterScreenEvent._();
+
+  const factory EnterScreenEvent.check() = checkEnterScreenEvent;
 
   const factory EnterScreenEvent.logIn() = logInEnterScreenEvent;
 
@@ -49,7 +52,7 @@ class EnterScreenState with _$EnterScreenState {
   }) = ProcessingEnterScreenState;
 
   /// Successful
-  const factory EnterScreenState.notEnterd({
+  const factory EnterScreenState.notEntered({
     required final EnterScreenEntity data,
     @Default('logout') final String message,
   }) = SuccessfulEnterScreenState;
@@ -70,13 +73,14 @@ class EnterScreenBLoC extends Bloc<EnterScreenEvent, EnterScreenState>
   })  : _repository = repository,
         super(
           initialState ??
-              EnterScreenState.notEnterd(
+              EnterScreenState.notEntered(
                 data: EnterScreenEntity(user: null),
                 message: 'Initial idle state',
               ),
         ) {
     on<EnterScreenEvent>(
       (event, emit) => event.map<Future<void>>(
+        check: (event) => _check(event, emit),
         logIn: (event) => _logIn(event, emit),
         logOut: (event) => _logOut(event, emit),
       ),
@@ -89,7 +93,27 @@ class EnterScreenBLoC extends Bloc<EnterScreenEvent, EnterScreenState>
 
   final IEnterScreenRepository _repository;
 
-  /// Create event handler
+  /// Check event handler
+  Future<void> _check(
+      checkEnterScreenEvent event, Emitter<EnterScreenState> emit) async {
+    try {
+      emit(EnterScreenState.processing(data: state.data));
+      //final newData = await _repository.check();
+      //emit(EnterScreenState.notEntered(data: newData));
+      await emit.forEach(_repository.accountStream,
+          onData: (GoogleSignInAccount? account) {
+        print('CHECK $account');
+        return EnterScreenState.notEntered(
+            data: EnterScreenEntity(user: account));
+      });
+    } on Object catch (err, stackTrace) {
+      print('В EnterScreenBLoC произошла ошибка: $err stackTrace');
+      emit(EnterScreenState.error(data: state.data));
+      rethrow;
+    }
+  }
+
+  /// Login event handler
   Future<void> _logIn(
       logInEnterScreenEvent event, Emitter<EnterScreenState> emit) async {
     try {
@@ -103,13 +127,13 @@ class EnterScreenBLoC extends Bloc<EnterScreenEvent, EnterScreenState>
     }
   }
 
-  /// Read event handler
+  /// Logout event handler
   Future<void> _logOut(
       logOutEnterScreenEvent event, Emitter<EnterScreenState> emit) async {
     try {
       emit(EnterScreenState.processing(data: state.data));
       final newData = await _repository.logOut();
-      emit(EnterScreenState.notEnterd(data: newData));
+      emit(EnterScreenState.notEntered(data: newData));
     } on Object catch (err, stackTrace) {
       print('В EnterScreenBLoC произошла ошибка: $err $stackTrace');
       emit(EnterScreenState.error(data: state.data));

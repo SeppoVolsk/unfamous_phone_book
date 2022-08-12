@@ -15,14 +15,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final repository = IEnterScreenRepository();
     return BlocProvider<EnterScreenBLoC>(
-      create: ((_) => EnterScreenBLoC(repository: IEnterScreenRepository())),
+      create: ((_) => EnterScreenBLoC(repository: repository)
+        ..add(EnterScreenEvent.check())),
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const EnterScreen(),
+        home: const Scaffold(body: EnterScreen()),
       ),
     );
   }

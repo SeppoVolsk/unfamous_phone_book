@@ -18,18 +18,21 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$EnterScreenEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() check,
     required TResult Function() logIn,
     required TResult Function() logOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? check,
     TResult Function()? logIn,
     TResult Function()? logOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? check,
     TResult Function()? logIn,
     TResult Function()? logOut,
     required TResult orElse(),
@@ -37,18 +40,21 @@ mixin _$EnterScreenEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(checkEnterScreenEvent value) check,
     required TResult Function(logInEnterScreenEvent value) logIn,
     required TResult Function(logOutEnterScreenEvent value) logOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(checkEnterScreenEvent value)? check,
     TResult Function(logInEnterScreenEvent value)? logIn,
     TResult Function(logOutEnterScreenEvent value)? logOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(checkEnterScreenEvent value)? check,
     TResult Function(logInEnterScreenEvent value)? logIn,
     TResult Function(logOutEnterScreenEvent value)? logOut,
     required TResult orElse(),
@@ -71,6 +77,118 @@ class _$EnterScreenEventCopyWithImpl<$Res>
   final EnterScreenEvent _value;
   // ignore: unused_field
   final $Res Function(EnterScreenEvent) _then;
+}
+
+/// @nodoc
+abstract class _$$checkEnterScreenEventCopyWith<$Res> {
+  factory _$$checkEnterScreenEventCopyWith(_$checkEnterScreenEvent value,
+          $Res Function(_$checkEnterScreenEvent) then) =
+      __$$checkEnterScreenEventCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$checkEnterScreenEventCopyWithImpl<$Res>
+    extends _$EnterScreenEventCopyWithImpl<$Res>
+    implements _$$checkEnterScreenEventCopyWith<$Res> {
+  __$$checkEnterScreenEventCopyWithImpl(_$checkEnterScreenEvent _value,
+      $Res Function(_$checkEnterScreenEvent) _then)
+      : super(_value, (v) => _then(v as _$checkEnterScreenEvent));
+
+  @override
+  _$checkEnterScreenEvent get _value => super._value as _$checkEnterScreenEvent;
+}
+
+/// @nodoc
+
+class _$checkEnterScreenEvent extends checkEnterScreenEvent {
+  const _$checkEnterScreenEvent() : super._();
+
+  @override
+  String toString() {
+    return 'EnterScreenEvent.check()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$checkEnterScreenEvent);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() check,
+    required TResult Function() logIn,
+    required TResult Function() logOut,
+  }) {
+    return check();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? check,
+    TResult Function()? logIn,
+    TResult Function()? logOut,
+  }) {
+    return check?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? check,
+    TResult Function()? logIn,
+    TResult Function()? logOut,
+    required TResult orElse(),
+  }) {
+    if (check != null) {
+      return check();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(checkEnterScreenEvent value) check,
+    required TResult Function(logInEnterScreenEvent value) logIn,
+    required TResult Function(logOutEnterScreenEvent value) logOut,
+  }) {
+    return check(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(checkEnterScreenEvent value)? check,
+    TResult Function(logInEnterScreenEvent value)? logIn,
+    TResult Function(logOutEnterScreenEvent value)? logOut,
+  }) {
+    return check?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(checkEnterScreenEvent value)? check,
+    TResult Function(logInEnterScreenEvent value)? logIn,
+    TResult Function(logOutEnterScreenEvent value)? logOut,
+    required TResult orElse(),
+  }) {
+    if (check != null) {
+      return check(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class checkEnterScreenEvent extends EnterScreenEvent {
+  const factory checkEnterScreenEvent() = _$checkEnterScreenEvent;
+  const checkEnterScreenEvent._() : super._();
 }
 
 /// @nodoc
@@ -114,6 +232,7 @@ class _$logInEnterScreenEvent extends logInEnterScreenEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() check,
     required TResult Function() logIn,
     required TResult Function() logOut,
   }) {
@@ -123,6 +242,7 @@ class _$logInEnterScreenEvent extends logInEnterScreenEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? check,
     TResult Function()? logIn,
     TResult Function()? logOut,
   }) {
@@ -132,6 +252,7 @@ class _$logInEnterScreenEvent extends logInEnterScreenEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? check,
     TResult Function()? logIn,
     TResult Function()? logOut,
     required TResult orElse(),
@@ -145,6 +266,7 @@ class _$logInEnterScreenEvent extends logInEnterScreenEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(checkEnterScreenEvent value) check,
     required TResult Function(logInEnterScreenEvent value) logIn,
     required TResult Function(logOutEnterScreenEvent value) logOut,
   }) {
@@ -154,6 +276,7 @@ class _$logInEnterScreenEvent extends logInEnterScreenEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(checkEnterScreenEvent value)? check,
     TResult Function(logInEnterScreenEvent value)? logIn,
     TResult Function(logOutEnterScreenEvent value)? logOut,
   }) {
@@ -163,6 +286,7 @@ class _$logInEnterScreenEvent extends logInEnterScreenEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(checkEnterScreenEvent value)? check,
     TResult Function(logInEnterScreenEvent value)? logIn,
     TResult Function(logOutEnterScreenEvent value)? logOut,
     required TResult orElse(),
@@ -221,6 +345,7 @@ class _$logOutEnterScreenEvent extends logOutEnterScreenEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() check,
     required TResult Function() logIn,
     required TResult Function() logOut,
   }) {
@@ -230,6 +355,7 @@ class _$logOutEnterScreenEvent extends logOutEnterScreenEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? check,
     TResult Function()? logIn,
     TResult Function()? logOut,
   }) {
@@ -239,6 +365,7 @@ class _$logOutEnterScreenEvent extends logOutEnterScreenEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? check,
     TResult Function()? logIn,
     TResult Function()? logOut,
     required TResult orElse(),
@@ -252,6 +379,7 @@ class _$logOutEnterScreenEvent extends logOutEnterScreenEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(checkEnterScreenEvent value) check,
     required TResult Function(logInEnterScreenEvent value) logIn,
     required TResult Function(logOutEnterScreenEvent value) logOut,
   }) {
@@ -261,6 +389,7 @@ class _$logOutEnterScreenEvent extends logOutEnterScreenEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(checkEnterScreenEvent value)? check,
     TResult Function(logInEnterScreenEvent value)? logIn,
     TResult Function(logOutEnterScreenEvent value)? logOut,
   }) {
@@ -270,6 +399,7 @@ class _$logOutEnterScreenEvent extends logOutEnterScreenEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(checkEnterScreenEvent value)? check,
     TResult Function(logInEnterScreenEvent value)? logIn,
     TResult Function(logOutEnterScreenEvent value)? logOut,
     required TResult orElse(),
@@ -296,7 +426,8 @@ mixin _$EnterScreenState {
         loginCompleted,
     required TResult Function(EnterScreenEntity data, String message)
         processing,
-    required TResult Function(EnterScreenEntity data, String message) notEnterd,
+    required TResult Function(EnterScreenEntity data, String message)
+        notEntered,
     required TResult Function(EnterScreenEntity data, String message) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -304,7 +435,7 @@ mixin _$EnterScreenState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(EnterScreenEntity data, String message)? loginCompleted,
     TResult Function(EnterScreenEntity data, String message)? processing,
-    TResult Function(EnterScreenEntity data, String message)? notEnterd,
+    TResult Function(EnterScreenEntity data, String message)? notEntered,
     TResult Function(EnterScreenEntity data, String message)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -312,7 +443,7 @@ mixin _$EnterScreenState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(EnterScreenEntity data, String message)? loginCompleted,
     TResult Function(EnterScreenEntity data, String message)? processing,
-    TResult Function(EnterScreenEntity data, String message)? notEnterd,
+    TResult Function(EnterScreenEntity data, String message)? notEntered,
     TResult Function(EnterScreenEntity data, String message)? error,
     required TResult orElse(),
   }) =>
@@ -321,7 +452,7 @@ mixin _$EnterScreenState {
   TResult map<TResult extends Object?>({
     required TResult Function(IdleEnterScreenState value) loginCompleted,
     required TResult Function(ProcessingEnterScreenState value) processing,
-    required TResult Function(SuccessfulEnterScreenState value) notEnterd,
+    required TResult Function(SuccessfulEnterScreenState value) notEntered,
     required TResult Function(ErrorEnterScreenState value) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -329,7 +460,7 @@ mixin _$EnterScreenState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(IdleEnterScreenState value)? loginCompleted,
     TResult Function(ProcessingEnterScreenState value)? processing,
-    TResult Function(SuccessfulEnterScreenState value)? notEnterd,
+    TResult Function(SuccessfulEnterScreenState value)? notEntered,
     TResult Function(ErrorEnterScreenState value)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -337,7 +468,7 @@ mixin _$EnterScreenState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(IdleEnterScreenState value)? loginCompleted,
     TResult Function(ProcessingEnterScreenState value)? processing,
-    TResult Function(SuccessfulEnterScreenState value)? notEnterd,
+    TResult Function(SuccessfulEnterScreenState value)? notEntered,
     TResult Function(ErrorEnterScreenState value)? error,
     required TResult orElse(),
   }) =>
@@ -354,6 +485,8 @@ abstract class $EnterScreenStateCopyWith<$Res> {
           EnterScreenState value, $Res Function(EnterScreenState) then) =
       _$EnterScreenStateCopyWithImpl<$Res>;
   $Res call({EnterScreenEntity data, String message});
+
+  $EnterScreenEntityCopyWith<$Res> get data;
 }
 
 /// @nodoc
@@ -381,6 +514,13 @@ class _$EnterScreenStateCopyWithImpl<$Res>
               as String,
     ));
   }
+
+  @override
+  $EnterScreenEntityCopyWith<$Res> get data {
+    return $EnterScreenEntityCopyWith<$Res>(_value.data, (value) {
+      return _then(_value.copyWith(data: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -391,6 +531,9 @@ abstract class _$$IdleEnterScreenStateCopyWith<$Res>
       __$$IdleEnterScreenStateCopyWithImpl<$Res>;
   @override
   $Res call({EnterScreenEntity data, String message});
+
+  @override
+  $EnterScreenEntityCopyWith<$Res> get data;
 }
 
 /// @nodoc
@@ -425,7 +568,7 @@ class __$$IdleEnterScreenStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$IdleEnterScreenState extends IdleEnterScreenState {
-  const _$IdleEnterScreenState({required this.data, this.message = 'Idle'})
+  const _$IdleEnterScreenState({required this.data, this.message = 'login'})
       : super._();
 
   @override
@@ -467,7 +610,8 @@ class _$IdleEnterScreenState extends IdleEnterScreenState {
         loginCompleted,
     required TResult Function(EnterScreenEntity data, String message)
         processing,
-    required TResult Function(EnterScreenEntity data, String message) notEnterd,
+    required TResult Function(EnterScreenEntity data, String message)
+        notEntered,
     required TResult Function(EnterScreenEntity data, String message) error,
   }) {
     return loginCompleted(data, message);
@@ -478,7 +622,7 @@ class _$IdleEnterScreenState extends IdleEnterScreenState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(EnterScreenEntity data, String message)? loginCompleted,
     TResult Function(EnterScreenEntity data, String message)? processing,
-    TResult Function(EnterScreenEntity data, String message)? notEnterd,
+    TResult Function(EnterScreenEntity data, String message)? notEntered,
     TResult Function(EnterScreenEntity data, String message)? error,
   }) {
     return loginCompleted?.call(data, message);
@@ -489,7 +633,7 @@ class _$IdleEnterScreenState extends IdleEnterScreenState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(EnterScreenEntity data, String message)? loginCompleted,
     TResult Function(EnterScreenEntity data, String message)? processing,
-    TResult Function(EnterScreenEntity data, String message)? notEnterd,
+    TResult Function(EnterScreenEntity data, String message)? notEntered,
     TResult Function(EnterScreenEntity data, String message)? error,
     required TResult orElse(),
   }) {
@@ -504,7 +648,7 @@ class _$IdleEnterScreenState extends IdleEnterScreenState {
   TResult map<TResult extends Object?>({
     required TResult Function(IdleEnterScreenState value) loginCompleted,
     required TResult Function(ProcessingEnterScreenState value) processing,
-    required TResult Function(SuccessfulEnterScreenState value) notEnterd,
+    required TResult Function(SuccessfulEnterScreenState value) notEntered,
     required TResult Function(ErrorEnterScreenState value) error,
   }) {
     return loginCompleted(this);
@@ -515,7 +659,7 @@ class _$IdleEnterScreenState extends IdleEnterScreenState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(IdleEnterScreenState value)? loginCompleted,
     TResult Function(ProcessingEnterScreenState value)? processing,
-    TResult Function(SuccessfulEnterScreenState value)? notEnterd,
+    TResult Function(SuccessfulEnterScreenState value)? notEntered,
     TResult Function(ErrorEnterScreenState value)? error,
   }) {
     return loginCompleted?.call(this);
@@ -526,7 +670,7 @@ class _$IdleEnterScreenState extends IdleEnterScreenState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(IdleEnterScreenState value)? loginCompleted,
     TResult Function(ProcessingEnterScreenState value)? processing,
-    TResult Function(SuccessfulEnterScreenState value)? notEnterd,
+    TResult Function(SuccessfulEnterScreenState value)? notEntered,
     TResult Function(ErrorEnterScreenState value)? error,
     required TResult orElse(),
   }) {
@@ -562,6 +706,9 @@ abstract class _$$ProcessingEnterScreenStateCopyWith<$Res>
       __$$ProcessingEnterScreenStateCopyWithImpl<$Res>;
   @override
   $Res call({EnterScreenEntity data, String message});
+
+  @override
+  $EnterScreenEntityCopyWith<$Res> get data;
 }
 
 /// @nodoc
@@ -641,7 +788,8 @@ class _$ProcessingEnterScreenState extends ProcessingEnterScreenState {
         loginCompleted,
     required TResult Function(EnterScreenEntity data, String message)
         processing,
-    required TResult Function(EnterScreenEntity data, String message) notEnterd,
+    required TResult Function(EnterScreenEntity data, String message)
+        notEntered,
     required TResult Function(EnterScreenEntity data, String message) error,
   }) {
     return processing(data, message);
@@ -652,7 +800,7 @@ class _$ProcessingEnterScreenState extends ProcessingEnterScreenState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(EnterScreenEntity data, String message)? loginCompleted,
     TResult Function(EnterScreenEntity data, String message)? processing,
-    TResult Function(EnterScreenEntity data, String message)? notEnterd,
+    TResult Function(EnterScreenEntity data, String message)? notEntered,
     TResult Function(EnterScreenEntity data, String message)? error,
   }) {
     return processing?.call(data, message);
@@ -663,7 +811,7 @@ class _$ProcessingEnterScreenState extends ProcessingEnterScreenState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(EnterScreenEntity data, String message)? loginCompleted,
     TResult Function(EnterScreenEntity data, String message)? processing,
-    TResult Function(EnterScreenEntity data, String message)? notEnterd,
+    TResult Function(EnterScreenEntity data, String message)? notEntered,
     TResult Function(EnterScreenEntity data, String message)? error,
     required TResult orElse(),
   }) {
@@ -678,7 +826,7 @@ class _$ProcessingEnterScreenState extends ProcessingEnterScreenState {
   TResult map<TResult extends Object?>({
     required TResult Function(IdleEnterScreenState value) loginCompleted,
     required TResult Function(ProcessingEnterScreenState value) processing,
-    required TResult Function(SuccessfulEnterScreenState value) notEnterd,
+    required TResult Function(SuccessfulEnterScreenState value) notEntered,
     required TResult Function(ErrorEnterScreenState value) error,
   }) {
     return processing(this);
@@ -689,7 +837,7 @@ class _$ProcessingEnterScreenState extends ProcessingEnterScreenState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(IdleEnterScreenState value)? loginCompleted,
     TResult Function(ProcessingEnterScreenState value)? processing,
-    TResult Function(SuccessfulEnterScreenState value)? notEnterd,
+    TResult Function(SuccessfulEnterScreenState value)? notEntered,
     TResult Function(ErrorEnterScreenState value)? error,
   }) {
     return processing?.call(this);
@@ -700,7 +848,7 @@ class _$ProcessingEnterScreenState extends ProcessingEnterScreenState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(IdleEnterScreenState value)? loginCompleted,
     TResult Function(ProcessingEnterScreenState value)? processing,
-    TResult Function(SuccessfulEnterScreenState value)? notEnterd,
+    TResult Function(SuccessfulEnterScreenState value)? notEntered,
     TResult Function(ErrorEnterScreenState value)? error,
     required TResult orElse(),
   }) {
@@ -736,6 +884,9 @@ abstract class _$$SuccessfulEnterScreenStateCopyWith<$Res>
       __$$SuccessfulEnterScreenStateCopyWithImpl<$Res>;
   @override
   $Res call({EnterScreenEntity data, String message});
+
+  @override
+  $EnterScreenEntityCopyWith<$Res> get data;
 }
 
 /// @nodoc
@@ -773,7 +924,7 @@ class __$$SuccessfulEnterScreenStateCopyWithImpl<$Res>
 
 class _$SuccessfulEnterScreenState extends SuccessfulEnterScreenState {
   const _$SuccessfulEnterScreenState(
-      {required this.data, this.message = 'Successful'})
+      {required this.data, this.message = 'logout'})
       : super._();
 
   @override
@@ -784,7 +935,7 @@ class _$SuccessfulEnterScreenState extends SuccessfulEnterScreenState {
 
   @override
   String toString() {
-    return 'EnterScreenState.notEnterd(data: $data, message: $message)';
+    return 'EnterScreenState.notEntered(data: $data, message: $message)';
   }
 
   @override
@@ -815,10 +966,11 @@ class _$SuccessfulEnterScreenState extends SuccessfulEnterScreenState {
         loginCompleted,
     required TResult Function(EnterScreenEntity data, String message)
         processing,
-    required TResult Function(EnterScreenEntity data, String message) notEnterd,
+    required TResult Function(EnterScreenEntity data, String message)
+        notEntered,
     required TResult Function(EnterScreenEntity data, String message) error,
   }) {
-    return notEnterd(data, message);
+    return notEntered(data, message);
   }
 
   @override
@@ -826,10 +978,10 @@ class _$SuccessfulEnterScreenState extends SuccessfulEnterScreenState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(EnterScreenEntity data, String message)? loginCompleted,
     TResult Function(EnterScreenEntity data, String message)? processing,
-    TResult Function(EnterScreenEntity data, String message)? notEnterd,
+    TResult Function(EnterScreenEntity data, String message)? notEntered,
     TResult Function(EnterScreenEntity data, String message)? error,
   }) {
-    return notEnterd?.call(data, message);
+    return notEntered?.call(data, message);
   }
 
   @override
@@ -837,12 +989,12 @@ class _$SuccessfulEnterScreenState extends SuccessfulEnterScreenState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(EnterScreenEntity data, String message)? loginCompleted,
     TResult Function(EnterScreenEntity data, String message)? processing,
-    TResult Function(EnterScreenEntity data, String message)? notEnterd,
+    TResult Function(EnterScreenEntity data, String message)? notEntered,
     TResult Function(EnterScreenEntity data, String message)? error,
     required TResult orElse(),
   }) {
-    if (notEnterd != null) {
-      return notEnterd(data, message);
+    if (notEntered != null) {
+      return notEntered(data, message);
     }
     return orElse();
   }
@@ -852,10 +1004,10 @@ class _$SuccessfulEnterScreenState extends SuccessfulEnterScreenState {
   TResult map<TResult extends Object?>({
     required TResult Function(IdleEnterScreenState value) loginCompleted,
     required TResult Function(ProcessingEnterScreenState value) processing,
-    required TResult Function(SuccessfulEnterScreenState value) notEnterd,
+    required TResult Function(SuccessfulEnterScreenState value) notEntered,
     required TResult Function(ErrorEnterScreenState value) error,
   }) {
-    return notEnterd(this);
+    return notEntered(this);
   }
 
   @override
@@ -863,10 +1015,10 @@ class _$SuccessfulEnterScreenState extends SuccessfulEnterScreenState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(IdleEnterScreenState value)? loginCompleted,
     TResult Function(ProcessingEnterScreenState value)? processing,
-    TResult Function(SuccessfulEnterScreenState value)? notEnterd,
+    TResult Function(SuccessfulEnterScreenState value)? notEntered,
     TResult Function(ErrorEnterScreenState value)? error,
   }) {
-    return notEnterd?.call(this);
+    return notEntered?.call(this);
   }
 
   @override
@@ -874,12 +1026,12 @@ class _$SuccessfulEnterScreenState extends SuccessfulEnterScreenState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(IdleEnterScreenState value)? loginCompleted,
     TResult Function(ProcessingEnterScreenState value)? processing,
-    TResult Function(SuccessfulEnterScreenState value)? notEnterd,
+    TResult Function(SuccessfulEnterScreenState value)? notEntered,
     TResult Function(ErrorEnterScreenState value)? error,
     required TResult orElse(),
   }) {
-    if (notEnterd != null) {
-      return notEnterd(this);
+    if (notEntered != null) {
+      return notEntered(this);
     }
     return orElse();
   }
@@ -909,6 +1061,9 @@ abstract class _$$ErrorEnterScreenStateCopyWith<$Res>
       __$$ErrorEnterScreenStateCopyWithImpl<$Res>;
   @override
   $Res call({EnterScreenEntity data, String message});
+
+  @override
+  $EnterScreenEntityCopyWith<$Res> get data;
 }
 
 /// @nodoc
@@ -986,7 +1141,8 @@ class _$ErrorEnterScreenState extends ErrorEnterScreenState {
         loginCompleted,
     required TResult Function(EnterScreenEntity data, String message)
         processing,
-    required TResult Function(EnterScreenEntity data, String message) notEnterd,
+    required TResult Function(EnterScreenEntity data, String message)
+        notEntered,
     required TResult Function(EnterScreenEntity data, String message) error,
   }) {
     return error(data, message);
@@ -997,7 +1153,7 @@ class _$ErrorEnterScreenState extends ErrorEnterScreenState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(EnterScreenEntity data, String message)? loginCompleted,
     TResult Function(EnterScreenEntity data, String message)? processing,
-    TResult Function(EnterScreenEntity data, String message)? notEnterd,
+    TResult Function(EnterScreenEntity data, String message)? notEntered,
     TResult Function(EnterScreenEntity data, String message)? error,
   }) {
     return error?.call(data, message);
@@ -1008,7 +1164,7 @@ class _$ErrorEnterScreenState extends ErrorEnterScreenState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(EnterScreenEntity data, String message)? loginCompleted,
     TResult Function(EnterScreenEntity data, String message)? processing,
-    TResult Function(EnterScreenEntity data, String message)? notEnterd,
+    TResult Function(EnterScreenEntity data, String message)? notEntered,
     TResult Function(EnterScreenEntity data, String message)? error,
     required TResult orElse(),
   }) {
@@ -1023,7 +1179,7 @@ class _$ErrorEnterScreenState extends ErrorEnterScreenState {
   TResult map<TResult extends Object?>({
     required TResult Function(IdleEnterScreenState value) loginCompleted,
     required TResult Function(ProcessingEnterScreenState value) processing,
-    required TResult Function(SuccessfulEnterScreenState value) notEnterd,
+    required TResult Function(SuccessfulEnterScreenState value) notEntered,
     required TResult Function(ErrorEnterScreenState value) error,
   }) {
     return error(this);
@@ -1034,7 +1190,7 @@ class _$ErrorEnterScreenState extends ErrorEnterScreenState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(IdleEnterScreenState value)? loginCompleted,
     TResult Function(ProcessingEnterScreenState value)? processing,
-    TResult Function(SuccessfulEnterScreenState value)? notEnterd,
+    TResult Function(SuccessfulEnterScreenState value)? notEntered,
     TResult Function(ErrorEnterScreenState value)? error,
   }) {
     return error?.call(this);
@@ -1045,7 +1201,7 @@ class _$ErrorEnterScreenState extends ErrorEnterScreenState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(IdleEnterScreenState value)? loginCompleted,
     TResult Function(ProcessingEnterScreenState value)? processing,
-    TResult Function(SuccessfulEnterScreenState value)? notEnterd,
+    TResult Function(SuccessfulEnterScreenState value)? notEntered,
     TResult Function(ErrorEnterScreenState value)? error,
     required TResult orElse(),
   }) {

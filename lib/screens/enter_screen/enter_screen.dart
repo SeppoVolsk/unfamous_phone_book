@@ -22,7 +22,7 @@ class EnterScreen extends StatelessWidget {
                 leading: GoogleUserCircleAvatar(
                   identity: user,
                 ),
-                title: Text(user.displayName ?? ''),
+                title: Text(user?.displayName ?? ''),
                 subtitle: Text(user.email),
               ),
               const Text('Signed in successfully.'),
@@ -36,7 +36,7 @@ class EnterScreen extends StatelessWidget {
           );
         },
         processing: (_) => const CircularProgressIndicator(),
-        notEnterd: (_) => Column(
+        notEntered: (_) => Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
             const Text('You are not currently signed in.'),
