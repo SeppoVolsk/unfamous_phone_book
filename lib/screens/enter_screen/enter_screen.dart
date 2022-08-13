@@ -22,7 +22,7 @@ class EnterScreen extends StatelessWidget {
                 leading: GoogleUserCircleAvatar(
                   identity: user,
                 ),
-                title: Text(user?.displayName ?? ''),
+                title: Text(user.displayName ?? ''),
                 subtitle: Text(user.email),
               ),
               const Text('Signed in successfully.'),

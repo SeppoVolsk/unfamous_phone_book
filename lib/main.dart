@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
     final repository = IEnterScreenRepository();
     return BlocProvider<EnterScreenBLoC>(
       create: ((_) => EnterScreenBLoC(repository: repository)
-        ..add(EnterScreenEvent.check())),
+        ..add(const EnterScreenEvent.check())),
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(

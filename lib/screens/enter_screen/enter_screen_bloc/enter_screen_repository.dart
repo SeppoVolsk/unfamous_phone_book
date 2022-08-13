@@ -15,13 +15,17 @@ class IEnterScreenRepository {
   GoogleSignInAccount? _currentUser;
   Stream<GoogleSignInAccount?> get accountStream =>
       _googleSignIn.onCurrentUserChanged;
+  GoogleSignInAccount? get currentUser => _currentUser;
 
   Future<EnterScreenEntity> check() async {
     // _googleSignIn.onCurrentUserChanged.listen((account) {
     //   print('$account');
     //   _currentUser = account;
     // });
-    _currentUser = await _googleSignIn.onCurrentUserChanged.first;
+    _googleSignIn.onCurrentUserChanged.listen((event) {
+      print('EVENT $event');
+      _currentUser = event;
+    });
     print('$_currentUser');
     return EnterScreenEntity(user: _currentUser);
   }

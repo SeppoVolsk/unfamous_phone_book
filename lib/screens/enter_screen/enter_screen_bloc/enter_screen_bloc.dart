@@ -98,14 +98,17 @@ class EnterScreenBLoC extends Bloc<EnterScreenEvent, EnterScreenState>
       checkEnterScreenEvent event, Emitter<EnterScreenState> emit) async {
     try {
       emit(EnterScreenState.processing(data: state.data));
-      //final newData = await _repository.check();
-      //emit(EnterScreenState.notEntered(data: newData));
-      await emit.forEach(_repository.accountStream,
-          onData: (GoogleSignInAccount? account) {
-        print('CHECK $account');
-        return EnterScreenState.notEntered(
-            data: EnterScreenEntity(user: account));
-      });
+      // final newData = await _repository.check();
+      // emit(EnterScreenState.notEntered(data: newData));
+      print('_check runned');
+      final newData = await _repository.check();
+      print('NEW DATA ${newData.user}');
+      // await emit.onEach(_repository.accountStream,
+      //     onData: (GoogleSignInAccount? account) {
+      //   print('CHECK $account');
+      //  return EnterScreenState.notEntered(
+      //      data: EnterScreenEntity(user: account));
+      //});
     } on Object catch (err, stackTrace) {
       print('В EnterScreenBLoC произошла ошибка: $err stackTrace');
       emit(EnterScreenState.error(data: state.data));
