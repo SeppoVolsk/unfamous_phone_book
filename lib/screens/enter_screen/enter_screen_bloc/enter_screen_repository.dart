@@ -1,4 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:async';
+
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:unfamous_phone_book/screens/enter_screen/enter_screen_bloc/enterscreenentity.dart';
 
@@ -17,7 +19,7 @@ class IEnterScreenRepository {
       _googleSignIn.onCurrentUserChanged;
   GoogleSignInAccount? get currentUser => _currentUser;
 
-  Future<EnterScreenEntity> check() async {
+  void followUser() {
     // _googleSignIn.onCurrentUserChanged.listen((account) {
     //   print('$account');
     //   _currentUser = account;
@@ -26,13 +28,14 @@ class IEnterScreenRepository {
       print('EVENT $event');
       _currentUser = event;
     });
-    print('$_currentUser');
-    return EnterScreenEntity(user: _currentUser);
+    _googleSignIn.signInSilently();
+    print('check sync $_currentUser');
   }
 
   Future<EnterScreenEntity> logIn() async {
+    _currentUser = await _googleSignIn.onCurrentUserChanged.last;
+    print('LogIn Repo User $_currentUser');
     if (_currentUser != null) {
-      _googleSignIn.signInSilently();
     } else {
       try {
         await _googleSignIn.signIn();
