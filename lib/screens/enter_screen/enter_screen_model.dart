@@ -53,6 +53,7 @@ class SignInDemoState extends State<SignInDemo> {
     _googleSignIn.onCurrentUserChanged.listen((GoogleSignInAccount? account) {
       setState(() {
         _currentUser = account;
+        print('Init State $_currentUser');
       });
       if (_currentUser != null) {
         _handleGetContact(_currentUser!);
@@ -165,6 +166,7 @@ class SignInDemoState extends State<SignInDemo> {
 
   @override
   Widget build(BuildContext context) {
+    print('Main Begin ${}');
     return Scaffold(
         appBar: AppBar(
           title: const Text('Google Sign In'),
