@@ -1,31 +1,36 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:unfamous_phone_book/screens/enter_screen/enter_screen.dart';
 import 'package:unfamous_phone_book/screens/enter_screen/enter_screen_bloc/enter_screen_bloc.dart';
 import 'package:unfamous_phone_book/screens/enter_screen/enter_screen_bloc/enter_screen_repository.dart';
+import 'package:unfamous_phone_book/screens/enter_screen/enter_screen_bloc/enterscreenentity.dart';
 import 'package:unfamous_phone_book/simple_bloc_observer.dart';
 
 void main() {
   Bloc.observer = SimpleBlocObserver();
-  runApp(const MyApp());
+  runApp(const MaterialApp(home: MyApp()));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  final repository = IEnterScreenRepository();
+
+  @override
   Widget build(BuildContext context) {
-    final repository = IEnterScreenRepository();
     return BlocProvider<EnterScreenBLoC>(
-      create: ((_) => EnterScreenBLoC(repository: repository)
+      create: ((_) => EnterScreenBLoC(
+          repository: repository,
+          initialState: EnterScreenState.notEntered(
+              data: EnterScreenEntity(user: repository.currentUser)))
         ..add(const EnterScreenEvent.check())),
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: const Scaffold(body: EnterScreen()),
-      ),
+      child: const MaterialApp(home: Scaffold(body: EnterScreen())),
     );
   }
 }

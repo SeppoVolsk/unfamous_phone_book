@@ -1,6 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:async';
-
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:unfamous_phone_book/screens/enter_screen/enter_screen_bloc/enterscreenentity.dart';
 
@@ -15,34 +14,20 @@ class IEnterScreenRepository {
   );
 
   GoogleSignInAccount? _currentUser;
-  Stream<GoogleSignInAccount?> get accountStream =>
-      _googleSignIn.onCurrentUserChanged;
   GoogleSignInAccount? get currentUser => _currentUser;
 
-  void followUser() {
-    // _googleSignIn.onCurrentUserChanged.listen((account) {
-    //   print('$account');
-    //   _currentUser = account;
-    // });
-    _googleSignIn.onCurrentUserChanged.listen((event) {
-      print('EVENT $event');
-      _currentUser = event;
-    });
+  Future<void> checkDeviceUser() async {
     _googleSignIn.signInSilently();
-    print('check sync $_currentUser');
+    _currentUser = await _googleSignIn.onCurrentUserChanged.first;
   }
 
   Future<EnterScreenEntity> logIn() async {
-    _currentUser = await _googleSignIn.onCurrentUserChanged.last;
     print('LogIn Repo User $_currentUser');
-    if (_currentUser != null) {
-    } else {
-      try {
-        await _googleSignIn.signIn();
-      } catch (error) {
-        print('ОШИБКА signIn');
-        print(error);
-      }
+
+    try {
+      await _googleSignIn.signIn();
+    } catch (error) {
+      rethrow;
     }
     return EnterScreenEntity(user: _currentUser);
   }

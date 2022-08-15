@@ -166,7 +166,7 @@ class SignInDemoState extends State<SignInDemo> {
 
   @override
   Widget build(BuildContext context) {
-    print('Main Begin ${}');
+    print('Main Begin ${_currentUser}');
     return Scaffold(
         appBar: AppBar(
           title: const Text('Google Sign In'),

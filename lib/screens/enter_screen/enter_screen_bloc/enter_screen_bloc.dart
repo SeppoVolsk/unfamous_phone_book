@@ -1,9 +1,7 @@
 import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart' as bloc_concurrency;
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:unfamous_phone_book/screens/enter_screen/enter_screen_bloc/enter_screen_repository.dart';
 import 'package:unfamous_phone_book/screens/enter_screen/enter_screen_bloc/enterscreenentity.dart';
 
@@ -54,7 +52,7 @@ class EnterScreenState with _$EnterScreenState {
   /// Successful
   const factory EnterScreenState.notEntered({
     required final EnterScreenEntity data,
-    @Default('logout') final String message,
+    @Default('Not enteref') final String message,
   }) = SuccessfulEnterScreenState;
 
   /// An error has occurred
@@ -69,7 +67,7 @@ class EnterScreenBLoC extends Bloc<EnterScreenEvent, EnterScreenState>
     implements EventSink<EnterScreenEvent> {
   EnterScreenBLoC({
     required final IEnterScreenRepository repository,
-    final EnterScreenState? initialState,
+    EnterScreenState? initialState,
   })  : _repository = repository,
         super(
           initialState ??
@@ -98,17 +96,13 @@ class EnterScreenBLoC extends Bloc<EnterScreenEvent, EnterScreenState>
       checkEnterScreenEvent event, Emitter<EnterScreenState> emit) async {
     try {
       emit(EnterScreenState.processing(data: state.data));
-      // final newData = await _repository.check();
-      // emit(EnterScreenState.notEntered(data: newData));
-      print('_check runned');
-      final newData = await _repository.check();
-      print('NEW DATA ${newData.user}');
-      // await emit.onEach(_repository.accountStream,
-      //     onData: (GoogleSignInAccount? account) {
-      //   print('CHECK $account');
-      //  return EnterScreenState.notEntered(
-      //      data: EnterScreenEntity(user: account));
-      //});
+      await _repository.checkDeviceUser();
+      if (_repository.currentUser == null) {
+        emit(EnterScreenState.notEntered(data: EnterScreenEntity(user: null)));
+      } else {
+        emit(EnterScreenState.loginCompleted(
+            data: EnterScreenEntity(user: _repository.currentUser)));
+      }
     } on Object catch (err, stackTrace) {
       print('В EnterScreenBLoC произошла ошибка: $err stackTrace');
       emit(EnterScreenState.error(data: state.data));
