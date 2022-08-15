@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_sign_in/widgets.dart';
+import 'package:unfamous_phone_book/screens/completed_screen/completed_screen.dart';
 import 'package:unfamous_phone_book/screens/enter_screen/enter_screen_bloc/enter_screen_bloc.dart';
 
 class EnterScreen extends StatelessWidget {
@@ -13,28 +13,7 @@ class EnterScreen extends StatelessWidget {
     return BlocBuilder<EnterScreenBLoC, EnterScreenState>(
         builder: (context, state) {
       return state.map(
-        loginCompleted: (state) {
-          final user = state.data.user!;
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              ListTile(
-                leading: GoogleUserCircleAvatar(
-                  identity: user,
-                ),
-                title: Text(user.displayName ?? ''),
-                subtitle: Text(user.email),
-              ),
-              const Text('Signed in successfully.'),
-              ElevatedButton(
-                onPressed: () => context
-                    .read<EnterScreenBLoC>()
-                    .add(const EnterScreenEvent.logOut()),
-                child: const Text('SIGN OUT'),
-              ),
-            ],
-          );
-        },
+        loginCompleted: (state) => CompletedScreen(),
         processing: (_) => const CircularProgressIndicator(),
         notEntered: (_) => Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
