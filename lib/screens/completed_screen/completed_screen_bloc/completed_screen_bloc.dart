@@ -1,0 +1,162 @@
+import 'dart:async';
+import 'package:bloc/bloc.dart';
+import 'package:bloc_concurrency/bloc_concurrency.dart' as bloc_concurrency;
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:unfamous_phone_book/screens/completed_screen/completed_screen_bloc/completed_screen_repository.dart';
+import 'package:unfamous_phone_book/screens/completed_screen/completed_screen_bloc/completedscreenentity.dart';
+
+part 'completed_screen_bloc.freezed.dart';
+
+/* CompletedScreen Events */
+
+@freezed
+class CompletedScreenEvent with _$CompletedScreenEvent {
+  const CompletedScreenEvent._();
+
+  const factory CompletedScreenEvent.create() = CreateCompletedScreenEvent;
+
+  const factory CompletedScreenEvent.read() = ReadCompletedScreenEvent;
+
+  const factory CompletedScreenEvent.update() = UpdateCompletedScreenEvent;
+
+  const factory CompletedScreenEvent.delete() = DeleteCompletedScreenEvent;
+}
+
+/* CompletedScreen States */
+
+@freezed
+class CompletedScreenState with _$CompletedScreenState {
+  const CompletedScreenState._();
+
+  /// Is in idle state
+  bool get idling => !isProcessing;
+
+  /// Is in progress state
+  bool get isProcessing => maybeMap<bool>(
+        orElse: () => true,
+        idle: (_) => false,
+      );
+
+  /// If an error has occurred
+  bool get hasError => maybeMap<bool>(orElse: () => false, error: (_) => true);
+
+  /// Idling state
+  const factory CompletedScreenState.idle({
+    required final CompletedScreenEntity data,
+    @Default('Idle') final String message,
+  }) = IdleCompletedScreenState;
+
+  /// Processing
+  const factory CompletedScreenState.processing({
+    required final CompletedScreenEntity data,
+    @Default('Processing') final String message,
+  }) = ProcessingCompletedScreenState;
+
+  /// Successful
+  const factory CompletedScreenState.successful({
+    required final CompletedScreenEntity data,
+    @Default('Successful') final String message,
+  }) = SuccessfulCompletedScreenState;
+
+  /// An error has occurred
+  const factory CompletedScreenState.error({
+    required final CompletedScreenEntity data,
+    @Default('An error has occurred') final String message,
+  }) = ErrorCompletedScreenState;
+}
+
+/// Buisiness Logic Component CompletedScreenBLoC
+class CompletedScreenBLoC
+    extends Bloc<CompletedScreenEvent, CompletedScreenState>
+    implements EventSink<CompletedScreenEvent> {
+  CompletedScreenBLoC({
+    required final ICompletedScreenRepository repository,
+    final CompletedScreenState? initialState,
+  })  : _repository = repository,
+        super(
+          initialState ??
+              CompletedScreenState.idle(
+                data: CompletedScreenEntity(),
+                message: 'Initial idle state',
+              ),
+        ) {
+    on<CompletedScreenEvent>(
+      (event, emit) => event.map<Future<void>>(
+        create: (event) => _create(event, emit),
+        read: (event) => _read(event, emit),
+        update: (event) => _update(event, emit),
+        delete: (event) => _delete(event, emit),
+      ),
+      transformer: bloc_concurrency.sequential(),
+      //transformer: bloc_concurrency.restartable(),
+      //transformer: bloc_concurrency.droppable(),
+      //transformer: bloc_concurrency.concurrent(),
+    );
+  }
+
+  final ICompletedScreenRepository _repository;
+
+  /// Create event handler
+  Future<void> _create(CreateCompletedScreenEvent event,
+      Emitter<CompletedScreenState> emit) async {
+    try {
+      emit(CompletedScreenState.processing(data: state.data));
+      //final newData = await _repository.();
+      //emit(CompletedScreenState.successful(data: newData));
+    } on Object catch (err, stackTrace) {
+      print('В CompletedScreenBLoC произошла ошибка: $err, $stackTrace');
+      emit(CompletedScreenState.error(data: state.data));
+      rethrow;
+    } finally {
+      emit(CompletedScreenState.idle(data: state.data));
+    }
+  }
+
+  /// Read event handler
+  Future<void> _read(ReadCompletedScreenEvent event,
+      Emitter<CompletedScreenState> emit) async {
+    try {
+      emit(CompletedScreenState.processing(data: state.data));
+      final newData = await _repository.read();
+      emit(CompletedScreenState.successful(data: newData));
+    } on Object catch (err, stackTrace) {
+      print('В CompletedScreenBLoC произошла ошибка: $err, $stackTrace');
+      emit(CompletedScreenState.error(data: state.data));
+      rethrow;
+    } finally {
+      emit(CompletedScreenState.idle(data: state.data));
+    }
+  }
+
+  /// Update event handler
+  Future<void> _update(UpdateCompletedScreenEvent event,
+      Emitter<CompletedScreenState> emit) async {
+    try {
+      emit(CompletedScreenState.processing(data: state.data));
+      //final newData = await _repository.();
+      //emit(CompletedScreenState.successful(data: newData));
+    } on Object catch (err, stackTrace) {
+      print('В CompletedScreenBLoC произошла ошибка: $err, $stackTrace');
+      emit(CompletedScreenState.error(data: state.data));
+      rethrow;
+    } finally {
+      emit(CompletedScreenState.idle(data: state.data));
+    }
+  }
+
+  /// Delete event handler
+  Future<void> _delete(DeleteCompletedScreenEvent event,
+      Emitter<CompletedScreenState> emit) async {
+    try {
+      emit(CompletedScreenState.processing(data: state.data));
+      //final newData = await _repository.();
+      //emit(CompletedScreenState.successful(data: newData));
+    } on Object catch (err, stackTrace) {
+      print('В CompletedScreenBLoC произошла ошибка: $err, $stackTrace');
+      emit(CompletedScreenState.error(data: state.data));
+      rethrow;
+    } finally {
+      emit(CompletedScreenState.idle(data: state.data));
+    }
+  }
+}
