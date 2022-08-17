@@ -639,6 +639,8 @@ abstract class $CompletedScreenStateCopyWith<$Res> {
           $Res Function(CompletedScreenState) then) =
       _$CompletedScreenStateCopyWithImpl<$Res>;
   $Res call({CompletedScreenEntity data, String message});
+
+  $CompletedScreenEntityCopyWith<$Res> get data;
 }
 
 /// @nodoc
@@ -666,6 +668,13 @@ class _$CompletedScreenStateCopyWithImpl<$Res>
               as String,
     ));
   }
+
+  @override
+  $CompletedScreenEntityCopyWith<$Res> get data {
+    return $CompletedScreenEntityCopyWith<$Res>(_value.data, (value) {
+      return _then(_value.copyWith(data: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -676,6 +685,9 @@ abstract class _$$IdleCompletedScreenStateCopyWith<$Res>
       __$$IdleCompletedScreenStateCopyWithImpl<$Res>;
   @override
   $Res call({CompletedScreenEntity data, String message});
+
+  @override
+  $CompletedScreenEntityCopyWith<$Res> get data;
 }
 
 /// @nodoc
@@ -849,6 +861,9 @@ abstract class _$$ProcessingCompletedScreenStateCopyWith<$Res>
       __$$ProcessingCompletedScreenStateCopyWithImpl<$Res>;
   @override
   $Res call({CompletedScreenEntity data, String message});
+
+  @override
+  $CompletedScreenEntityCopyWith<$Res> get data;
 }
 
 /// @nodoc
@@ -1023,6 +1038,9 @@ abstract class _$$SuccessfulCompletedScreenStateCopyWith<$Res>
       __$$SuccessfulCompletedScreenStateCopyWithImpl<$Res>;
   @override
   $Res call({CompletedScreenEntity data, String message});
+
+  @override
+  $CompletedScreenEntityCopyWith<$Res> get data;
 }
 
 /// @nodoc
@@ -1197,6 +1215,9 @@ abstract class _$$ErrorCompletedScreenStateCopyWith<$Res>
       __$$ErrorCompletedScreenStateCopyWithImpl<$Res>;
   @override
   $Res call({CompletedScreenEntity data, String message});
+
+  @override
+  $CompletedScreenEntityCopyWith<$Res> get data;
 }
 
 /// @nodoc

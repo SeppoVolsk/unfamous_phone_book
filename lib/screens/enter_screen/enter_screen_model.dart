@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert' show json;
 
 import 'package:unfamous_phone_book/data/google_api_client/google_api_client.dart';
+import 'package:unfamous_phone_book/domain/contacts_list/contacts_list.dart';
 
 /*
 Получаем SHA1 ключ:
@@ -109,7 +110,7 @@ class SignInDemoState extends State<SignInDemo> {
     //   }
     // }
     // return null;
-    final testContact = Contact.fromJson(data);
+    final testContact = ContactsList.fromJson(data);
     //return data['connections'][0]['names'][0]['givenName'];
     return testContact.connections?[20].names?[0].displayNameLastFirst;
   }

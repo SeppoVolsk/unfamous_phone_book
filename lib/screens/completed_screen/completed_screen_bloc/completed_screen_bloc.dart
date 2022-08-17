@@ -76,7 +76,7 @@ class CompletedScreenBLoC
         super(
           initialState ??
               CompletedScreenState.idle(
-                data: CompletedScreenEntity(),
+                data: CompletedScreenEntity(contactsList: null),
                 message: 'Initial idle state',
               ),
         ) {
@@ -107,8 +107,6 @@ class CompletedScreenBLoC
       print('В CompletedScreenBLoC произошла ошибка: $err, $stackTrace');
       emit(CompletedScreenState.error(data: state.data));
       rethrow;
-    } finally {
-      emit(CompletedScreenState.idle(data: state.data));
     }
   }
 
@@ -123,8 +121,6 @@ class CompletedScreenBLoC
       print('В CompletedScreenBLoC произошла ошибка: $err, $stackTrace');
       emit(CompletedScreenState.error(data: state.data));
       rethrow;
-    } finally {
-      emit(CompletedScreenState.idle(data: state.data));
     }
   }
 

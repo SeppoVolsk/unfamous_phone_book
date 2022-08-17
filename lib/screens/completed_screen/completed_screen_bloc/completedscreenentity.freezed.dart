@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$CompletedScreenEntity {
-  Contact get contact => throw _privateConstructorUsedError;
+  ContactsList? get contactsList => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CompletedScreenEntityCopyWith<CompletedScreenEntity> get copyWith =>
@@ -28,9 +28,9 @@ abstract class $CompletedScreenEntityCopyWith<$Res> {
   factory $CompletedScreenEntityCopyWith(CompletedScreenEntity value,
           $Res Function(CompletedScreenEntity) then) =
       _$CompletedScreenEntityCopyWithImpl<$Res>;
-  $Res call({Contact contact});
+  $Res call({ContactsList? contactsList});
 
-  $ContactCopyWith<$Res> get contact;
+  $ContactsListCopyWith<$Res>? get contactsList;
 }
 
 /// @nodoc
@@ -44,20 +44,24 @@ class _$CompletedScreenEntityCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? contact = freezed,
+    Object? contactsList = freezed,
   }) {
     return _then(_value.copyWith(
-      contact: contact == freezed
-          ? _value.contact
-          : contact // ignore: cast_nullable_to_non_nullable
-              as Contact,
+      contactsList: contactsList == freezed
+          ? _value.contactsList
+          : contactsList // ignore: cast_nullable_to_non_nullable
+              as ContactsList?,
     ));
   }
 
   @override
-  $ContactCopyWith<$Res> get contact {
-    return $ContactCopyWith<$Res>(_value.contact, (value) {
-      return _then(_value.copyWith(contact: value));
+  $ContactsListCopyWith<$Res>? get contactsList {
+    if (_value.contactsList == null) {
+      return null;
+    }
+
+    return $ContactsListCopyWith<$Res>(_value.contactsList!, (value) {
+      return _then(_value.copyWith(contactsList: value));
     });
   }
 }
@@ -69,10 +73,10 @@ abstract class _$$_CompletedScreenEntityCopyWith<$Res>
           $Res Function(_$_CompletedScreenEntity) then) =
       __$$_CompletedScreenEntityCopyWithImpl<$Res>;
   @override
-  $Res call({Contact contact});
+  $Res call({ContactsList? contactsList});
 
   @override
-  $ContactCopyWith<$Res> get contact;
+  $ContactsListCopyWith<$Res>? get contactsList;
 }
 
 /// @nodoc
@@ -89,13 +93,13 @@ class __$$_CompletedScreenEntityCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? contact = freezed,
+    Object? contactsList = freezed,
   }) {
     return _then(_$_CompletedScreenEntity(
-      contact: contact == freezed
-          ? _value.contact
-          : contact // ignore: cast_nullable_to_non_nullable
-              as Contact,
+      contactsList: contactsList == freezed
+          ? _value.contactsList
+          : contactsList // ignore: cast_nullable_to_non_nullable
+              as ContactsList?,
     ));
   }
 }
@@ -103,14 +107,14 @@ class __$$_CompletedScreenEntityCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_CompletedScreenEntity implements _CompletedScreenEntity {
-  _$_CompletedScreenEntity({required this.contact});
+  _$_CompletedScreenEntity({required this.contactsList});
 
   @override
-  final Contact contact;
+  final ContactsList? contactsList;
 
   @override
   String toString() {
-    return 'CompletedScreenEntity(contact: $contact)';
+    return 'CompletedScreenEntity(contactsList: $contactsList)';
   }
 
   @override
@@ -118,12 +122,13 @@ class _$_CompletedScreenEntity implements _CompletedScreenEntity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CompletedScreenEntity &&
-            const DeepCollectionEquality().equals(other.contact, contact));
+            const DeepCollectionEquality()
+                .equals(other.contactsList, contactsList));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(contact));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(contactsList));
 
   @JsonKey(ignore: true)
   @override
@@ -133,11 +138,11 @@ class _$_CompletedScreenEntity implements _CompletedScreenEntity {
 }
 
 abstract class _CompletedScreenEntity implements CompletedScreenEntity {
-  factory _CompletedScreenEntity({required final Contact contact}) =
+  factory _CompletedScreenEntity({required final ContactsList? contactsList}) =
       _$_CompletedScreenEntity;
 
   @override
-  Contact get contact;
+  ContactsList? get contactsList;
   @override
   @JsonKey(ignore: true)
   _$$_CompletedScreenEntityCopyWith<_$_CompletedScreenEntity> get copyWith =>

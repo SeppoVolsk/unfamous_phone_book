@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'contact.dart';
+part of 'contacts_list.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Contact _$ContactFromJson(Map<String, dynamic> json) {
-  return _Contact.fromJson(json);
+ContactsList _$ContactsListFromJson(Map<String, dynamic> json) {
+  return _ContactsList.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Contact {
+mixin _$ContactsList {
   List<Connection>? get connections => throw _privateConstructorUsedError;
   String? get nextPageToken => throw _privateConstructorUsedError;
   int? get totalPeople => throw _privateConstructorUsedError;
@@ -27,13 +27,15 @@ mixin _$Contact {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ContactCopyWith<Contact> get copyWith => throw _privateConstructorUsedError;
+  $ContactsListCopyWith<ContactsList> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ContactCopyWith<$Res> {
-  factory $ContactCopyWith(Contact value, $Res Function(Contact) then) =
-      _$ContactCopyWithImpl<$Res>;
+abstract class $ContactsListCopyWith<$Res> {
+  factory $ContactsListCopyWith(
+          ContactsList value, $Res Function(ContactsList) then) =
+      _$ContactsListCopyWithImpl<$Res>;
   $Res call(
       {List<Connection>? connections,
       String? nextPageToken,
@@ -42,12 +44,12 @@ abstract class $ContactCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ContactCopyWithImpl<$Res> implements $ContactCopyWith<$Res> {
-  _$ContactCopyWithImpl(this._value, this._then);
+class _$ContactsListCopyWithImpl<$Res> implements $ContactsListCopyWith<$Res> {
+  _$ContactsListCopyWithImpl(this._value, this._then);
 
-  final Contact _value;
+  final ContactsList _value;
   // ignore: unused_field
-  final $Res Function(Contact) _then;
+  final $Res Function(ContactsList) _then;
 
   @override
   $Res call({
@@ -78,10 +80,11 @@ class _$ContactCopyWithImpl<$Res> implements $ContactCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$_ContactCopyWith<$Res> implements $ContactCopyWith<$Res> {
-  factory _$$_ContactCopyWith(
-          _$_Contact value, $Res Function(_$_Contact) then) =
-      __$$_ContactCopyWithImpl<$Res>;
+abstract class _$$_ContactsListCopyWith<$Res>
+    implements $ContactsListCopyWith<$Res> {
+  factory _$$_ContactsListCopyWith(
+          _$_ContactsList value, $Res Function(_$_ContactsList) then) =
+      __$$_ContactsListCopyWithImpl<$Res>;
   @override
   $Res call(
       {List<Connection>? connections,
@@ -91,13 +94,15 @@ abstract class _$$_ContactCopyWith<$Res> implements $ContactCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ContactCopyWithImpl<$Res> extends _$ContactCopyWithImpl<$Res>
-    implements _$$_ContactCopyWith<$Res> {
-  __$$_ContactCopyWithImpl(_$_Contact _value, $Res Function(_$_Contact) _then)
-      : super(_value, (v) => _then(v as _$_Contact));
+class __$$_ContactsListCopyWithImpl<$Res>
+    extends _$ContactsListCopyWithImpl<$Res>
+    implements _$$_ContactsListCopyWith<$Res> {
+  __$$_ContactsListCopyWithImpl(
+      _$_ContactsList _value, $Res Function(_$_ContactsList) _then)
+      : super(_value, (v) => _then(v as _$_ContactsList));
 
   @override
-  _$_Contact get _value => super._value as _$_Contact;
+  _$_ContactsList get _value => super._value as _$_ContactsList;
 
   @override
   $Res call({
@@ -106,7 +111,7 @@ class __$$_ContactCopyWithImpl<$Res> extends _$ContactCopyWithImpl<$Res>
     Object? totalPeople = freezed,
     Object? totalItems = freezed,
   }) {
-    return _then(_$_Contact(
+    return _then(_$_ContactsList(
       connections: connections == freezed
           ? _value._connections
           : connections // ignore: cast_nullable_to_non_nullable
@@ -129,16 +134,16 @@ class __$$_ContactCopyWithImpl<$Res> extends _$ContactCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Contact implements _Contact {
-  _$_Contact(
+class _$_ContactsList implements _ContactsList {
+  _$_ContactsList(
       {final List<Connection>? connections,
       this.nextPageToken,
       this.totalPeople,
       this.totalItems})
       : _connections = connections;
 
-  factory _$_Contact.fromJson(Map<String, dynamic> json) =>
-      _$$_ContactFromJson(json);
+  factory _$_ContactsList.fromJson(Map<String, dynamic> json) =>
+      _$$_ContactsListFromJson(json);
 
   final List<Connection>? _connections;
   @override
@@ -158,14 +163,14 @@ class _$_Contact implements _Contact {
 
   @override
   String toString() {
-    return 'Contact(connections: $connections, nextPageToken: $nextPageToken, totalPeople: $totalPeople, totalItems: $totalItems)';
+    return 'ContactsList(connections: $connections, nextPageToken: $nextPageToken, totalPeople: $totalPeople, totalItems: $totalItems)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Contact &&
+            other is _$_ContactsList &&
             const DeepCollectionEquality()
                 .equals(other._connections, _connections) &&
             const DeepCollectionEquality()
@@ -187,25 +192,26 @@ class _$_Contact implements _Contact {
 
   @JsonKey(ignore: true)
   @override
-  _$$_ContactCopyWith<_$_Contact> get copyWith =>
-      __$$_ContactCopyWithImpl<_$_Contact>(this, _$identity);
+  _$$_ContactsListCopyWith<_$_ContactsList> get copyWith =>
+      __$$_ContactsListCopyWithImpl<_$_ContactsList>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ContactToJson(
+    return _$$_ContactsListToJson(
       this,
     );
   }
 }
 
-abstract class _Contact implements Contact {
-  factory _Contact(
+abstract class _ContactsList implements ContactsList {
+  factory _ContactsList(
       {final List<Connection>? connections,
       final String? nextPageToken,
       final int? totalPeople,
-      final int? totalItems}) = _$_Contact;
+      final int? totalItems}) = _$_ContactsList;
 
-  factory _Contact.fromJson(Map<String, dynamic> json) = _$_Contact.fromJson;
+  factory _ContactsList.fromJson(Map<String, dynamic> json) =
+      _$_ContactsList.fromJson;
 
   @override
   List<Connection>? get connections;
@@ -217,6 +223,6 @@ abstract class _Contact implements Contact {
   int? get totalItems;
   @override
   @JsonKey(ignore: true)
-  _$$_ContactCopyWith<_$_Contact> get copyWith =>
+  _$$_ContactsListCopyWith<_$_ContactsList> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -1,12 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'contact.dart';
+part of 'contacts_list.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Contact _$$_ContactFromJson(Map<String, dynamic> json) => _$_Contact(
+_$_ContactsList _$$_ContactsListFromJson(Map<String, dynamic> json) =>
+    _$_ContactsList(
       connections: (json['connections'] as List<dynamic>?)
           ?.map((e) => Connection.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -15,7 +16,7 @@ _$_Contact _$$_ContactFromJson(Map<String, dynamic> json) => _$_Contact(
       totalItems: json['totalItems'] as int?,
     );
 
-Map<String, dynamic> _$$_ContactToJson(_$_Contact instance) =>
+Map<String, dynamic> _$$_ContactsListToJson(_$_ContactsList instance) =>
     <String, dynamic>{
       'connections': instance.connections,
       'nextPageToken': instance.nextPageToken,
