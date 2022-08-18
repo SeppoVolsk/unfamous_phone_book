@@ -5,6 +5,7 @@ import 'package:unfamous_phone_book/domain/contacts_list/contacts_list.dart';
 import 'package:unfamous_phone_book/screens/completed_screen/completed_screen_bloc/completed_screen_bloc.dart';
 import 'package:unfamous_phone_book/screens/completed_screen/completed_screen_bloc/completed_screen_repository.dart';
 import 'package:unfamous_phone_book/screens/enter_screen/enter_screen_bloc/enter_screen_bloc.dart';
+import 'package:unfamous_phone_book/ui_components.dart';
 
 class CompletedScreen extends StatefulWidget {
   CompletedScreen({Key? key}) : super(key: key);
@@ -28,9 +29,13 @@ class _CompletedScreenState extends State<CompletedScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
               ListTile(
-                leading: GoogleUserCircleAvatar(
-                  identity: user,
+                leading: CircleAvatar(
+                  backgroundImage: AssetImage('assets/avatars/avatar1.png'),
                 ),
+                // GoogleUserCircleAvatar(
+                //   identity: user,
+                // ),
+
                 title: Text(user.displayName ?? ''),
                 subtitle: Text(user.email),
               ),
