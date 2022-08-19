@@ -1,6 +1,9 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:unfamous_phone_book/domain/contacts_list/connection.dart';
 import 'package:unfamous_phone_book/domain/contacts_list/contacts_list.dart';
 import 'package:unfamous_phone_book/screens/completed_screen/completed_screen_bloc/completed_screen_bloc.dart';
 import 'package:unfamous_phone_book/screens/completed_screen/completed_screen_bloc/completed_screen_repository.dart';
@@ -28,17 +31,15 @@ class _CompletedScreenState extends State<CompletedScreen> {
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              ListTile(
-                leading: CircleAvatar(
-                  backgroundImage: AssetImage('assets/avatars/avatar1.png'),
-                ),
-                // GoogleUserCircleAvatar(
-                //   identity: user,
-                // ),
+              // ListTile(
+              //   leading:
+              //   GoogleUserCircleAvatar(
+              //     identity: user,
+              //   ),
 
-                title: Text(user.displayName ?? ''),
-                subtitle: Text(user.email),
-              ),
+              //   title: Text(user.displayName ?? ''),
+              //   subtitle: Text(user.email),
+              // ),
               const Text('Signed in successfully.'),
               ElevatedButton(
                 onPressed: () => context
@@ -80,14 +81,42 @@ class _ContactsScrollWidgetState extends State<ContactsScrollWidget> {
                   print('index $index');
                   print(contactsList
                       ?.connections?[index].names?[0].displayNameLastFirst);
-                  return Text(contactsList?.connections?[index].names?[0]
-                          .displayNameLastFirst ??
-                      'пусто');
+                  return ContactCard(
+                      connection: contactsList?.connections?[index]);
                 }));
           },
           processing: (_) => const CircularProgressIndicator(),
           idle: (_) => const CircularProgressIndicator(),
           error: (_) => const CircularProgressIndicator());
     });
+  }
+}
+
+class ContactCard extends StatefulWidget {
+  Connection? connection;
+
+  ContactCard({Key? key, required this.connection}) : super(key: key);
+
+  @override
+  State<ContactCard> createState() => _ContactCardState();
+}
+
+class _ContactCardState extends State<ContactCard> {
+  @override
+  Widget build(BuildContext context) {
+    final data = widget.connection!;
+    final contactHasDefaultPhoto = data.photos?[0].photoDefault == true;
+
+    return ListTile(
+      leading: CircleAvatar(
+        backgroundColor: UiAssets.randomColor(),
+        backgroundImage: contactHasDefaultPhoto
+            ? AssetImage(UiAssets.randomAvatar())
+            : NetworkImage(data.photos![0].url!) as ImageProvider,
+      ),
+      title: Text('${data.names?[0].displayNameLastFirst}'),
+      subtitle: Text('${data.phoneNumbers?[0].value}'),
+      trailing: const Icon(Icons.phone_enabled),
+    );
   }
 }
