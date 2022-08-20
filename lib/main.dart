@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:unfamous_phone_book/data/cache_manager/cache_manager.dart';
 import 'package:unfamous_phone_book/screens/enter_screen/enter_screen.dart';
 import 'package:unfamous_phone_book/screens/enter_screen/enter_screen_bloc/enter_screen_bloc.dart';
 import 'package:unfamous_phone_book/screens/enter_screen/enter_screen_bloc/enter_screen_repository.dart';
@@ -20,7 +21,14 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  final cache = CacheManager();
   final repository = IEnterScreenRepository();
+
+  @override
+  void initState() {
+    super.initState();
+    cache.init().whenComplete(() => setState(() {}));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +38,10 @@ class _MyAppState extends State<MyApp> {
           initialState: EnterScreenState.notEntered(
               data: EnterScreenEntity(user: repository.currentUser)))
         ..add(const EnterScreenEvent.check())),
-      child: const MaterialApp(home: Scaffold(body: EnterScreen())),
+      child: MaterialApp(
+          home: cache.isReady
+              ? const Scaffold(body: EnterScreen())
+              : const Center(child: CircularProgressIndicator())),
     );
   }
 }

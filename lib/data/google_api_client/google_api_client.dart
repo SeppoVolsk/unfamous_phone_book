@@ -25,9 +25,10 @@ class GoogleApiClient {
 class Query {
   final apiHost = 'https://people.googleapis.com/v1/',
       method = 'people/me/connections?',
-      params = 'personFields=names,photos,phoneNumbers';
+      pageSize = 'pageSize=1000',
+      params = '&personFields=names,photos,phoneNumbers';
   static late final String fetchNamePhonePhoto;
   Query.assembleStandartQuery() {
-    fetchNamePhonePhoto = '$apiHost$method$params';
+    fetchNamePhonePhoto = '$apiHost$method$pageSize$params';
   }
 }
