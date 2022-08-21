@@ -30,7 +30,7 @@ class CacheManager {
   }
 
   Future<void> delete({required String key}) async => await _prefs?.remove(key);
-  Future<void> write<T>({String key = _Values.dataKey, required T data}) async {
+  Future<void> write<T>({required String key, required T data}) async {
     switch (T) {
       case String:
         await _prefs?.setString(key, data as String);
@@ -38,12 +38,13 @@ class CacheManager {
       case Map<String, dynamic>:
         String jsonString = jsonEncode(data);
         await _prefs?.setString(key, jsonString);
+        print('CACHE WRITE $jsonString');
         break;
       default:
     }
   }
 
-  String? read({String key = _Values.dataKey}) => _prefs?.getString(key);
+  String? read({required String key}) => _prefs?.getString(key);
   Future<Iterable<File>?> getFilesInDirectory() async {
     final List<FileSystemEntity>? dirEntities = await _dir?.list().toList();
     final files = dirEntities?.whereType<File>();
@@ -67,5 +68,5 @@ class CacheManager {
 }
 
 class _Values {
-  static const fileEnding = '.png', dataKey = 'contacts';
+  static const fileEnding = '.png';
 }

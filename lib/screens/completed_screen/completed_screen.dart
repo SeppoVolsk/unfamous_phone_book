@@ -2,9 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:unfamous_phone_book/domain/contacts_list/connection.dart';
-import 'package:unfamous_phone_book/domain/contacts_list/contacts_list.dart';
 import 'package:unfamous_phone_book/screens/completed_screen/completed_screen_bloc/completed_screen_bloc.dart';
 import 'package:unfamous_phone_book/screens/completed_screen/completed_screen_bloc/completed_screen_repository.dart';
 import 'package:unfamous_phone_book/screens/enter_screen/enter_screen_bloc/enter_screen_bloc.dart';
@@ -78,9 +76,6 @@ class _ContactsScrollWidgetState extends State<ContactsScrollWidget> {
             return ListView.builder(
                 itemCount: listItemCount,
                 itemBuilder: ((context, index) {
-                  print('index $index');
-                  print(contactsList
-                      ?.connections?[index].names?[0].displayNameLastFirst);
                   return ContactCard(
                       connection: contactsList?.connections?[index]);
                 }));
