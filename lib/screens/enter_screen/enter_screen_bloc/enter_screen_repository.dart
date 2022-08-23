@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:async';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:unfamous_phone_book/data/cache_manager/cache_manager.dart';
 import 'package:unfamous_phone_book/screens/enter_screen/enter_screen_bloc/enterscreenentity.dart';
 
 class IEnterScreenRepository {
@@ -15,6 +16,7 @@ class IEnterScreenRepository {
 
   GoogleSignInAccount? _currentUser;
   GoogleSignInAccount? get currentUser => _currentUser;
+  final cache = CacheManager();
 
   Future<void> checkDeviceUser() async {
     _googleSignIn.signInSilently();
@@ -34,6 +36,9 @@ class IEnterScreenRepository {
 
   Future<EnterScreenEntity> logOut() async {
     await _googleSignIn.disconnect();
+    print('LogOut');
+    await cache.delete(key: _currentUser!.id);
+    await cache.clearDirectory();
     return EnterScreenEntity(user: null);
   }
 }

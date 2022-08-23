@@ -13,15 +13,19 @@ class CacheManager {
   factory CacheManager() => _instance;
 
   bool get isReady => _dir == null || _prefs == null ? false : true;
+  bool get isEmpty {
+    final keys = _prefs?.getKeys();
+    return keys == null || keys.isEmpty;
+  }
 
   Future<void> init() async {
     _dir = await getApplicationDocumentsDirectory();
     _prefs = await SharedPreferences.getInstance();
   }
 
-  Future<File> urlToFile(String imageUrl) async {
-    File file = File('${_dir?.path}/'
-        '${imageUrl.substring(37, 45)}_${DateTime.now().toString()}${_Values.fileEnding}');
+  Future<File> urlToFile(
+      {required String imageUrl, required String fileName}) async {
+    File file = File('${_dir?.path}/$fileName${_Values.fileEnding}');
     print(file.path);
     final url = Uri.parse(imageUrl);
     final request = await get(url);

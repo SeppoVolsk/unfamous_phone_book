@@ -80,9 +80,9 @@ class _ContactsScrollWidgetState extends State<ContactsScrollWidget> {
                       connection: contactsList?.connections?[index]);
                 }));
           },
-          processing: (_) => const CircularProgressIndicator(),
-          idle: (_) => const CircularProgressIndicator(),
-          error: (_) => const CircularProgressIndicator());
+          processing: (_) => const Center(child: CircularProgressIndicator()),
+          idle: (_) => const Center(child: CircularProgressIndicator()),
+          error: (_) => const Center(child: CircularProgressIndicator()));
     });
   }
 }
