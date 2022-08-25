@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:unfamous_phone_book/domain/contacts_list/connection.dart';
@@ -107,7 +108,7 @@ class _ContactCardState extends State<ContactCard> {
         backgroundColor: UiAssets.randomColor(),
         backgroundImage: contactHasDefaultPhoto
             ? AssetImage(UiAssets.randomAvatar())
-            : NetworkImage(data.photos![0].url!) as ImageProvider,
+            : CachedNetworkImageProvider(data.photos![0].url!) as ImageProvider,
       ),
       title: Text('${data.names?[0].displayNameLastFirst}'),
       subtitle: Text('${data.phoneNumbers?[0].value}'),

@@ -25,7 +25,7 @@ class CacheManager {
 
   Future<File> urlToFile(
       {required String imageUrl, required String fileName}) async {
-    File file = File('${_dir?.path}/$fileName${_Values.fileEnding}');
+    File file = File('${_dir?.path}/$fileName${_Values.pngFileEnding}');
     print(file.path);
     final url = Uri.parse(imageUrl);
     final request = await get(url);
@@ -56,7 +56,7 @@ class CacheManager {
              all files paths: 
              $files''');
     final jpgFiles = files?.where((file) {
-      return file.path.substring(file.path.length - 3) == _Values.fileEnding;
+      return file.path.substring(file.path.length - 3) == _Values.pngFileEnding;
     });
     return (jpgFiles != null)
         ? jpgFiles.isNotEmpty
@@ -72,5 +72,5 @@ class CacheManager {
 }
 
 class _Values {
-  static const fileEnding = '.png';
+  static const pngFileEnding = '.png';
 }
