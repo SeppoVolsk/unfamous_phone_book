@@ -12,6 +12,9 @@ class UiAssets {
     'assets/avatars/avatar6.png',
   ];
 
+  static const appBarImage = 'assets/bars/appbar_image.png',
+      bottomBarImage = 'assets/bars/bottombar_image.png';
+
   static String randomAvatar() => avatars[_randomNumber(avatars.length)];
 
   static Color randomColor() {

@@ -70,20 +70,38 @@ class _ContactsScrollWidgetState extends State<ContactsScrollWidget> {
 
     return BlocBuilder<CompletedScreenBLoC, CompletedScreenState>(
         builder: (context, state) {
-      return state.map(
-          successful: (state) {
-            final contactsList = state.data.contactsList;
-            final listItemCount = contactsList?.connections?.length;
-            return ListView.builder(
-                itemCount: listItemCount,
-                itemBuilder: ((context, index) {
-                  return ContactCard(
-                      connection: contactsList?.connections?[index]);
-                }));
-          },
-          processing: (_) => const Center(child: CircularProgressIndicator()),
-          idle: (_) => const Center(child: CircularProgressIndicator()),
-          error: (_) => const Center(child: CircularProgressIndicator()));
+      return SafeArea(
+          child: Scaffold(
+        appBar: AppBar(
+          actions: [],
+        ),
+        // bottomNavigationBar: Container(
+        //     decoration: const BoxDecoration(
+        //         image: DecorationImage(
+        //             image: AssetImage(UiAssets.bottomBarImage),
+        //             fit: BoxFit.cover)),
+        //     child: BottomNavigationBar(
+
+        //         backgroundColor: Colors.transparent,
+        //         items: [
+        //           BottomNavigationBarItem(icon: SizedBox.shrink(), label: ''),
+        //           BottomNavigationBarItem(icon: SizedBox.shrink(), label: '')
+        //         ])),
+        body: state.map(
+            successful: (state) {
+              final contactsList = state.data.contactsList;
+              final listItemCount = contactsList?.connections?.length;
+              return ListView.builder(
+                  itemCount: listItemCount,
+                  itemBuilder: ((context, index) {
+                    return ContactCard(
+                        connection: contactsList?.connections?[index]);
+                  }));
+            },
+            processing: (_) => const Center(child: CircularProgressIndicator()),
+            idle: (_) => const Center(child: CircularProgressIndicator()),
+            error: (_) => const Center(child: CircularProgressIndicator())),
+      ));
     });
   }
 }
