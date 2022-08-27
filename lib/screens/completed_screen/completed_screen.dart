@@ -1,9 +1,8 @@
-import 'dart:math';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:unfamous_phone_book/domain/contacts_list/connection.dart';
+import 'package:unfamous_phone_book/screens/completed_screen/completed_screen_appbar.dart';
 import 'package:unfamous_phone_book/screens/completed_screen/completed_screen_bloc/completed_screen_bloc.dart';
 import 'package:unfamous_phone_book/screens/completed_screen/completed_screen_bloc/completed_screen_repository.dart';
 import 'package:unfamous_phone_book/screens/enter_screen/enter_screen_bloc/enter_screen_bloc.dart';
@@ -39,13 +38,13 @@ class _CompletedScreenState extends State<CompletedScreen> {
               //   title: Text(user.displayName ?? ''),
               //   subtitle: Text(user.email),
               // ),
-              const Text('Signed in successfully.'),
-              ElevatedButton(
-                onPressed: () => context
-                    .read<EnterScreenBLoC>()
-                    .add(const EnterScreenEvent.logOut()),
-                child: const Text('SIGN OUT'),
-              ),
+              // const Text('Signed in successfully.'),
+              // ElevatedButton(
+              //   onPressed: () => context
+              //       .read<EnterScreenBLoC>()
+              //       .add(const EnterScreenEvent.logOut()),
+              //   child: const Text('SIGN OUT'),
+              // ),
             ],
           ),
         ]),
@@ -72,8 +71,11 @@ class _ContactsScrollWidgetState extends State<ContactsScrollWidget> {
         builder: (context, state) {
       return SafeArea(
           child: Scaffold(
-        appBar: AppBar(
-          actions: [],
+        appBar: const CompletedScreenAppBar(),
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: UiAssets.randomColor(),
+          child: const Icon(Icons.person_add_alt_1),
+          onPressed: () {},
         ),
         // bottomNavigationBar: Container(
         //     decoration: const BoxDecoration(

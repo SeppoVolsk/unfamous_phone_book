@@ -10,7 +10,10 @@ import 'package:unfamous_phone_book/simple_bloc_observer.dart';
 
 void main() {
   Bloc.observer = SimpleBlocObserver();
-  runApp(const MaterialApp(home: MyApp()));
+  runApp(const MaterialApp(
+    home: MyApp(),
+    debugShowCheckedModeBanner: false,
+  ));
 }
 
 class MyApp extends StatefulWidget {
@@ -38,10 +41,9 @@ class _MyAppState extends State<MyApp> {
           initialState: EnterScreenState.notEntered(
               data: EnterScreenEntity(user: repository.currentUser)))
         ..add(const EnterScreenEvent.check())),
-      child: MaterialApp(
-          home: cache.isReady
-              ? const Scaffold(body: EnterScreen())
-              : const Center(child: CircularProgressIndicator())),
+      child: cache.isReady
+          ? const Scaffold(body: EnterScreen())
+          : const Center(child: CircularProgressIndicator()),
     );
   }
 }
