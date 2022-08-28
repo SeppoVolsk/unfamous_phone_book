@@ -5,7 +5,9 @@ import 'package:unfamous_phone_book/ui_components.dart';
 
 class CompletedScreenAppBar extends StatelessWidget
     implements PreferredSizeWidget {
-  const CompletedScreenAppBar({Key? key}) : super(key: key);
+  const CompletedScreenAppBar({Key? key, required this.searchController})
+      : super(key: key);
+  final TextEditingController? searchController;
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +21,7 @@ class CompletedScreenAppBar extends StatelessWidget
             .add(const EnterScreenEvent.logOut()),
       ),
       title: TextField(
+        controller: searchController,
         decoration: InputDecoration(
             contentPadding: const EdgeInsets.all(10),
             fillColor: Colors.white,
@@ -41,20 +44,10 @@ class CompletedScreenAppBar extends StatelessWidget
           onPressed: () {},
         )
       ],
-      // flexibleSpace: FlexibleSpaceBar(
-      //   stretchModes: const [StretchMode.zoomBackground, StretchMode.fadeTitle],
-      //   background: Column(children: [
-      //     Container(height: 40, color: Colors.transparent),
-      //     Image.asset(
-      //       UiAssets.appBarImage,
-      //       fit: BoxFit.cover,
-      //     ),
-      //   ]),
-      // ),
     );
   }
 
   @override
   // TODO: implement preferredSize
-  Size get preferredSize => const Size.fromHeight(80);
+  Size get preferredSize => const Size.fromHeight(40);
 }

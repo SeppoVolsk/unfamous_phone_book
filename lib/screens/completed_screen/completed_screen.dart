@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:unfamous_phone_book/domain/contacts_list/connection.dart';
+import 'package:unfamous_phone_book/domain/contacts_list/contacts_list.dart';
 import 'package:unfamous_phone_book/screens/completed_screen/completed_screen_appbar.dart';
 import 'package:unfamous_phone_book/screens/completed_screen/completed_screen_bloc/completed_screen_bloc.dart';
 import 'package:unfamous_phone_book/screens/completed_screen/completed_screen_bloc/completed_screen_repository.dart';
@@ -61,43 +62,58 @@ class ContactsScrollWidget extends StatefulWidget {
 }
 
 class _ContactsScrollWidgetState extends State<ContactsScrollWidget> {
+  final _searchController = TextEditingController();
+  ContactsList? _filteredContacts;
+  void _searchContact() {
+    final searchQuery = _searchController.text;
+    final fullContactsList =
+        context.read<CompletedScreenBLoC>().state.data.contactsList;
+    print(fullContactsList?.connections?.length);
+    if (searchQuery.isNotEmpty) {
+      _filteredContacts?.connections
+        ?..clear()
+        ..addAll(fullContactsList!.connections!.where((connection) =>
+            connection.names!.first.displayName!.contains(searchQuery) ||
+            connection.names!.first.familyName!.contains(searchQuery)));
+    } else {
+      _filteredContacts = fullContactsList;
+    }
+    print('Filterd Contacts ${_filteredContacts?.connections?.length}');
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _searchController.addListener(_searchContact);
+  }
+
   @override
   Widget build(BuildContext context) {
-    // final contactsList =
-    //     context.read<CompletedScreenBLoC>().state.data.contactsList;
-    // final itemCount = contactsList?.connections?.length;
-
     return BlocBuilder<CompletedScreenBLoC, CompletedScreenState>(
         builder: (context, state) {
       return SafeArea(
           child: Scaffold(
-        appBar: const CompletedScreenAppBar(),
+        appBar: CompletedScreenAppBar(searchController: _searchController),
         floatingActionButton: FloatingActionButton(
           backgroundColor: UiAssets.randomColor(),
           child: const Icon(Icons.person_add_alt_1),
           onPressed: () {},
         ),
-        // bottomNavigationBar: Container(
-        //     decoration: const BoxDecoration(
-        //         image: DecorationImage(
-        //             image: AssetImage(UiAssets.bottomBarImage),
-        //             fit: BoxFit.cover)),
-        //     child: BottomNavigationBar(
-
-        //         backgroundColor: Colors.transparent,
-        //         items: [
-        //           BottomNavigationBarItem(icon: SizedBox.shrink(), label: ''),
-        //           BottomNavigationBarItem(icon: SizedBox.shrink(), label: '')
-        //         ])),
         body: state.map(
             successful: (state) {
               final contactsList = state.data.contactsList;
-              final listItemCount = contactsList?.connections?.length;
+              // final listItemCount = contactsList?.connections?.length;
+
               return ListView.builder(
-                  itemCount: listItemCount,
+                  itemCount:
+                      _filteredContacts?.connections?.length, //listItemCount,
                   itemBuilder: ((context, index) {
                     return ContactCard(
-                        connection: contactsList?.connections?[index]);
+                        connection: _filteredContacts?.connections?[index] ??
+                            contactsList?.connections?[index]);
+
+                    //contactsList?.connections?[index]
                   }));
             },
             processing: (_) => const Center(child: CircularProgressIndicator()),
