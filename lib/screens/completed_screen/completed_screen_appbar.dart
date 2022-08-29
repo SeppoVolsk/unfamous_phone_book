@@ -21,6 +21,7 @@ class CompletedScreenAppBar extends StatelessWidget
             .add(const EnterScreenEvent.logOut()),
       ),
       title: TextField(
+        //autofocus: true,
         controller: searchController,
         decoration: InputDecoration(
             contentPadding: const EdgeInsets.all(10),

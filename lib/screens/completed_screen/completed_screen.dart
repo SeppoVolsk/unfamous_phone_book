@@ -64,18 +64,22 @@ class ContactsScrollWidget extends StatefulWidget {
 class _ContactsScrollWidgetState extends State<ContactsScrollWidget> {
   final _searchController = TextEditingController();
   ContactsList? _filteredContacts;
+
   void _searchContact() {
     final searchQuery = _searchController.text;
     final fullContactsList =
         context.read<CompletedScreenBLoC>().state.data.contactsList;
-    print(fullContactsList?.connections?.length);
+    print('Фильтрованные контакты: ${_filteredContacts?.connections?.length}');
     if (searchQuery.isNotEmpty) {
-      _filteredContacts?.connections
-        ?..clear()
-        ..addAll(fullContactsList!.connections!.where((connection) =>
-            connection.names!.first.displayName!.contains(searchQuery) ||
-            connection.names!.first.familyName!.contains(searchQuery)));
+      _filteredContacts = fullContactsList?.copyWith(
+          connections: fullContactsList.connections!.where((connection) {
+        return connection.names?.first.displayName?.contains(searchQuery) ??
+            false;
+      }).toList());
+      print(
+          'SearchQuery filteredContact найдено ${_filteredContacts?.connections?.length}');
     } else {
+      print('ELSE');
       _filteredContacts = fullContactsList;
     }
     print('Filterd Contacts ${_filteredContacts?.connections?.length}');
