@@ -6,6 +6,7 @@ import 'package:unfamous_phone_book/domain/contacts_list/contacts_list.dart';
 import 'package:unfamous_phone_book/screens/completed_screen/completed_screen_appbar.dart';
 import 'package:unfamous_phone_book/screens/completed_screen/completed_screen_bloc/completed_screen_bloc.dart';
 import 'package:unfamous_phone_book/screens/completed_screen/completed_screen_bloc/completed_screen_repository.dart';
+import 'package:unfamous_phone_book/screens/detail_sheet/detail_sheet_widget.dart';
 import 'package:unfamous_phone_book/screens/enter_screen/enter_screen_bloc/enter_screen_bloc.dart';
 import 'package:unfamous_phone_book/ui_components.dart';
 
@@ -21,36 +22,21 @@ class _CompletedScreenState extends State<CompletedScreen> {
   Widget build(BuildContext context) {
     final user = context.read<EnterScreenBLoC>().state.data.user!;
     return BlocProvider<CompletedScreenBLoC>(
-      create: (context) => CompletedScreenBLoC(
-          repository: ICompletedScreenRepository(user: user))
-        ..add(const CompletedScreenEvent.read()),
-      child: Center(
-        child: Stack(children: [
-          ContactsScrollWidget(),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              // ListTile(
-              //   leading:
-              //   GoogleUserCircleAvatar(
-              //     identity: user,
-              //   ),
-
-              //   title: Text(user.displayName ?? ''),
-              //   subtitle: Text(user.email),
-              // ),
-              // const Text('Signed in successfully.'),
-              // ElevatedButton(
-              //   onPressed: () => context
-              //       .read<EnterScreenBLoC>()
-              //       .add(const EnterScreenEvent.logOut()),
-              //   child: const Text('SIGN OUT'),
-              // ),
-            ],
+        create: (context) => CompletedScreenBLoC(
+            repository: ICompletedScreenRepository(user: user))
+          ..add(const CompletedScreenEvent.readAllContacts()),
+        child: SafeArea(
+            child: Scaffold(
+          appBar: CompletedScreenAppBar(searchController: _searchController),
+          floatingActionButton: FloatingActionButton(
+            backgroundColor: UiAssets.randomColor(),
+            child: const Icon(Icons.person_add_alt_1),
+            onPressed: () {},
           ),
-        ]),
-      ),
-    );
+          body: Stack(children: [
+            ContactsScrollWidget(),
+          ]),
+        )));
   }
 }
 
@@ -104,25 +90,24 @@ class _ContactsScrollWidgetState extends State<ContactsScrollWidget> {
           child: const Icon(Icons.person_add_alt_1),
           onPressed: () {},
         ),
-        body: state.map(
-            successful: (state) {
-              final contactsList = state.data.contactsList;
-              // final listItemCount = contactsList?.connections?.length;
+        body: state.maybeMap(
+          showAllContacts: (state) {
+            final contactsList = state.data.contactsList;
+            // final listItemCount = contactsList?.connections?.length;
 
-              return ListView.builder(
-                  itemCount:
-                      _filteredContacts?.connections?.length, //listItemCount,
-                  itemBuilder: ((context, index) {
-                    return ContactCard(
-                        connection: _filteredContacts?.connections?[index] ??
-                            contactsList?.connections?[index]);
+            return ListView.builder(
+                itemCount:
+                    _filteredContacts?.connections?.length, //listItemCount,
+                itemBuilder: ((context, index) {
+                  return ContactCard(
+                      connection: _filteredContacts?.connections?[index] ??
+                          contactsList?.connections?[index]);
 
-                    //contactsList?.connections?[index]
-                  }));
-            },
-            processing: (_) => const Center(child: CircularProgressIndicator()),
-            idle: (_) => const Center(child: CircularProgressIndicator()),
-            error: (_) => const Center(child: CircularProgressIndicator())),
+                  //contactsList?.connections?[index]
+                }));
+          },
+          orElse: () => const CircularProgressIndicator(),
+        ),
       ));
     });
   }
@@ -143,7 +128,8 @@ class _ContactCardState extends State<ContactCard> {
     final data = widget.connection!;
     final contactHasDefaultPhoto = data.photos?[0].photoDefault == true;
 
-    return ListTile(
+    return InkWell(
+        child: ListTile(
       leading: CircleAvatar(
         backgroundColor: UiAssets.randomColor(),
         backgroundImage: contactHasDefaultPhoto
@@ -153,6 +139,8 @@ class _ContactCardState extends State<ContactCard> {
       title: Text('${data.names?[0].displayNameLastFirst}'),
       subtitle: Text('${data.phoneNumbers?[0].value}'),
       trailing: const Icon(Icons.phone_enabled),
-    );
+      onTap: () => BlocProvider.of<CompletedScreenBLoC>(context)
+          .add(const CompletedScreenEvent.updateContact()),
+    ));
   }
 }
