@@ -18,6 +18,8 @@ class CompletedScreen extends StatefulWidget {
 }
 
 class _CompletedScreenState extends State<CompletedScreen> {
+  final _searchController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     final user = context.read<EnterScreenBLoC>().state.data.user!;
@@ -28,31 +30,38 @@ class _CompletedScreenState extends State<CompletedScreen> {
         child: SafeArea(
             child: Scaffold(
           appBar: CompletedScreenAppBar(searchController: _searchController),
-          floatingActionButton: FloatingActionButton(
-            backgroundColor: UiAssets.randomColor(),
-            child: const Icon(Icons.person_add_alt_1),
-            onPressed: () {},
+          floatingActionButton: const AddContactButton(),
+          body: BlocBuilder<CompletedScreenBLoC, CompletedScreenState>(
+            builder: (context, state) => Stack(children: [
+              ContactsScrollWidget(
+                searchController: _searchController,
+              ),
+              state.maybeMap(
+                createContact: (_) => Container(
+                    height: 60,
+                    color: Colors.green,
+                    child: const Text('SECOND STACK WIDGET')),
+                orElse: () => const SizedBox.shrink(),
+              )
+            ]),
           ),
-          body: Stack(children: [
-            ContactsScrollWidget(),
-          ]),
         )));
   }
 }
 
 class ContactsScrollWidget extends StatefulWidget {
-  ContactsScrollWidget({Key? key}) : super(key: key);
-
+  ContactsScrollWidget({Key? key, required this.searchController})
+      : super(key: key);
+  final TextEditingController searchController;
   @override
   State<ContactsScrollWidget> createState() => _ContactsScrollWidgetState();
 }
 
 class _ContactsScrollWidgetState extends State<ContactsScrollWidget> {
-  final _searchController = TextEditingController();
   ContactsList? _filteredContacts;
 
   void _searchContact() {
-    final searchQuery = _searchController.text;
+    final searchQuery = widget.searchController.text;
     final fullContactsList =
         context.read<CompletedScreenBLoC>().state.data.contactsList;
     print('Фильтрованные контакты: ${_filteredContacts?.connections?.length}');
@@ -75,7 +84,7 @@ class _ContactsScrollWidgetState extends State<ContactsScrollWidget> {
   @override
   void initState() {
     super.initState();
-    _searchController.addListener(_searchContact);
+    widget.searchController.addListener(_searchContact);
   }
 
   @override
@@ -84,13 +93,12 @@ class _ContactsScrollWidgetState extends State<ContactsScrollWidget> {
         builder: (context, state) {
       return SafeArea(
           child: Scaffold(
-        appBar: CompletedScreenAppBar(searchController: _searchController),
         floatingActionButton: FloatingActionButton(
           backgroundColor: UiAssets.randomColor(),
           child: const Icon(Icons.person_add_alt_1),
           onPressed: () {},
         ),
-        body: state.maybeMap(
+        body: state.mapOrNull(
           showAllContacts: (state) {
             final contactsList = state.data.contactsList;
             // final listItemCount = contactsList?.connections?.length;
@@ -106,7 +114,7 @@ class _ContactsScrollWidgetState extends State<ContactsScrollWidget> {
                   //contactsList?.connections?[index]
                 }));
           },
-          orElse: () => const CircularProgressIndicator(),
+          //orElse: () => const CircularProgressIndicator(),
         ),
       ));
     });
@@ -142,5 +150,19 @@ class _ContactCardState extends State<ContactCard> {
       onTap: () => BlocProvider.of<CompletedScreenBLoC>(context)
           .add(const CompletedScreenEvent.updateContact()),
     ));
+  }
+}
+
+class AddContactButton extends StatelessWidget {
+  const AddContactButton({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return FloatingActionButton(
+      backgroundColor: UiAssets.randomColor(),
+      child: const Icon(Icons.person_add_alt_1),
+      onPressed: () => BlocProvider.of<CompletedScreenBLoC>(context)
+          .add(const CompletedScreenEvent.createContact()),
+    );
   }
 }
