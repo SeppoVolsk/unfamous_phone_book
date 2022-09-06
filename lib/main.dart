@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:unfamous_phone_book/data/cache_manager/cache_manager.dart';
+import 'package:unfamous_phone_book/screens/detail_sheet/detail_sheet_widget.dart';
 import 'package:unfamous_phone_book/screens/enter_screen/enter_screen.dart';
 import 'package:unfamous_phone_book/screens/enter_screen/enter_screen_bloc/enter_screen_bloc.dart';
 import 'package:unfamous_phone_book/screens/enter_screen/enter_screen_bloc/enter_screen_repository.dart';
@@ -9,8 +10,9 @@ import 'package:unfamous_phone_book/simple_bloc_observer.dart';
 
 void main() {
   Bloc.observer = SimpleBlocObserver();
-  runApp(const MaterialApp(
+  runApp(MaterialApp(
     home: MyApp(),
+    routes: {'/detail_sheet': (context) => DetailSheetWidget()},
     debugShowCheckedModeBanner: false,
   ));
 }

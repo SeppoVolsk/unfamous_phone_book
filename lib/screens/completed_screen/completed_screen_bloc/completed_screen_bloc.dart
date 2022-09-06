@@ -13,13 +13,17 @@ part 'completed_screen_bloc.freezed.dart';
 class CompletedScreenEvent with _$CompletedScreenEvent {
   const CompletedScreenEvent._();
 
-  const factory CompletedScreenEvent.create() = CreateCompletedScreenEvent;
+  const factory CompletedScreenEvent.createContact() =
+      CreateCompletedScreenEvent;
 
-  const factory CompletedScreenEvent.read() = ReadCompletedScreenEvent;
+  const factory CompletedScreenEvent.readAllContacts() =
+      ReadCompletedScreenEvent;
 
-  const factory CompletedScreenEvent.update() = UpdateCompletedScreenEvent;
+  const factory CompletedScreenEvent.updateContact() =
+      UpdateCompletedScreenEvent;
 
-  const factory CompletedScreenEvent.delete() = DeleteCompletedScreenEvent;
+  const factory CompletedScreenEvent.deleteContact() =
+      DeleteCompletedScreenEvent;
 }
 
 /* CompletedScreen States */
@@ -28,23 +32,33 @@ class CompletedScreenEvent with _$CompletedScreenEvent {
 class CompletedScreenState with _$CompletedScreenState {
   const CompletedScreenState._();
 
-  /// Is in idle state
-  bool get idling => !isProcessing;
+  // /// Is in idle state
+  // bool get idling => !isProcessing;
 
-  /// Is in progress state
-  bool get isProcessing => maybeMap<bool>(
-        orElse: () => true,
-        idle: (_) => false,
-      );
+  // /// Is in progress state
+  // bool get isProcessing => maybeMap<bool>(
+  //       orElse: () => true,
+  //       idle: (_) => false,
+  //     );
 
   /// If an error has occurred
   bool get hasError => maybeMap<bool>(orElse: () => false, error: (_) => true);
 
   /// Idling state
-  const factory CompletedScreenState.idle({
+  const factory CompletedScreenState.createContact({
     required final CompletedScreenEntity data,
-    @Default('Idle') final String message,
-  }) = IdleCompletedScreenState;
+    @Default('Create') final String message,
+  }) = CreateContactCompletedScreenState;
+
+  const factory CompletedScreenState.updateContact({
+    required final CompletedScreenEntity data,
+    @Default('Update') final String message,
+  }) = UpdateContactCompletedScreenState;
+
+  const factory CompletedScreenState.deleteContact({
+    required final CompletedScreenEntity data,
+    @Default('Update') final String message,
+  }) = DeleteContactCompletedScreenState;
 
   /// Processing
   const factory CompletedScreenState.processing({
@@ -53,10 +67,10 @@ class CompletedScreenState with _$CompletedScreenState {
   }) = ProcessingCompletedScreenState;
 
   /// Successful
-  const factory CompletedScreenState.successful({
+  const factory CompletedScreenState.showAllContacts({
     required final CompletedScreenEntity data,
     @Default('Successful') final String message,
-  }) = SuccessfulCompletedScreenState;
+  }) = ShowAllContactsCompletedScreenState;
 
   /// An error has occurred
   const factory CompletedScreenState.error({
@@ -75,17 +89,17 @@ class CompletedScreenBLoC
   })  : _repository = repository,
         super(
           initialState ??
-              CompletedScreenState.idle(
+              CompletedScreenState.processing(
                 data: CompletedScreenEntity(contactsList: null),
                 message: 'Initial idle state',
               ),
         ) {
     on<CompletedScreenEvent>(
       (event, emit) => event.map<Future<void>>(
-        create: (event) => _create(event, emit),
-        read: (event) => _read(event, emit),
-        update: (event) => _update(event, emit),
-        delete: (event) => _delete(event, emit),
+        createContact: (event) => _create(event, emit),
+        readAllContacts: (event) => _read(event, emit),
+        updateContact: (event) => _update(event, emit),
+        deleteContact: (event) => _delete(event, emit),
       ),
       transformer: bloc_concurrency.sequential(),
       //transformer: bloc_concurrency.restartable(),
@@ -102,7 +116,7 @@ class CompletedScreenBLoC
     try {
       emit(CompletedScreenState.processing(data: state.data));
       //final newData = await _repository.();
-      //emit(CompletedScreenState.successful(data: newData));
+      emit(CompletedScreenState.createContact(data: state.data));
     } on Object catch (err, stackTrace) {
       print('В CompletedScreenBLoC произошла ошибка: $err, $stackTrace');
       emit(CompletedScreenState.error(data: state.data));
@@ -116,7 +130,7 @@ class CompletedScreenBLoC
     try {
       emit(CompletedScreenState.processing(data: state.data));
       final newData = await _repository.read();
-      emit(CompletedScreenState.successful(data: newData));
+      emit(CompletedScreenState.showAllContacts(data: newData));
     } on Object catch (err, stackTrace) {
       print('В CompletedScreenBLoC произошла ошибка: $err, $stackTrace');
       emit(CompletedScreenState.error(data: state.data));
@@ -136,7 +150,7 @@ class CompletedScreenBLoC
       emit(CompletedScreenState.error(data: state.data));
       rethrow;
     } finally {
-      emit(CompletedScreenState.idle(data: state.data));
+      emit(CompletedScreenState.updateContact(data: state.data));
     }
   }
 
@@ -152,7 +166,7 @@ class CompletedScreenBLoC
       emit(CompletedScreenState.error(data: state.data));
       rethrow;
     } finally {
-      emit(CompletedScreenState.idle(data: state.data));
+      emit(CompletedScreenState.deleteContact(data: state.data));
     }
   }
 }

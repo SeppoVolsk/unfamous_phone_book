@@ -14,39 +14,38 @@ class _DetailSheetWidgetState extends State<DetailSheetWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: Container(
-          decoration: BoxDecoration(
-              color: widgetColor,
-              borderRadius: BorderRadius.only(
-                  topLeft: cornerRadius, topRight: cornerRadius)),
-          height: 250,
-          //color: widgetColor,
-          child: Center(
-              child: Column(children: [
-            const Spacer(),
-            const DetailSheetInputField(),
-            const Spacer(),
-            const DetailSheetInputField(),
-            const Spacer(),
-            const DetailSheetInputField(),
-            const Spacer(),
-            IconButton(
-              icon: const Icon(Icons.done_outline_sharp),
-              onPressed: () => Navigator.of(context).pop(),
-            ),
-          ]))),
-    );
+    return Container(
+        decoration: BoxDecoration(
+            color: widgetColor,
+            borderRadius: BorderRadius.only(
+                topLeft: cornerRadius, topRight: cornerRadius)),
+        height: 250,
+        //color: widgetColor,
+        child: Center(
+            child: Column(children: [
+          const Spacer(),
+          const _DetailSheetInputField(),
+          const Spacer(),
+          const _DetailSheetInputField(),
+          const Spacer(),
+          const _DetailSheetInputField(),
+          const Spacer(),
+          IconButton(
+            icon: const Icon(Icons.done_outline_sharp),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+        ])));
   }
 }
 
-class DetailSheetInputField extends StatelessWidget {
-  const DetailSheetInputField({Key? key}) : super(key: key);
+class _DetailSheetInputField extends StatelessWidget {
+  const _DetailSheetInputField({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextField(
         decoration: InputDecoration(
+      hintText: 'TEXTFIELD',
       contentPadding: const EdgeInsets.all(10),
       fillColor: Colors.white,
       filled: true,

@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:unfamous_phone_book/data/cache_manager/cache_manager.dart';
 import 'package:unfamous_phone_book/data/google_api_client/google_api_client.dart';
+import 'package:unfamous_phone_book/domain/contacts_list/connection.dart';
 import 'package:unfamous_phone_book/domain/contacts_list/contacts_list.dart';
 import 'package:unfamous_phone_book/screens/completed_screen/completed_screen_bloc/completedscreenentity.dart';
 
@@ -28,6 +29,9 @@ class ICompletedScreenRepository {
     contactsList = ContactsList.fromJson(contactsJson!);
     return CompletedScreenEntity(contactsList: contactsList);
   }
-  //117326814766099280985
 
+  //117326814766099280985
+  Future<CompletedScreenEntity> update(Connection? connection) async {
+    return CompletedScreenEntity(contactsList: null);
+  }
 }

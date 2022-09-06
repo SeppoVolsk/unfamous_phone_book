@@ -18,51 +18,51 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$CompletedScreenEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() create,
-    required TResult Function() read,
-    required TResult Function() update,
-    required TResult Function() delete,
+    required TResult Function() createContact,
+    required TResult Function() readAllContacts,
+    required TResult Function() updateContact,
+    required TResult Function() deleteContact,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? create,
-    TResult Function()? read,
-    TResult Function()? update,
-    TResult Function()? delete,
+    TResult Function()? createContact,
+    TResult Function()? readAllContacts,
+    TResult Function()? updateContact,
+    TResult Function()? deleteContact,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? create,
-    TResult Function()? read,
-    TResult Function()? update,
-    TResult Function()? delete,
+    TResult Function()? createContact,
+    TResult Function()? readAllContacts,
+    TResult Function()? updateContact,
+    TResult Function()? deleteContact,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(CreateCompletedScreenEvent value) create,
-    required TResult Function(ReadCompletedScreenEvent value) read,
-    required TResult Function(UpdateCompletedScreenEvent value) update,
-    required TResult Function(DeleteCompletedScreenEvent value) delete,
+    required TResult Function(CreateCompletedScreenEvent value) createContact,
+    required TResult Function(ReadCompletedScreenEvent value) readAllContacts,
+    required TResult Function(UpdateCompletedScreenEvent value) updateContact,
+    required TResult Function(DeleteCompletedScreenEvent value) deleteContact,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(CreateCompletedScreenEvent value)? create,
-    TResult Function(ReadCompletedScreenEvent value)? read,
-    TResult Function(UpdateCompletedScreenEvent value)? update,
-    TResult Function(DeleteCompletedScreenEvent value)? delete,
+    TResult Function(CreateCompletedScreenEvent value)? createContact,
+    TResult Function(ReadCompletedScreenEvent value)? readAllContacts,
+    TResult Function(UpdateCompletedScreenEvent value)? updateContact,
+    TResult Function(DeleteCompletedScreenEvent value)? deleteContact,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(CreateCompletedScreenEvent value)? create,
-    TResult Function(ReadCompletedScreenEvent value)? read,
-    TResult Function(UpdateCompletedScreenEvent value)? update,
-    TResult Function(DeleteCompletedScreenEvent value)? delete,
+    TResult Function(CreateCompletedScreenEvent value)? createContact,
+    TResult Function(ReadCompletedScreenEvent value)? readAllContacts,
+    TResult Function(UpdateCompletedScreenEvent value)? updateContact,
+    TResult Function(DeleteCompletedScreenEvent value)? deleteContact,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -114,7 +114,7 @@ class _$CreateCompletedScreenEvent extends CreateCompletedScreenEvent {
 
   @override
   String toString() {
-    return 'CompletedScreenEvent.create()';
+    return 'CompletedScreenEvent.createContact()';
   }
 
   @override
@@ -130,36 +130,36 @@ class _$CreateCompletedScreenEvent extends CreateCompletedScreenEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() create,
-    required TResult Function() read,
-    required TResult Function() update,
-    required TResult Function() delete,
+    required TResult Function() createContact,
+    required TResult Function() readAllContacts,
+    required TResult Function() updateContact,
+    required TResult Function() deleteContact,
   }) {
-    return create();
+    return createContact();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? create,
-    TResult Function()? read,
-    TResult Function()? update,
-    TResult Function()? delete,
+    TResult Function()? createContact,
+    TResult Function()? readAllContacts,
+    TResult Function()? updateContact,
+    TResult Function()? deleteContact,
   }) {
-    return create?.call();
+    return createContact?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? create,
-    TResult Function()? read,
-    TResult Function()? update,
-    TResult Function()? delete,
+    TResult Function()? createContact,
+    TResult Function()? readAllContacts,
+    TResult Function()? updateContact,
+    TResult Function()? deleteContact,
     required TResult orElse(),
   }) {
-    if (create != null) {
-      return create();
+    if (createContact != null) {
+      return createContact();
     }
     return orElse();
   }
@@ -167,36 +167,36 @@ class _$CreateCompletedScreenEvent extends CreateCompletedScreenEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(CreateCompletedScreenEvent value) create,
-    required TResult Function(ReadCompletedScreenEvent value) read,
-    required TResult Function(UpdateCompletedScreenEvent value) update,
-    required TResult Function(DeleteCompletedScreenEvent value) delete,
+    required TResult Function(CreateCompletedScreenEvent value) createContact,
+    required TResult Function(ReadCompletedScreenEvent value) readAllContacts,
+    required TResult Function(UpdateCompletedScreenEvent value) updateContact,
+    required TResult Function(DeleteCompletedScreenEvent value) deleteContact,
   }) {
-    return create(this);
+    return createContact(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(CreateCompletedScreenEvent value)? create,
-    TResult Function(ReadCompletedScreenEvent value)? read,
-    TResult Function(UpdateCompletedScreenEvent value)? update,
-    TResult Function(DeleteCompletedScreenEvent value)? delete,
+    TResult Function(CreateCompletedScreenEvent value)? createContact,
+    TResult Function(ReadCompletedScreenEvent value)? readAllContacts,
+    TResult Function(UpdateCompletedScreenEvent value)? updateContact,
+    TResult Function(DeleteCompletedScreenEvent value)? deleteContact,
   }) {
-    return create?.call(this);
+    return createContact?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(CreateCompletedScreenEvent value)? create,
-    TResult Function(ReadCompletedScreenEvent value)? read,
-    TResult Function(UpdateCompletedScreenEvent value)? update,
-    TResult Function(DeleteCompletedScreenEvent value)? delete,
+    TResult Function(CreateCompletedScreenEvent value)? createContact,
+    TResult Function(ReadCompletedScreenEvent value)? readAllContacts,
+    TResult Function(UpdateCompletedScreenEvent value)? updateContact,
+    TResult Function(DeleteCompletedScreenEvent value)? deleteContact,
     required TResult orElse(),
   }) {
-    if (create != null) {
-      return create(this);
+    if (createContact != null) {
+      return createContact(this);
     }
     return orElse();
   }
@@ -234,7 +234,7 @@ class _$ReadCompletedScreenEvent extends ReadCompletedScreenEvent {
 
   @override
   String toString() {
-    return 'CompletedScreenEvent.read()';
+    return 'CompletedScreenEvent.readAllContacts()';
   }
 
   @override
@@ -250,36 +250,36 @@ class _$ReadCompletedScreenEvent extends ReadCompletedScreenEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() create,
-    required TResult Function() read,
-    required TResult Function() update,
-    required TResult Function() delete,
+    required TResult Function() createContact,
+    required TResult Function() readAllContacts,
+    required TResult Function() updateContact,
+    required TResult Function() deleteContact,
   }) {
-    return read();
+    return readAllContacts();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? create,
-    TResult Function()? read,
-    TResult Function()? update,
-    TResult Function()? delete,
+    TResult Function()? createContact,
+    TResult Function()? readAllContacts,
+    TResult Function()? updateContact,
+    TResult Function()? deleteContact,
   }) {
-    return read?.call();
+    return readAllContacts?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? create,
-    TResult Function()? read,
-    TResult Function()? update,
-    TResult Function()? delete,
+    TResult Function()? createContact,
+    TResult Function()? readAllContacts,
+    TResult Function()? updateContact,
+    TResult Function()? deleteContact,
     required TResult orElse(),
   }) {
-    if (read != null) {
-      return read();
+    if (readAllContacts != null) {
+      return readAllContacts();
     }
     return orElse();
   }
@@ -287,36 +287,36 @@ class _$ReadCompletedScreenEvent extends ReadCompletedScreenEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(CreateCompletedScreenEvent value) create,
-    required TResult Function(ReadCompletedScreenEvent value) read,
-    required TResult Function(UpdateCompletedScreenEvent value) update,
-    required TResult Function(DeleteCompletedScreenEvent value) delete,
+    required TResult Function(CreateCompletedScreenEvent value) createContact,
+    required TResult Function(ReadCompletedScreenEvent value) readAllContacts,
+    required TResult Function(UpdateCompletedScreenEvent value) updateContact,
+    required TResult Function(DeleteCompletedScreenEvent value) deleteContact,
   }) {
-    return read(this);
+    return readAllContacts(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(CreateCompletedScreenEvent value)? create,
-    TResult Function(ReadCompletedScreenEvent value)? read,
-    TResult Function(UpdateCompletedScreenEvent value)? update,
-    TResult Function(DeleteCompletedScreenEvent value)? delete,
+    TResult Function(CreateCompletedScreenEvent value)? createContact,
+    TResult Function(ReadCompletedScreenEvent value)? readAllContacts,
+    TResult Function(UpdateCompletedScreenEvent value)? updateContact,
+    TResult Function(DeleteCompletedScreenEvent value)? deleteContact,
   }) {
-    return read?.call(this);
+    return readAllContacts?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(CreateCompletedScreenEvent value)? create,
-    TResult Function(ReadCompletedScreenEvent value)? read,
-    TResult Function(UpdateCompletedScreenEvent value)? update,
-    TResult Function(DeleteCompletedScreenEvent value)? delete,
+    TResult Function(CreateCompletedScreenEvent value)? createContact,
+    TResult Function(ReadCompletedScreenEvent value)? readAllContacts,
+    TResult Function(UpdateCompletedScreenEvent value)? updateContact,
+    TResult Function(DeleteCompletedScreenEvent value)? deleteContact,
     required TResult orElse(),
   }) {
-    if (read != null) {
-      return read(this);
+    if (readAllContacts != null) {
+      return readAllContacts(this);
     }
     return orElse();
   }
@@ -356,7 +356,7 @@ class _$UpdateCompletedScreenEvent extends UpdateCompletedScreenEvent {
 
   @override
   String toString() {
-    return 'CompletedScreenEvent.update()';
+    return 'CompletedScreenEvent.updateContact()';
   }
 
   @override
@@ -372,36 +372,36 @@ class _$UpdateCompletedScreenEvent extends UpdateCompletedScreenEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() create,
-    required TResult Function() read,
-    required TResult Function() update,
-    required TResult Function() delete,
+    required TResult Function() createContact,
+    required TResult Function() readAllContacts,
+    required TResult Function() updateContact,
+    required TResult Function() deleteContact,
   }) {
-    return update();
+    return updateContact();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? create,
-    TResult Function()? read,
-    TResult Function()? update,
-    TResult Function()? delete,
+    TResult Function()? createContact,
+    TResult Function()? readAllContacts,
+    TResult Function()? updateContact,
+    TResult Function()? deleteContact,
   }) {
-    return update?.call();
+    return updateContact?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? create,
-    TResult Function()? read,
-    TResult Function()? update,
-    TResult Function()? delete,
+    TResult Function()? createContact,
+    TResult Function()? readAllContacts,
+    TResult Function()? updateContact,
+    TResult Function()? deleteContact,
     required TResult orElse(),
   }) {
-    if (update != null) {
-      return update();
+    if (updateContact != null) {
+      return updateContact();
     }
     return orElse();
   }
@@ -409,36 +409,36 @@ class _$UpdateCompletedScreenEvent extends UpdateCompletedScreenEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(CreateCompletedScreenEvent value) create,
-    required TResult Function(ReadCompletedScreenEvent value) read,
-    required TResult Function(UpdateCompletedScreenEvent value) update,
-    required TResult Function(DeleteCompletedScreenEvent value) delete,
+    required TResult Function(CreateCompletedScreenEvent value) createContact,
+    required TResult Function(ReadCompletedScreenEvent value) readAllContacts,
+    required TResult Function(UpdateCompletedScreenEvent value) updateContact,
+    required TResult Function(DeleteCompletedScreenEvent value) deleteContact,
   }) {
-    return update(this);
+    return updateContact(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(CreateCompletedScreenEvent value)? create,
-    TResult Function(ReadCompletedScreenEvent value)? read,
-    TResult Function(UpdateCompletedScreenEvent value)? update,
-    TResult Function(DeleteCompletedScreenEvent value)? delete,
+    TResult Function(CreateCompletedScreenEvent value)? createContact,
+    TResult Function(ReadCompletedScreenEvent value)? readAllContacts,
+    TResult Function(UpdateCompletedScreenEvent value)? updateContact,
+    TResult Function(DeleteCompletedScreenEvent value)? deleteContact,
   }) {
-    return update?.call(this);
+    return updateContact?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(CreateCompletedScreenEvent value)? create,
-    TResult Function(ReadCompletedScreenEvent value)? read,
-    TResult Function(UpdateCompletedScreenEvent value)? update,
-    TResult Function(DeleteCompletedScreenEvent value)? delete,
+    TResult Function(CreateCompletedScreenEvent value)? createContact,
+    TResult Function(ReadCompletedScreenEvent value)? readAllContacts,
+    TResult Function(UpdateCompletedScreenEvent value)? updateContact,
+    TResult Function(DeleteCompletedScreenEvent value)? deleteContact,
     required TResult orElse(),
   }) {
-    if (update != null) {
-      return update(this);
+    if (updateContact != null) {
+      return updateContact(this);
     }
     return orElse();
   }
@@ -478,7 +478,7 @@ class _$DeleteCompletedScreenEvent extends DeleteCompletedScreenEvent {
 
   @override
   String toString() {
-    return 'CompletedScreenEvent.delete()';
+    return 'CompletedScreenEvent.deleteContact()';
   }
 
   @override
@@ -494,36 +494,36 @@ class _$DeleteCompletedScreenEvent extends DeleteCompletedScreenEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() create,
-    required TResult Function() read,
-    required TResult Function() update,
-    required TResult Function() delete,
+    required TResult Function() createContact,
+    required TResult Function() readAllContacts,
+    required TResult Function() updateContact,
+    required TResult Function() deleteContact,
   }) {
-    return delete();
+    return deleteContact();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? create,
-    TResult Function()? read,
-    TResult Function()? update,
-    TResult Function()? delete,
+    TResult Function()? createContact,
+    TResult Function()? readAllContacts,
+    TResult Function()? updateContact,
+    TResult Function()? deleteContact,
   }) {
-    return delete?.call();
+    return deleteContact?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? create,
-    TResult Function()? read,
-    TResult Function()? update,
-    TResult Function()? delete,
+    TResult Function()? createContact,
+    TResult Function()? readAllContacts,
+    TResult Function()? updateContact,
+    TResult Function()? deleteContact,
     required TResult orElse(),
   }) {
-    if (delete != null) {
-      return delete();
+    if (deleteContact != null) {
+      return deleteContact();
     }
     return orElse();
   }
@@ -531,36 +531,36 @@ class _$DeleteCompletedScreenEvent extends DeleteCompletedScreenEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(CreateCompletedScreenEvent value) create,
-    required TResult Function(ReadCompletedScreenEvent value) read,
-    required TResult Function(UpdateCompletedScreenEvent value) update,
-    required TResult Function(DeleteCompletedScreenEvent value) delete,
+    required TResult Function(CreateCompletedScreenEvent value) createContact,
+    required TResult Function(ReadCompletedScreenEvent value) readAllContacts,
+    required TResult Function(UpdateCompletedScreenEvent value) updateContact,
+    required TResult Function(DeleteCompletedScreenEvent value) deleteContact,
   }) {
-    return delete(this);
+    return deleteContact(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(CreateCompletedScreenEvent value)? create,
-    TResult Function(ReadCompletedScreenEvent value)? read,
-    TResult Function(UpdateCompletedScreenEvent value)? update,
-    TResult Function(DeleteCompletedScreenEvent value)? delete,
+    TResult Function(CreateCompletedScreenEvent value)? createContact,
+    TResult Function(ReadCompletedScreenEvent value)? readAllContacts,
+    TResult Function(UpdateCompletedScreenEvent value)? updateContact,
+    TResult Function(DeleteCompletedScreenEvent value)? deleteContact,
   }) {
-    return delete?.call(this);
+    return deleteContact?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(CreateCompletedScreenEvent value)? create,
-    TResult Function(ReadCompletedScreenEvent value)? read,
-    TResult Function(UpdateCompletedScreenEvent value)? update,
-    TResult Function(DeleteCompletedScreenEvent value)? delete,
+    TResult Function(CreateCompletedScreenEvent value)? createContact,
+    TResult Function(ReadCompletedScreenEvent value)? readAllContacts,
+    TResult Function(UpdateCompletedScreenEvent value)? updateContact,
+    TResult Function(DeleteCompletedScreenEvent value)? deleteContact,
     required TResult orElse(),
   }) {
-    if (delete != null) {
-      return delete(this);
+    if (deleteContact != null) {
+      return deleteContact(this);
     }
     return orElse();
   }
@@ -577,52 +577,75 @@ mixin _$CompletedScreenState {
   String get message => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(CompletedScreenEntity data, String message) idle,
+    required TResult Function(CompletedScreenEntity data, String message)
+        createContact,
+    required TResult Function(CompletedScreenEntity data, String message)
+        updateContact,
+    required TResult Function(CompletedScreenEntity data, String message)
+        deleteContact,
     required TResult Function(CompletedScreenEntity data, String message)
         processing,
     required TResult Function(CompletedScreenEntity data, String message)
-        successful,
+        showAllContacts,
     required TResult Function(CompletedScreenEntity data, String message) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(CompletedScreenEntity data, String message)? idle,
+    TResult Function(CompletedScreenEntity data, String message)? createContact,
+    TResult Function(CompletedScreenEntity data, String message)? updateContact,
+    TResult Function(CompletedScreenEntity data, String message)? deleteContact,
     TResult Function(CompletedScreenEntity data, String message)? processing,
-    TResult Function(CompletedScreenEntity data, String message)? successful,
+    TResult Function(CompletedScreenEntity data, String message)?
+        showAllContacts,
     TResult Function(CompletedScreenEntity data, String message)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(CompletedScreenEntity data, String message)? idle,
+    TResult Function(CompletedScreenEntity data, String message)? createContact,
+    TResult Function(CompletedScreenEntity data, String message)? updateContact,
+    TResult Function(CompletedScreenEntity data, String message)? deleteContact,
     TResult Function(CompletedScreenEntity data, String message)? processing,
-    TResult Function(CompletedScreenEntity data, String message)? successful,
+    TResult Function(CompletedScreenEntity data, String message)?
+        showAllContacts,
     TResult Function(CompletedScreenEntity data, String message)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(IdleCompletedScreenState value) idle,
+    required TResult Function(CreateContactCompletedScreenState value)
+        createContact,
+    required TResult Function(UpdateContactCompletedScreenState value)
+        updateContact,
+    required TResult Function(DeleteContactCompletedScreenState value)
+        deleteContact,
     required TResult Function(ProcessingCompletedScreenState value) processing,
-    required TResult Function(SuccessfulCompletedScreenState value) successful,
+    required TResult Function(ShowAllContactsCompletedScreenState value)
+        showAllContacts,
     required TResult Function(ErrorCompletedScreenState value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(IdleCompletedScreenState value)? idle,
+    TResult Function(CreateContactCompletedScreenState value)? createContact,
+    TResult Function(UpdateContactCompletedScreenState value)? updateContact,
+    TResult Function(DeleteContactCompletedScreenState value)? deleteContact,
     TResult Function(ProcessingCompletedScreenState value)? processing,
-    TResult Function(SuccessfulCompletedScreenState value)? successful,
+    TResult Function(ShowAllContactsCompletedScreenState value)?
+        showAllContacts,
     TResult Function(ErrorCompletedScreenState value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(IdleCompletedScreenState value)? idle,
+    TResult Function(CreateContactCompletedScreenState value)? createContact,
+    TResult Function(UpdateContactCompletedScreenState value)? updateContact,
+    TResult Function(DeleteContactCompletedScreenState value)? deleteContact,
     TResult Function(ProcessingCompletedScreenState value)? processing,
-    TResult Function(SuccessfulCompletedScreenState value)? successful,
+    TResult Function(ShowAllContactsCompletedScreenState value)?
+        showAllContacts,
     TResult Function(ErrorCompletedScreenState value)? error,
     required TResult orElse(),
   }) =>
@@ -678,11 +701,12 @@ class _$CompletedScreenStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$$IdleCompletedScreenStateCopyWith<$Res>
+abstract class _$$CreateContactCompletedScreenStateCopyWith<$Res>
     implements $CompletedScreenStateCopyWith<$Res> {
-  factory _$$IdleCompletedScreenStateCopyWith(_$IdleCompletedScreenState value,
-          $Res Function(_$IdleCompletedScreenState) then) =
-      __$$IdleCompletedScreenStateCopyWithImpl<$Res>;
+  factory _$$CreateContactCompletedScreenStateCopyWith(
+          _$CreateContactCompletedScreenState value,
+          $Res Function(_$CreateContactCompletedScreenState) then) =
+      __$$CreateContactCompletedScreenStateCopyWithImpl<$Res>;
   @override
   $Res call({CompletedScreenEntity data, String message});
 
@@ -691,23 +715,24 @@ abstract class _$$IdleCompletedScreenStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$IdleCompletedScreenStateCopyWithImpl<$Res>
+class __$$CreateContactCompletedScreenStateCopyWithImpl<$Res>
     extends _$CompletedScreenStateCopyWithImpl<$Res>
-    implements _$$IdleCompletedScreenStateCopyWith<$Res> {
-  __$$IdleCompletedScreenStateCopyWithImpl(_$IdleCompletedScreenState _value,
-      $Res Function(_$IdleCompletedScreenState) _then)
-      : super(_value, (v) => _then(v as _$IdleCompletedScreenState));
+    implements _$$CreateContactCompletedScreenStateCopyWith<$Res> {
+  __$$CreateContactCompletedScreenStateCopyWithImpl(
+      _$CreateContactCompletedScreenState _value,
+      $Res Function(_$CreateContactCompletedScreenState) _then)
+      : super(_value, (v) => _then(v as _$CreateContactCompletedScreenState));
 
   @override
-  _$IdleCompletedScreenState get _value =>
-      super._value as _$IdleCompletedScreenState;
+  _$CreateContactCompletedScreenState get _value =>
+      super._value as _$CreateContactCompletedScreenState;
 
   @override
   $Res call({
     Object? data = freezed,
     Object? message = freezed,
   }) {
-    return _then(_$IdleCompletedScreenState(
+    return _then(_$CreateContactCompletedScreenState(
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -722,8 +747,10 @@ class __$$IdleCompletedScreenStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$IdleCompletedScreenState extends IdleCompletedScreenState {
-  const _$IdleCompletedScreenState({required this.data, this.message = 'Idle'})
+class _$CreateContactCompletedScreenState
+    extends CreateContactCompletedScreenState {
+  const _$CreateContactCompletedScreenState(
+      {required this.data, this.message = 'Create'})
       : super._();
 
   @override
@@ -734,14 +761,14 @@ class _$IdleCompletedScreenState extends IdleCompletedScreenState {
 
   @override
   String toString() {
-    return 'CompletedScreenState.idle(data: $data, message: $message)';
+    return 'CompletedScreenState.createContact(data: $data, message: $message)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$IdleCompletedScreenState &&
+            other is _$CreateContactCompletedScreenState &&
             const DeepCollectionEquality().equals(other.data, data) &&
             const DeepCollectionEquality().equals(other.message, message));
   }
@@ -754,46 +781,57 @@ class _$IdleCompletedScreenState extends IdleCompletedScreenState {
 
   @JsonKey(ignore: true)
   @override
-  _$$IdleCompletedScreenStateCopyWith<_$IdleCompletedScreenState>
-      get copyWith =>
-          __$$IdleCompletedScreenStateCopyWithImpl<_$IdleCompletedScreenState>(
-              this, _$identity);
+  _$$CreateContactCompletedScreenStateCopyWith<
+          _$CreateContactCompletedScreenState>
+      get copyWith => __$$CreateContactCompletedScreenStateCopyWithImpl<
+          _$CreateContactCompletedScreenState>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(CompletedScreenEntity data, String message) idle,
+    required TResult Function(CompletedScreenEntity data, String message)
+        createContact,
+    required TResult Function(CompletedScreenEntity data, String message)
+        updateContact,
+    required TResult Function(CompletedScreenEntity data, String message)
+        deleteContact,
     required TResult Function(CompletedScreenEntity data, String message)
         processing,
     required TResult Function(CompletedScreenEntity data, String message)
-        successful,
+        showAllContacts,
     required TResult Function(CompletedScreenEntity data, String message) error,
   }) {
-    return idle(data, message);
+    return createContact(data, message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(CompletedScreenEntity data, String message)? idle,
+    TResult Function(CompletedScreenEntity data, String message)? createContact,
+    TResult Function(CompletedScreenEntity data, String message)? updateContact,
+    TResult Function(CompletedScreenEntity data, String message)? deleteContact,
     TResult Function(CompletedScreenEntity data, String message)? processing,
-    TResult Function(CompletedScreenEntity data, String message)? successful,
+    TResult Function(CompletedScreenEntity data, String message)?
+        showAllContacts,
     TResult Function(CompletedScreenEntity data, String message)? error,
   }) {
-    return idle?.call(data, message);
+    return createContact?.call(data, message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(CompletedScreenEntity data, String message)? idle,
+    TResult Function(CompletedScreenEntity data, String message)? createContact,
+    TResult Function(CompletedScreenEntity data, String message)? updateContact,
+    TResult Function(CompletedScreenEntity data, String message)? deleteContact,
     TResult Function(CompletedScreenEntity data, String message)? processing,
-    TResult Function(CompletedScreenEntity data, String message)? successful,
+    TResult Function(CompletedScreenEntity data, String message)?
+        showAllContacts,
     TResult Function(CompletedScreenEntity data, String message)? error,
     required TResult orElse(),
   }) {
-    if (idle != null) {
-      return idle(data, message);
+    if (createContact != null) {
+      return createContact(data, message);
     }
     return orElse();
   }
@@ -801,46 +839,58 @@ class _$IdleCompletedScreenState extends IdleCompletedScreenState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(IdleCompletedScreenState value) idle,
+    required TResult Function(CreateContactCompletedScreenState value)
+        createContact,
+    required TResult Function(UpdateContactCompletedScreenState value)
+        updateContact,
+    required TResult Function(DeleteContactCompletedScreenState value)
+        deleteContact,
     required TResult Function(ProcessingCompletedScreenState value) processing,
-    required TResult Function(SuccessfulCompletedScreenState value) successful,
+    required TResult Function(ShowAllContactsCompletedScreenState value)
+        showAllContacts,
     required TResult Function(ErrorCompletedScreenState value) error,
   }) {
-    return idle(this);
+    return createContact(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(IdleCompletedScreenState value)? idle,
+    TResult Function(CreateContactCompletedScreenState value)? createContact,
+    TResult Function(UpdateContactCompletedScreenState value)? updateContact,
+    TResult Function(DeleteContactCompletedScreenState value)? deleteContact,
     TResult Function(ProcessingCompletedScreenState value)? processing,
-    TResult Function(SuccessfulCompletedScreenState value)? successful,
+    TResult Function(ShowAllContactsCompletedScreenState value)?
+        showAllContacts,
     TResult Function(ErrorCompletedScreenState value)? error,
   }) {
-    return idle?.call(this);
+    return createContact?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(IdleCompletedScreenState value)? idle,
+    TResult Function(CreateContactCompletedScreenState value)? createContact,
+    TResult Function(UpdateContactCompletedScreenState value)? updateContact,
+    TResult Function(DeleteContactCompletedScreenState value)? deleteContact,
     TResult Function(ProcessingCompletedScreenState value)? processing,
-    TResult Function(SuccessfulCompletedScreenState value)? successful,
+    TResult Function(ShowAllContactsCompletedScreenState value)?
+        showAllContacts,
     TResult Function(ErrorCompletedScreenState value)? error,
     required TResult orElse(),
   }) {
-    if (idle != null) {
-      return idle(this);
+    if (createContact != null) {
+      return createContact(this);
     }
     return orElse();
   }
 }
 
-abstract class IdleCompletedScreenState extends CompletedScreenState {
-  const factory IdleCompletedScreenState(
+abstract class CreateContactCompletedScreenState extends CompletedScreenState {
+  const factory CreateContactCompletedScreenState(
       {required final CompletedScreenEntity data,
-      final String message}) = _$IdleCompletedScreenState;
-  const IdleCompletedScreenState._() : super._();
+      final String message}) = _$CreateContactCompletedScreenState;
+  const CreateContactCompletedScreenState._() : super._();
 
   @override
   CompletedScreenEntity get data;
@@ -848,7 +898,414 @@ abstract class IdleCompletedScreenState extends CompletedScreenState {
   String get message;
   @override
   @JsonKey(ignore: true)
-  _$$IdleCompletedScreenStateCopyWith<_$IdleCompletedScreenState>
+  _$$CreateContactCompletedScreenStateCopyWith<
+          _$CreateContactCompletedScreenState>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateContactCompletedScreenStateCopyWith<$Res>
+    implements $CompletedScreenStateCopyWith<$Res> {
+  factory _$$UpdateContactCompletedScreenStateCopyWith(
+          _$UpdateContactCompletedScreenState value,
+          $Res Function(_$UpdateContactCompletedScreenState) then) =
+      __$$UpdateContactCompletedScreenStateCopyWithImpl<$Res>;
+  @override
+  $Res call({CompletedScreenEntity data, String message});
+
+  @override
+  $CompletedScreenEntityCopyWith<$Res> get data;
+}
+
+/// @nodoc
+class __$$UpdateContactCompletedScreenStateCopyWithImpl<$Res>
+    extends _$CompletedScreenStateCopyWithImpl<$Res>
+    implements _$$UpdateContactCompletedScreenStateCopyWith<$Res> {
+  __$$UpdateContactCompletedScreenStateCopyWithImpl(
+      _$UpdateContactCompletedScreenState _value,
+      $Res Function(_$UpdateContactCompletedScreenState) _then)
+      : super(_value, (v) => _then(v as _$UpdateContactCompletedScreenState));
+
+  @override
+  _$UpdateContactCompletedScreenState get _value =>
+      super._value as _$UpdateContactCompletedScreenState;
+
+  @override
+  $Res call({
+    Object? data = freezed,
+    Object? message = freezed,
+  }) {
+    return _then(_$UpdateContactCompletedScreenState(
+      data: data == freezed
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as CompletedScreenEntity,
+      message: message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateContactCompletedScreenState
+    extends UpdateContactCompletedScreenState {
+  const _$UpdateContactCompletedScreenState(
+      {required this.data, this.message = 'Update'})
+      : super._();
+
+  @override
+  final CompletedScreenEntity data;
+  @override
+  @JsonKey()
+  final String message;
+
+  @override
+  String toString() {
+    return 'CompletedScreenState.updateContact(data: $data, message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateContactCompletedScreenState &&
+            const DeepCollectionEquality().equals(other.data, data) &&
+            const DeepCollectionEquality().equals(other.message, message));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(data),
+      const DeepCollectionEquality().hash(message));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$UpdateContactCompletedScreenStateCopyWith<
+          _$UpdateContactCompletedScreenState>
+      get copyWith => __$$UpdateContactCompletedScreenStateCopyWithImpl<
+          _$UpdateContactCompletedScreenState>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(CompletedScreenEntity data, String message)
+        createContact,
+    required TResult Function(CompletedScreenEntity data, String message)
+        updateContact,
+    required TResult Function(CompletedScreenEntity data, String message)
+        deleteContact,
+    required TResult Function(CompletedScreenEntity data, String message)
+        processing,
+    required TResult Function(CompletedScreenEntity data, String message)
+        showAllContacts,
+    required TResult Function(CompletedScreenEntity data, String message) error,
+  }) {
+    return updateContact(data, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(CompletedScreenEntity data, String message)? createContact,
+    TResult Function(CompletedScreenEntity data, String message)? updateContact,
+    TResult Function(CompletedScreenEntity data, String message)? deleteContact,
+    TResult Function(CompletedScreenEntity data, String message)? processing,
+    TResult Function(CompletedScreenEntity data, String message)?
+        showAllContacts,
+    TResult Function(CompletedScreenEntity data, String message)? error,
+  }) {
+    return updateContact?.call(data, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(CompletedScreenEntity data, String message)? createContact,
+    TResult Function(CompletedScreenEntity data, String message)? updateContact,
+    TResult Function(CompletedScreenEntity data, String message)? deleteContact,
+    TResult Function(CompletedScreenEntity data, String message)? processing,
+    TResult Function(CompletedScreenEntity data, String message)?
+        showAllContacts,
+    TResult Function(CompletedScreenEntity data, String message)? error,
+    required TResult orElse(),
+  }) {
+    if (updateContact != null) {
+      return updateContact(data, message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CreateContactCompletedScreenState value)
+        createContact,
+    required TResult Function(UpdateContactCompletedScreenState value)
+        updateContact,
+    required TResult Function(DeleteContactCompletedScreenState value)
+        deleteContact,
+    required TResult Function(ProcessingCompletedScreenState value) processing,
+    required TResult Function(ShowAllContactsCompletedScreenState value)
+        showAllContacts,
+    required TResult Function(ErrorCompletedScreenState value) error,
+  }) {
+    return updateContact(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(CreateContactCompletedScreenState value)? createContact,
+    TResult Function(UpdateContactCompletedScreenState value)? updateContact,
+    TResult Function(DeleteContactCompletedScreenState value)? deleteContact,
+    TResult Function(ProcessingCompletedScreenState value)? processing,
+    TResult Function(ShowAllContactsCompletedScreenState value)?
+        showAllContacts,
+    TResult Function(ErrorCompletedScreenState value)? error,
+  }) {
+    return updateContact?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CreateContactCompletedScreenState value)? createContact,
+    TResult Function(UpdateContactCompletedScreenState value)? updateContact,
+    TResult Function(DeleteContactCompletedScreenState value)? deleteContact,
+    TResult Function(ProcessingCompletedScreenState value)? processing,
+    TResult Function(ShowAllContactsCompletedScreenState value)?
+        showAllContacts,
+    TResult Function(ErrorCompletedScreenState value)? error,
+    required TResult orElse(),
+  }) {
+    if (updateContact != null) {
+      return updateContact(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpdateContactCompletedScreenState extends CompletedScreenState {
+  const factory UpdateContactCompletedScreenState(
+      {required final CompletedScreenEntity data,
+      final String message}) = _$UpdateContactCompletedScreenState;
+  const UpdateContactCompletedScreenState._() : super._();
+
+  @override
+  CompletedScreenEntity get data;
+  @override
+  String get message;
+  @override
+  @JsonKey(ignore: true)
+  _$$UpdateContactCompletedScreenStateCopyWith<
+          _$UpdateContactCompletedScreenState>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DeleteContactCompletedScreenStateCopyWith<$Res>
+    implements $CompletedScreenStateCopyWith<$Res> {
+  factory _$$DeleteContactCompletedScreenStateCopyWith(
+          _$DeleteContactCompletedScreenState value,
+          $Res Function(_$DeleteContactCompletedScreenState) then) =
+      __$$DeleteContactCompletedScreenStateCopyWithImpl<$Res>;
+  @override
+  $Res call({CompletedScreenEntity data, String message});
+
+  @override
+  $CompletedScreenEntityCopyWith<$Res> get data;
+}
+
+/// @nodoc
+class __$$DeleteContactCompletedScreenStateCopyWithImpl<$Res>
+    extends _$CompletedScreenStateCopyWithImpl<$Res>
+    implements _$$DeleteContactCompletedScreenStateCopyWith<$Res> {
+  __$$DeleteContactCompletedScreenStateCopyWithImpl(
+      _$DeleteContactCompletedScreenState _value,
+      $Res Function(_$DeleteContactCompletedScreenState) _then)
+      : super(_value, (v) => _then(v as _$DeleteContactCompletedScreenState));
+
+  @override
+  _$DeleteContactCompletedScreenState get _value =>
+      super._value as _$DeleteContactCompletedScreenState;
+
+  @override
+  $Res call({
+    Object? data = freezed,
+    Object? message = freezed,
+  }) {
+    return _then(_$DeleteContactCompletedScreenState(
+      data: data == freezed
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as CompletedScreenEntity,
+      message: message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DeleteContactCompletedScreenState
+    extends DeleteContactCompletedScreenState {
+  const _$DeleteContactCompletedScreenState(
+      {required this.data, this.message = 'Update'})
+      : super._();
+
+  @override
+  final CompletedScreenEntity data;
+  @override
+  @JsonKey()
+  final String message;
+
+  @override
+  String toString() {
+    return 'CompletedScreenState.deleteContact(data: $data, message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteContactCompletedScreenState &&
+            const DeepCollectionEquality().equals(other.data, data) &&
+            const DeepCollectionEquality().equals(other.message, message));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(data),
+      const DeepCollectionEquality().hash(message));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$DeleteContactCompletedScreenStateCopyWith<
+          _$DeleteContactCompletedScreenState>
+      get copyWith => __$$DeleteContactCompletedScreenStateCopyWithImpl<
+          _$DeleteContactCompletedScreenState>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(CompletedScreenEntity data, String message)
+        createContact,
+    required TResult Function(CompletedScreenEntity data, String message)
+        updateContact,
+    required TResult Function(CompletedScreenEntity data, String message)
+        deleteContact,
+    required TResult Function(CompletedScreenEntity data, String message)
+        processing,
+    required TResult Function(CompletedScreenEntity data, String message)
+        showAllContacts,
+    required TResult Function(CompletedScreenEntity data, String message) error,
+  }) {
+    return deleteContact(data, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(CompletedScreenEntity data, String message)? createContact,
+    TResult Function(CompletedScreenEntity data, String message)? updateContact,
+    TResult Function(CompletedScreenEntity data, String message)? deleteContact,
+    TResult Function(CompletedScreenEntity data, String message)? processing,
+    TResult Function(CompletedScreenEntity data, String message)?
+        showAllContacts,
+    TResult Function(CompletedScreenEntity data, String message)? error,
+  }) {
+    return deleteContact?.call(data, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(CompletedScreenEntity data, String message)? createContact,
+    TResult Function(CompletedScreenEntity data, String message)? updateContact,
+    TResult Function(CompletedScreenEntity data, String message)? deleteContact,
+    TResult Function(CompletedScreenEntity data, String message)? processing,
+    TResult Function(CompletedScreenEntity data, String message)?
+        showAllContacts,
+    TResult Function(CompletedScreenEntity data, String message)? error,
+    required TResult orElse(),
+  }) {
+    if (deleteContact != null) {
+      return deleteContact(data, message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CreateContactCompletedScreenState value)
+        createContact,
+    required TResult Function(UpdateContactCompletedScreenState value)
+        updateContact,
+    required TResult Function(DeleteContactCompletedScreenState value)
+        deleteContact,
+    required TResult Function(ProcessingCompletedScreenState value) processing,
+    required TResult Function(ShowAllContactsCompletedScreenState value)
+        showAllContacts,
+    required TResult Function(ErrorCompletedScreenState value) error,
+  }) {
+    return deleteContact(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(CreateContactCompletedScreenState value)? createContact,
+    TResult Function(UpdateContactCompletedScreenState value)? updateContact,
+    TResult Function(DeleteContactCompletedScreenState value)? deleteContact,
+    TResult Function(ProcessingCompletedScreenState value)? processing,
+    TResult Function(ShowAllContactsCompletedScreenState value)?
+        showAllContacts,
+    TResult Function(ErrorCompletedScreenState value)? error,
+  }) {
+    return deleteContact?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CreateContactCompletedScreenState value)? createContact,
+    TResult Function(UpdateContactCompletedScreenState value)? updateContact,
+    TResult Function(DeleteContactCompletedScreenState value)? deleteContact,
+    TResult Function(ProcessingCompletedScreenState value)? processing,
+    TResult Function(ShowAllContactsCompletedScreenState value)?
+        showAllContacts,
+    TResult Function(ErrorCompletedScreenState value)? error,
+    required TResult orElse(),
+  }) {
+    if (deleteContact != null) {
+      return deleteContact(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DeleteContactCompletedScreenState extends CompletedScreenState {
+  const factory DeleteContactCompletedScreenState(
+      {required final CompletedScreenEntity data,
+      final String message}) = _$DeleteContactCompletedScreenState;
+  const DeleteContactCompletedScreenState._() : super._();
+
+  @override
+  CompletedScreenEntity get data;
+  @override
+  String get message;
+  @override
+  @JsonKey(ignore: true)
+  _$$DeleteContactCompletedScreenStateCopyWith<
+          _$DeleteContactCompletedScreenState>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -939,11 +1396,16 @@ class _$ProcessingCompletedScreenState extends ProcessingCompletedScreenState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(CompletedScreenEntity data, String message) idle,
+    required TResult Function(CompletedScreenEntity data, String message)
+        createContact,
+    required TResult Function(CompletedScreenEntity data, String message)
+        updateContact,
+    required TResult Function(CompletedScreenEntity data, String message)
+        deleteContact,
     required TResult Function(CompletedScreenEntity data, String message)
         processing,
     required TResult Function(CompletedScreenEntity data, String message)
-        successful,
+        showAllContacts,
     required TResult Function(CompletedScreenEntity data, String message) error,
   }) {
     return processing(data, message);
@@ -952,9 +1414,12 @@ class _$ProcessingCompletedScreenState extends ProcessingCompletedScreenState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(CompletedScreenEntity data, String message)? idle,
+    TResult Function(CompletedScreenEntity data, String message)? createContact,
+    TResult Function(CompletedScreenEntity data, String message)? updateContact,
+    TResult Function(CompletedScreenEntity data, String message)? deleteContact,
     TResult Function(CompletedScreenEntity data, String message)? processing,
-    TResult Function(CompletedScreenEntity data, String message)? successful,
+    TResult Function(CompletedScreenEntity data, String message)?
+        showAllContacts,
     TResult Function(CompletedScreenEntity data, String message)? error,
   }) {
     return processing?.call(data, message);
@@ -963,9 +1428,12 @@ class _$ProcessingCompletedScreenState extends ProcessingCompletedScreenState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(CompletedScreenEntity data, String message)? idle,
+    TResult Function(CompletedScreenEntity data, String message)? createContact,
+    TResult Function(CompletedScreenEntity data, String message)? updateContact,
+    TResult Function(CompletedScreenEntity data, String message)? deleteContact,
     TResult Function(CompletedScreenEntity data, String message)? processing,
-    TResult Function(CompletedScreenEntity data, String message)? successful,
+    TResult Function(CompletedScreenEntity data, String message)?
+        showAllContacts,
     TResult Function(CompletedScreenEntity data, String message)? error,
     required TResult orElse(),
   }) {
@@ -978,9 +1446,15 @@ class _$ProcessingCompletedScreenState extends ProcessingCompletedScreenState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(IdleCompletedScreenState value) idle,
+    required TResult Function(CreateContactCompletedScreenState value)
+        createContact,
+    required TResult Function(UpdateContactCompletedScreenState value)
+        updateContact,
+    required TResult Function(DeleteContactCompletedScreenState value)
+        deleteContact,
     required TResult Function(ProcessingCompletedScreenState value) processing,
-    required TResult Function(SuccessfulCompletedScreenState value) successful,
+    required TResult Function(ShowAllContactsCompletedScreenState value)
+        showAllContacts,
     required TResult Function(ErrorCompletedScreenState value) error,
   }) {
     return processing(this);
@@ -989,9 +1463,12 @@ class _$ProcessingCompletedScreenState extends ProcessingCompletedScreenState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(IdleCompletedScreenState value)? idle,
+    TResult Function(CreateContactCompletedScreenState value)? createContact,
+    TResult Function(UpdateContactCompletedScreenState value)? updateContact,
+    TResult Function(DeleteContactCompletedScreenState value)? deleteContact,
     TResult Function(ProcessingCompletedScreenState value)? processing,
-    TResult Function(SuccessfulCompletedScreenState value)? successful,
+    TResult Function(ShowAllContactsCompletedScreenState value)?
+        showAllContacts,
     TResult Function(ErrorCompletedScreenState value)? error,
   }) {
     return processing?.call(this);
@@ -1000,9 +1477,12 @@ class _$ProcessingCompletedScreenState extends ProcessingCompletedScreenState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(IdleCompletedScreenState value)? idle,
+    TResult Function(CreateContactCompletedScreenState value)? createContact,
+    TResult Function(UpdateContactCompletedScreenState value)? updateContact,
+    TResult Function(DeleteContactCompletedScreenState value)? deleteContact,
     TResult Function(ProcessingCompletedScreenState value)? processing,
-    TResult Function(SuccessfulCompletedScreenState value)? successful,
+    TResult Function(ShowAllContactsCompletedScreenState value)?
+        showAllContacts,
     TResult Function(ErrorCompletedScreenState value)? error,
     required TResult orElse(),
   }) {
@@ -1030,12 +1510,12 @@ abstract class ProcessingCompletedScreenState extends CompletedScreenState {
 }
 
 /// @nodoc
-abstract class _$$SuccessfulCompletedScreenStateCopyWith<$Res>
+abstract class _$$ShowAllContactsCompletedScreenStateCopyWith<$Res>
     implements $CompletedScreenStateCopyWith<$Res> {
-  factory _$$SuccessfulCompletedScreenStateCopyWith(
-          _$SuccessfulCompletedScreenState value,
-          $Res Function(_$SuccessfulCompletedScreenState) then) =
-      __$$SuccessfulCompletedScreenStateCopyWithImpl<$Res>;
+  factory _$$ShowAllContactsCompletedScreenStateCopyWith(
+          _$ShowAllContactsCompletedScreenState value,
+          $Res Function(_$ShowAllContactsCompletedScreenState) then) =
+      __$$ShowAllContactsCompletedScreenStateCopyWithImpl<$Res>;
   @override
   $Res call({CompletedScreenEntity data, String message});
 
@@ -1044,24 +1524,24 @@ abstract class _$$SuccessfulCompletedScreenStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$SuccessfulCompletedScreenStateCopyWithImpl<$Res>
+class __$$ShowAllContactsCompletedScreenStateCopyWithImpl<$Res>
     extends _$CompletedScreenStateCopyWithImpl<$Res>
-    implements _$$SuccessfulCompletedScreenStateCopyWith<$Res> {
-  __$$SuccessfulCompletedScreenStateCopyWithImpl(
-      _$SuccessfulCompletedScreenState _value,
-      $Res Function(_$SuccessfulCompletedScreenState) _then)
-      : super(_value, (v) => _then(v as _$SuccessfulCompletedScreenState));
+    implements _$$ShowAllContactsCompletedScreenStateCopyWith<$Res> {
+  __$$ShowAllContactsCompletedScreenStateCopyWithImpl(
+      _$ShowAllContactsCompletedScreenState _value,
+      $Res Function(_$ShowAllContactsCompletedScreenState) _then)
+      : super(_value, (v) => _then(v as _$ShowAllContactsCompletedScreenState));
 
   @override
-  _$SuccessfulCompletedScreenState get _value =>
-      super._value as _$SuccessfulCompletedScreenState;
+  _$ShowAllContactsCompletedScreenState get _value =>
+      super._value as _$ShowAllContactsCompletedScreenState;
 
   @override
   $Res call({
     Object? data = freezed,
     Object? message = freezed,
   }) {
-    return _then(_$SuccessfulCompletedScreenState(
+    return _then(_$ShowAllContactsCompletedScreenState(
       data: data == freezed
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -1076,8 +1556,9 @@ class __$$SuccessfulCompletedScreenStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SuccessfulCompletedScreenState extends SuccessfulCompletedScreenState {
-  const _$SuccessfulCompletedScreenState(
+class _$ShowAllContactsCompletedScreenState
+    extends ShowAllContactsCompletedScreenState {
+  const _$ShowAllContactsCompletedScreenState(
       {required this.data, this.message = 'Successful'})
       : super._();
 
@@ -1089,14 +1570,14 @@ class _$SuccessfulCompletedScreenState extends SuccessfulCompletedScreenState {
 
   @override
   String toString() {
-    return 'CompletedScreenState.successful(data: $data, message: $message)';
+    return 'CompletedScreenState.showAllContacts(data: $data, message: $message)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SuccessfulCompletedScreenState &&
+            other is _$ShowAllContactsCompletedScreenState &&
             const DeepCollectionEquality().equals(other.data, data) &&
             const DeepCollectionEquality().equals(other.message, message));
   }
@@ -1109,45 +1590,57 @@ class _$SuccessfulCompletedScreenState extends SuccessfulCompletedScreenState {
 
   @JsonKey(ignore: true)
   @override
-  _$$SuccessfulCompletedScreenStateCopyWith<_$SuccessfulCompletedScreenState>
-      get copyWith => __$$SuccessfulCompletedScreenStateCopyWithImpl<
-          _$SuccessfulCompletedScreenState>(this, _$identity);
+  _$$ShowAllContactsCompletedScreenStateCopyWith<
+          _$ShowAllContactsCompletedScreenState>
+      get copyWith => __$$ShowAllContactsCompletedScreenStateCopyWithImpl<
+          _$ShowAllContactsCompletedScreenState>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(CompletedScreenEntity data, String message) idle,
+    required TResult Function(CompletedScreenEntity data, String message)
+        createContact,
+    required TResult Function(CompletedScreenEntity data, String message)
+        updateContact,
+    required TResult Function(CompletedScreenEntity data, String message)
+        deleteContact,
     required TResult Function(CompletedScreenEntity data, String message)
         processing,
     required TResult Function(CompletedScreenEntity data, String message)
-        successful,
+        showAllContacts,
     required TResult Function(CompletedScreenEntity data, String message) error,
   }) {
-    return successful(data, message);
+    return showAllContacts(data, message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(CompletedScreenEntity data, String message)? idle,
+    TResult Function(CompletedScreenEntity data, String message)? createContact,
+    TResult Function(CompletedScreenEntity data, String message)? updateContact,
+    TResult Function(CompletedScreenEntity data, String message)? deleteContact,
     TResult Function(CompletedScreenEntity data, String message)? processing,
-    TResult Function(CompletedScreenEntity data, String message)? successful,
+    TResult Function(CompletedScreenEntity data, String message)?
+        showAllContacts,
     TResult Function(CompletedScreenEntity data, String message)? error,
   }) {
-    return successful?.call(data, message);
+    return showAllContacts?.call(data, message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(CompletedScreenEntity data, String message)? idle,
+    TResult Function(CompletedScreenEntity data, String message)? createContact,
+    TResult Function(CompletedScreenEntity data, String message)? updateContact,
+    TResult Function(CompletedScreenEntity data, String message)? deleteContact,
     TResult Function(CompletedScreenEntity data, String message)? processing,
-    TResult Function(CompletedScreenEntity data, String message)? successful,
+    TResult Function(CompletedScreenEntity data, String message)?
+        showAllContacts,
     TResult Function(CompletedScreenEntity data, String message)? error,
     required TResult orElse(),
   }) {
-    if (successful != null) {
-      return successful(data, message);
+    if (showAllContacts != null) {
+      return showAllContacts(data, message);
     }
     return orElse();
   }
@@ -1155,46 +1648,59 @@ class _$SuccessfulCompletedScreenState extends SuccessfulCompletedScreenState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(IdleCompletedScreenState value) idle,
+    required TResult Function(CreateContactCompletedScreenState value)
+        createContact,
+    required TResult Function(UpdateContactCompletedScreenState value)
+        updateContact,
+    required TResult Function(DeleteContactCompletedScreenState value)
+        deleteContact,
     required TResult Function(ProcessingCompletedScreenState value) processing,
-    required TResult Function(SuccessfulCompletedScreenState value) successful,
+    required TResult Function(ShowAllContactsCompletedScreenState value)
+        showAllContacts,
     required TResult Function(ErrorCompletedScreenState value) error,
   }) {
-    return successful(this);
+    return showAllContacts(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(IdleCompletedScreenState value)? idle,
+    TResult Function(CreateContactCompletedScreenState value)? createContact,
+    TResult Function(UpdateContactCompletedScreenState value)? updateContact,
+    TResult Function(DeleteContactCompletedScreenState value)? deleteContact,
     TResult Function(ProcessingCompletedScreenState value)? processing,
-    TResult Function(SuccessfulCompletedScreenState value)? successful,
+    TResult Function(ShowAllContactsCompletedScreenState value)?
+        showAllContacts,
     TResult Function(ErrorCompletedScreenState value)? error,
   }) {
-    return successful?.call(this);
+    return showAllContacts?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(IdleCompletedScreenState value)? idle,
+    TResult Function(CreateContactCompletedScreenState value)? createContact,
+    TResult Function(UpdateContactCompletedScreenState value)? updateContact,
+    TResult Function(DeleteContactCompletedScreenState value)? deleteContact,
     TResult Function(ProcessingCompletedScreenState value)? processing,
-    TResult Function(SuccessfulCompletedScreenState value)? successful,
+    TResult Function(ShowAllContactsCompletedScreenState value)?
+        showAllContacts,
     TResult Function(ErrorCompletedScreenState value)? error,
     required TResult orElse(),
   }) {
-    if (successful != null) {
-      return successful(this);
+    if (showAllContacts != null) {
+      return showAllContacts(this);
     }
     return orElse();
   }
 }
 
-abstract class SuccessfulCompletedScreenState extends CompletedScreenState {
-  const factory SuccessfulCompletedScreenState(
+abstract class ShowAllContactsCompletedScreenState
+    extends CompletedScreenState {
+  const factory ShowAllContactsCompletedScreenState(
       {required final CompletedScreenEntity data,
-      final String message}) = _$SuccessfulCompletedScreenState;
-  const SuccessfulCompletedScreenState._() : super._();
+      final String message}) = _$ShowAllContactsCompletedScreenState;
+  const ShowAllContactsCompletedScreenState._() : super._();
 
   @override
   CompletedScreenEntity get data;
@@ -1202,7 +1708,8 @@ abstract class SuccessfulCompletedScreenState extends CompletedScreenState {
   String get message;
   @override
   @JsonKey(ignore: true)
-  _$$SuccessfulCompletedScreenStateCopyWith<_$SuccessfulCompletedScreenState>
+  _$$ShowAllContactsCompletedScreenStateCopyWith<
+          _$ShowAllContactsCompletedScreenState>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -1292,11 +1799,16 @@ class _$ErrorCompletedScreenState extends ErrorCompletedScreenState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(CompletedScreenEntity data, String message) idle,
+    required TResult Function(CompletedScreenEntity data, String message)
+        createContact,
+    required TResult Function(CompletedScreenEntity data, String message)
+        updateContact,
+    required TResult Function(CompletedScreenEntity data, String message)
+        deleteContact,
     required TResult Function(CompletedScreenEntity data, String message)
         processing,
     required TResult Function(CompletedScreenEntity data, String message)
-        successful,
+        showAllContacts,
     required TResult Function(CompletedScreenEntity data, String message) error,
   }) {
     return error(data, message);
@@ -1305,9 +1817,12 @@ class _$ErrorCompletedScreenState extends ErrorCompletedScreenState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(CompletedScreenEntity data, String message)? idle,
+    TResult Function(CompletedScreenEntity data, String message)? createContact,
+    TResult Function(CompletedScreenEntity data, String message)? updateContact,
+    TResult Function(CompletedScreenEntity data, String message)? deleteContact,
     TResult Function(CompletedScreenEntity data, String message)? processing,
-    TResult Function(CompletedScreenEntity data, String message)? successful,
+    TResult Function(CompletedScreenEntity data, String message)?
+        showAllContacts,
     TResult Function(CompletedScreenEntity data, String message)? error,
   }) {
     return error?.call(data, message);
@@ -1316,9 +1831,12 @@ class _$ErrorCompletedScreenState extends ErrorCompletedScreenState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(CompletedScreenEntity data, String message)? idle,
+    TResult Function(CompletedScreenEntity data, String message)? createContact,
+    TResult Function(CompletedScreenEntity data, String message)? updateContact,
+    TResult Function(CompletedScreenEntity data, String message)? deleteContact,
     TResult Function(CompletedScreenEntity data, String message)? processing,
-    TResult Function(CompletedScreenEntity data, String message)? successful,
+    TResult Function(CompletedScreenEntity data, String message)?
+        showAllContacts,
     TResult Function(CompletedScreenEntity data, String message)? error,
     required TResult orElse(),
   }) {
@@ -1331,9 +1849,15 @@ class _$ErrorCompletedScreenState extends ErrorCompletedScreenState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(IdleCompletedScreenState value) idle,
+    required TResult Function(CreateContactCompletedScreenState value)
+        createContact,
+    required TResult Function(UpdateContactCompletedScreenState value)
+        updateContact,
+    required TResult Function(DeleteContactCompletedScreenState value)
+        deleteContact,
     required TResult Function(ProcessingCompletedScreenState value) processing,
-    required TResult Function(SuccessfulCompletedScreenState value) successful,
+    required TResult Function(ShowAllContactsCompletedScreenState value)
+        showAllContacts,
     required TResult Function(ErrorCompletedScreenState value) error,
   }) {
     return error(this);
@@ -1342,9 +1866,12 @@ class _$ErrorCompletedScreenState extends ErrorCompletedScreenState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(IdleCompletedScreenState value)? idle,
+    TResult Function(CreateContactCompletedScreenState value)? createContact,
+    TResult Function(UpdateContactCompletedScreenState value)? updateContact,
+    TResult Function(DeleteContactCompletedScreenState value)? deleteContact,
     TResult Function(ProcessingCompletedScreenState value)? processing,
-    TResult Function(SuccessfulCompletedScreenState value)? successful,
+    TResult Function(ShowAllContactsCompletedScreenState value)?
+        showAllContacts,
     TResult Function(ErrorCompletedScreenState value)? error,
   }) {
     return error?.call(this);
@@ -1353,9 +1880,12 @@ class _$ErrorCompletedScreenState extends ErrorCompletedScreenState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(IdleCompletedScreenState value)? idle,
+    TResult Function(CreateContactCompletedScreenState value)? createContact,
+    TResult Function(UpdateContactCompletedScreenState value)? updateContact,
+    TResult Function(DeleteContactCompletedScreenState value)? deleteContact,
     TResult Function(ProcessingCompletedScreenState value)? processing,
-    TResult Function(SuccessfulCompletedScreenState value)? successful,
+    TResult Function(ShowAllContactsCompletedScreenState value)?
+        showAllContacts,
     TResult Function(ErrorCompletedScreenState value)? error,
     required TResult orElse(),
   }) {
