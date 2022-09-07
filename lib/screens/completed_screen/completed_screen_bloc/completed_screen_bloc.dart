@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart' as bloc_concurrency;
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:unfamous_phone_book/domain/contacts_list/connection.dart';
 import 'package:unfamous_phone_book/screens/completed_screen/completed_screen_bloc/completed_screen_repository.dart';
 import 'package:unfamous_phone_book/screens/completed_screen/completed_screen_bloc/completedscreenentity.dart';
 
@@ -19,8 +20,8 @@ class CompletedScreenEvent with _$CompletedScreenEvent {
   const factory CompletedScreenEvent.readAllContacts() =
       ReadCompletedScreenEvent;
 
-  const factory CompletedScreenEvent.updateContact() =
-      UpdateCompletedScreenEvent;
+  const factory CompletedScreenEvent.updateContact(
+      Connection? currentConnection) = UpdateCompletedScreenEvent;
 
   const factory CompletedScreenEvent.deleteContact() =
       DeleteCompletedScreenEvent;
@@ -143,7 +144,7 @@ class CompletedScreenBLoC
       Emitter<CompletedScreenState> emit) async {
     try {
       emit(CompletedScreenState.processing(data: state.data));
-      //final newData = await _repository.();
+      final newData = await _repository.update(event.currentConnection);
       //emit(CompletedScreenState.successful(data: newData));
     } on Object catch (err, stackTrace) {
       print('В CompletedScreenBLoC произошла ошибка: $err, $stackTrace');

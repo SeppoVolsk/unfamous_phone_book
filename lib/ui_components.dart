@@ -19,9 +19,11 @@ class UiAssets {
 
   static Color randomColor() {
     const rgbLimit = 255;
-    const opacityLimit = 100;
+    // const opacityLimit = 100;
+    // _randomNumber(opacityLimit + 1) / 100
+
     return Color.fromRGBO(_randomNumber(rgbLimit), _randomNumber(rgbLimit),
-        _randomNumber(rgbLimit), _randomNumber(opacityLimit + 1) / 100);
+        _randomNumber(rgbLimit), 1);
   }
 
   static int _randomNumber(int limit) => Random().nextInt(limit);

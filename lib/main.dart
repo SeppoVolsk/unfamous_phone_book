@@ -10,9 +10,8 @@ import 'package:unfamous_phone_book/simple_bloc_observer.dart';
 
 void main() {
   Bloc.observer = SimpleBlocObserver();
-  runApp(MaterialApp(
-    home: MyApp(),
-    routes: {'/detail_sheet': (context) => DetailSheetWidget()},
+  runApp(const MaterialApp(
+    home: const MyApp(),
     debugShowCheckedModeBanner: false,
   ));
 }

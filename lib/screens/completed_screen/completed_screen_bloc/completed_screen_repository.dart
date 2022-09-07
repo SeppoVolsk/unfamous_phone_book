@@ -32,6 +32,7 @@ class ICompletedScreenRepository {
 
   //117326814766099280985
   Future<CompletedScreenEntity> update(Connection? connection) async {
-    return CompletedScreenEntity(contactsList: null);
+    return CompletedScreenEntity(
+        contactsList: null, currentConnection: connection);
   }
 }

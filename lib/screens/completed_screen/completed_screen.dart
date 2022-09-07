@@ -38,16 +38,12 @@ class _CompletedScreenState extends State<CompletedScreen> {
                 searchController: _searchController,
               ),
               state.maybeMap(
-                createContact: (_) => DetailSheetWidget(),
-                // Container(
-                //     height: 60,
-                //     color: Colors.green,
-                //     // ignore: prefer_const_constructors
-                //     child: BackButton(
-                //         color: Colors.amber,
-                //         onPressed: () =>
-                //             BlocProvider.of<CompletedScreenBLoC>(context).add(
-                //                 const CompletedScreenEvent.readAllContacts()))),
+                createContact: (_) => Center(child: DetailSheetWidget()),
+                updateContact: (state) => Center(
+                  child: DetailSheetWidget(
+                    currentConnection: state.data.currentConnection,
+                  ),
+                ),
                 orElse: () => const SizedBox.shrink(),
               )
             ]),

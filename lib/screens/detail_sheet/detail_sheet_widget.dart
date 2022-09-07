@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:unfamous_phone_book/domain/contacts_list/connection.dart';
 import 'package:unfamous_phone_book/ui_components.dart';
 
 class DetailSheetWidget extends StatefulWidget {
-  DetailSheetWidget({Key? key}) : super(key: key);
+  DetailSheetWidget({Key? key, this.currentConnection}) : super(key: key);
+  Connection? currentConnection;
 
   @override
   State<DetailSheetWidget> createState() => _DetailSheetWidgetState();
@@ -16,19 +18,20 @@ class _DetailSheetWidgetState extends State<DetailSheetWidget> {
   Widget build(BuildContext context) {
     return Container(
         decoration: BoxDecoration(
-            color: widgetColor,
-            borderRadius: BorderRadius.only(
-                topLeft: cornerRadius, topRight: cornerRadius)),
+            color: widgetColor, borderRadius: BorderRadius.all(cornerRadius)),
         height: 250,
         //color: widgetColor,
         child: Center(
             child: Column(children: [
           const Spacer(),
-          const _DetailSheetInputField(),
+          _DetailSheetInputField(
+              widget.currentConnection?.names?.first.givenName),
           const Spacer(),
-          const _DetailSheetInputField(),
+          _DetailSheetInputField(
+              widget.currentConnection?.names?.first.familyName),
           const Spacer(),
-          const _DetailSheetInputField(),
+          _DetailSheetInputField(
+              widget.currentConnection?.phoneNumbers?.first.value),
           const Spacer(),
           IconButton(
             icon: const Icon(Icons.done_outline_sharp),
@@ -39,13 +42,14 @@ class _DetailSheetWidgetState extends State<DetailSheetWidget> {
 }
 
 class _DetailSheetInputField extends StatelessWidget {
-  const _DetailSheetInputField({Key? key}) : super(key: key);
+  String? hintText;
+  _DetailSheetInputField(this.hintText, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextField(
         decoration: InputDecoration(
-      hintText: 'TEXTFIELD',
+      hintText: hintText,
       contentPadding: const EdgeInsets.all(10),
       fillColor: Colors.white,
       filled: true,

@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$CompletedScreenEntity {
   ContactsList? get contactsList => throw _privateConstructorUsedError;
+  Connection? get currentConnection => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CompletedScreenEntityCopyWith<CompletedScreenEntity> get copyWith =>
@@ -28,9 +29,10 @@ abstract class $CompletedScreenEntityCopyWith<$Res> {
   factory $CompletedScreenEntityCopyWith(CompletedScreenEntity value,
           $Res Function(CompletedScreenEntity) then) =
       _$CompletedScreenEntityCopyWithImpl<$Res>;
-  $Res call({ContactsList? contactsList});
+  $Res call({ContactsList? contactsList, Connection? currentConnection});
 
   $ContactsListCopyWith<$Res>? get contactsList;
+  $ConnectionCopyWith<$Res>? get currentConnection;
 }
 
 /// @nodoc
@@ -45,12 +47,17 @@ class _$CompletedScreenEntityCopyWithImpl<$Res>
   @override
   $Res call({
     Object? contactsList = freezed,
+    Object? currentConnection = freezed,
   }) {
     return _then(_value.copyWith(
       contactsList: contactsList == freezed
           ? _value.contactsList
           : contactsList // ignore: cast_nullable_to_non_nullable
               as ContactsList?,
+      currentConnection: currentConnection == freezed
+          ? _value.currentConnection
+          : currentConnection // ignore: cast_nullable_to_non_nullable
+              as Connection?,
     ));
   }
 
@@ -64,6 +71,17 @@ class _$CompletedScreenEntityCopyWithImpl<$Res>
       return _then(_value.copyWith(contactsList: value));
     });
   }
+
+  @override
+  $ConnectionCopyWith<$Res>? get currentConnection {
+    if (_value.currentConnection == null) {
+      return null;
+    }
+
+    return $ConnectionCopyWith<$Res>(_value.currentConnection!, (value) {
+      return _then(_value.copyWith(currentConnection: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -73,10 +91,12 @@ abstract class _$$_CompletedScreenEntityCopyWith<$Res>
           $Res Function(_$_CompletedScreenEntity) then) =
       __$$_CompletedScreenEntityCopyWithImpl<$Res>;
   @override
-  $Res call({ContactsList? contactsList});
+  $Res call({ContactsList? contactsList, Connection? currentConnection});
 
   @override
   $ContactsListCopyWith<$Res>? get contactsList;
+  @override
+  $ConnectionCopyWith<$Res>? get currentConnection;
 }
 
 /// @nodoc
@@ -94,12 +114,17 @@ class __$$_CompletedScreenEntityCopyWithImpl<$Res>
   @override
   $Res call({
     Object? contactsList = freezed,
+    Object? currentConnection = freezed,
   }) {
     return _then(_$_CompletedScreenEntity(
       contactsList: contactsList == freezed
           ? _value.contactsList
           : contactsList // ignore: cast_nullable_to_non_nullable
               as ContactsList?,
+      currentConnection: currentConnection == freezed
+          ? _value.currentConnection
+          : currentConnection // ignore: cast_nullable_to_non_nullable
+              as Connection?,
     ));
   }
 }
@@ -107,14 +132,17 @@ class __$$_CompletedScreenEntityCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_CompletedScreenEntity implements _CompletedScreenEntity {
-  _$_CompletedScreenEntity({required this.contactsList});
+  _$_CompletedScreenEntity(
+      {required this.contactsList, this.currentConnection});
 
   @override
   final ContactsList? contactsList;
+  @override
+  final Connection? currentConnection;
 
   @override
   String toString() {
-    return 'CompletedScreenEntity(contactsList: $contactsList)';
+    return 'CompletedScreenEntity(contactsList: $contactsList, currentConnection: $currentConnection)';
   }
 
   @override
@@ -123,12 +151,16 @@ class _$_CompletedScreenEntity implements _CompletedScreenEntity {
         (other.runtimeType == runtimeType &&
             other is _$_CompletedScreenEntity &&
             const DeepCollectionEquality()
-                .equals(other.contactsList, contactsList));
+                .equals(other.contactsList, contactsList) &&
+            const DeepCollectionEquality()
+                .equals(other.currentConnection, currentConnection));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(contactsList));
+      runtimeType,
+      const DeepCollectionEquality().hash(contactsList),
+      const DeepCollectionEquality().hash(currentConnection));
 
   @JsonKey(ignore: true)
   @override
@@ -138,11 +170,14 @@ class _$_CompletedScreenEntity implements _CompletedScreenEntity {
 }
 
 abstract class _CompletedScreenEntity implements CompletedScreenEntity {
-  factory _CompletedScreenEntity({required final ContactsList? contactsList}) =
-      _$_CompletedScreenEntity;
+  factory _CompletedScreenEntity(
+      {required final ContactsList? contactsList,
+      final Connection? currentConnection}) = _$_CompletedScreenEntity;
 
   @override
   ContactsList? get contactsList;
+  @override
+  Connection? get currentConnection;
   @override
   @JsonKey(ignore: true)
   _$$_CompletedScreenEntityCopyWith<_$_CompletedScreenEntity> get copyWith =>

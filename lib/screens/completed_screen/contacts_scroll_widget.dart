@@ -48,21 +48,16 @@ class _ContactsScrollWidgetState extends State<ContactsScrollWidget> {
   Widget build(BuildContext context) {
     return BlocBuilder<CompletedScreenBLoC, CompletedScreenState>(
         builder: (context, state) {
-      return state.maybeMap(
-        showAllContacts: (state) {
-          final contactsList = state.data.contactsList;
-          return ListView.builder(
+      final contactsList = state.data.contactsList;
+      return contactsList != null
+          ? ListView.builder(
               itemCount: _filteredContacts?.connections?.length,
               itemBuilder: ((context, index) {
                 return ContactCard(
                     connection: _filteredContacts?.connections?[index] ??
-                        contactsList?.connections?[index]);
-
-                //contactsList?.connections?[index]
-              }));
-        },
-        orElse: () => SizedBox.shrink(),
-      );
+                        contactsList.connections?[index]);
+              }))
+          : const SizedBox.shrink();
     });
   }
 }
@@ -94,7 +89,7 @@ class _ContactCardState extends State<ContactCard> {
       subtitle: Text('${data.phoneNumbers?[0].value}'),
       trailing: const Icon(Icons.phone_enabled),
       onTap: () => BlocProvider.of<CompletedScreenBLoC>(context)
-          .add(const CompletedScreenEvent.updateContact()),
+          .add(CompletedScreenEvent.updateContact(widget.connection)),
     ));
   }
 }
