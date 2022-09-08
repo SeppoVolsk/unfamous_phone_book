@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:unfamous_phone_book/domain/contacts_list/connection.dart';
+import 'package:unfamous_phone_book/screens/completed_screen/completed_screen_bloc/completed_screen_bloc.dart';
 import 'package:unfamous_phone_book/ui_components.dart';
 
 class DetailSheetWidget extends StatefulWidget {
@@ -13,6 +15,9 @@ class DetailSheetWidget extends StatefulWidget {
 class _DetailSheetWidgetState extends State<DetailSheetWidget> {
   final cornerRadius = const Radius.circular(16);
   final widgetColor = UiAssets.randomColor();
+  final givenNameController = TextEditingController();
+  final familyNameController = TextEditingController();
+  final phoneNumbersController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -25,17 +30,21 @@ class _DetailSheetWidgetState extends State<DetailSheetWidget> {
             child: Column(children: [
           const Spacer(),
           _DetailSheetInputField(
-              widget.currentConnection?.names?.first.givenName),
+              hintText: widget.currentConnection?.names?.first.givenName,
+              controller: givenNameController),
           const Spacer(),
           _DetailSheetInputField(
-              widget.currentConnection?.names?.first.familyName),
+              hintText: widget.currentConnection?.names?.first.familyName,
+              controller: familyNameController),
           const Spacer(),
           _DetailSheetInputField(
-              widget.currentConnection?.phoneNumbers?.first.value),
+              hintText: widget.currentConnection?.phoneNumbers?.first.value,
+              controller: phoneNumbersController),
           const Spacer(),
           IconButton(
             icon: const Icon(Icons.done_outline_sharp),
-            onPressed: () => Navigator.of(context).pop(),
+            onPressed: () => BlocProvider.of<CompletedScreenBLoC>(context)
+                .add(CompletedScreenEvent.readAllContacts()),
           ),
         ])));
   }
@@ -43,7 +52,9 @@ class _DetailSheetWidgetState extends State<DetailSheetWidget> {
 
 class _DetailSheetInputField extends StatelessWidget {
   String? hintText;
-  _DetailSheetInputField(this.hintText, {Key? key}) : super(key: key);
+  TextEditingController? controller;
+  _DetailSheetInputField({this.hintText, this.controller, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

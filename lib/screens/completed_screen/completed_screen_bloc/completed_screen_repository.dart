@@ -11,12 +11,28 @@ class ICompletedScreenRepository {
       : _user = user;
   final GoogleSignInAccount _user;
   final cache = CacheManager();
+  ContactsList? contactsList;
 
   Future<CompletedScreenEntity> read() async {
     print('USER ID: \n ${_user.id}');
 
+    if (contactsList == null) {
+      contactsList = await _firstContactsListReading();
+    } else {
+      contactsList = await _refreshContactsList();
+    }
+
+    return CompletedScreenEntity(contactsList: contactsList);
+  }
+
+  //117326814766099280985
+  Future<CompletedScreenEntity> update(Connection? connection) async {
+    return CompletedScreenEntity(
+        contactsList: contactsList, currentConnection: connection);
+  }
+
+  Future<ContactsList?> _firstContactsListReading() async {
     Map<String, dynamic>? contactsJson;
-    late var contactsList;
     if (cache.isEmpty) {
       contactsJson = await GoogleApiClient.getContacts(currentUser: _user);
       await cache.write(
@@ -26,13 +42,8 @@ class ICompletedScreenRepository {
       final jsonString = cache.read(key: _user.id);
       contactsJson = jsonDecode(jsonString!);
     }
-    contactsList = ContactsList.fromJson(contactsJson!);
-    return CompletedScreenEntity(contactsList: contactsList);
+    return ContactsList.fromJson(contactsJson!);
   }
 
-  //117326814766099280985
-  Future<CompletedScreenEntity> update(Connection? connection) async {
-    return CompletedScreenEntity(
-        contactsList: null, currentConnection: connection);
-  }
+  _refreshContactsList() {}
 }

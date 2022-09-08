@@ -145,13 +145,11 @@ class CompletedScreenBLoC
     try {
       emit(CompletedScreenState.processing(data: state.data));
       final newData = await _repository.update(event.currentConnection);
-      //emit(CompletedScreenState.successful(data: newData));
+      emit(CompletedScreenState.updateContact(data: newData));
     } on Object catch (err, stackTrace) {
       print('В CompletedScreenBLoC произошла ошибка: $err, $stackTrace');
       emit(CompletedScreenState.error(data: state.data));
       rethrow;
-    } finally {
-      emit(CompletedScreenState.updateContact(data: state.data));
     }
   }
 
