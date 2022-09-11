@@ -16,19 +16,15 @@ class ICompletedScreenRepository {
   Future<CompletedScreenEntity> read() async {
     print('USER ID: \n ${_user.id}');
 
-    if (contactsList == null) {
-      contactsList = await _firstContactsListReading();
-    } else {
-      contactsList = await _refreshContactsList();
-    }
+    contactsList ??= await _firstContactsListReading();
 
     return CompletedScreenEntity(contactsList: contactsList);
   }
 
   //117326814766099280985
-  Future<CompletedScreenEntity> update(Connection? connection) async {
+  Future<CompletedScreenEntity> update(Connection? connectionForChange) async {
     return CompletedScreenEntity(
-        contactsList: contactsList, currentConnection: connection);
+        contactsList: contactsList, currentConnection: connectionForChange);
   }
 
   Future<ContactsList?> _firstContactsListReading() async {
@@ -45,5 +41,7 @@ class ICompletedScreenRepository {
     return ContactsList.fromJson(contactsJson!);
   }
 
-  _refreshContactsList() {}
+  void _refreshContactsList({int? indexForChange}) {
+    final connectionForChange = contactsList?.connections?[indexForChange ?? 0];
+  }
 }

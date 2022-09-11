@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:unfamous_phone_book/domain/contacts_list/connection.dart';
 import 'package:unfamous_phone_book/screens/completed_screen/completed_screen_bloc/completed_screen_bloc.dart';
+import 'package:unfamous_phone_book/screens/detail_sheet/detail_sheet_bloc/detail_sheet_bloc.dart';
 import 'package:unfamous_phone_book/ui_components.dart';
 
 class DetailSheetWidget extends StatefulWidget {
@@ -43,8 +44,12 @@ class _DetailSheetWidgetState extends State<DetailSheetWidget> {
           const Spacer(),
           IconButton(
             icon: const Icon(Icons.done_outline_sharp),
-            onPressed: () => BlocProvider.of<CompletedScreenBLoC>(context)
-                .add(CompletedScreenEvent.readAllContacts()),
+            onPressed: () {
+              BlocProvider.of<DetailSheetBLoC>(context)
+                  .add(const DetailSheetEvent.finish());
+              BlocProvider.of<CompletedScreenBLoC>(context)
+                  .add(const CompletedScreenEvent.readAllContacts());
+            },
           ),
         ])));
   }

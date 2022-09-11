@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:unfamous_phone_book/domain/contacts_list/connection.dart';
 import 'package:unfamous_phone_book/domain/contacts_list/contacts_list.dart';
 import 'package:unfamous_phone_book/screens/completed_screen/completed_screen_bloc/completed_screen_bloc.dart';
+import 'package:unfamous_phone_book/screens/detail_sheet/detail_sheet_bloc/detail_sheet_bloc.dart';
 import 'package:unfamous_phone_book/ui_components.dart';
 
 class ContactsScrollWidget extends StatefulWidget {
@@ -77,19 +78,26 @@ class _ContactCardState extends State<ContactCard> {
     final data = widget.connection!;
     final contactHasDefaultPhoto = data.photos?[0].photoDefault == true;
 
-    return InkWell(
-        child: ListTile(
-      leading: CircleAvatar(
-        backgroundColor: UiAssets.randomColor(),
-        backgroundImage: contactHasDefaultPhoto
-            ? AssetImage(UiAssets.randomAvatar())
-            : CachedNetworkImageProvider(data.photos![0].url!) as ImageProvider,
-      ),
-      title: Text('${data.names?[0].displayNameLastFirst}'),
-      subtitle: Text('${data.phoneNumbers?[0].value}'),
-      trailing: const Icon(Icons.phone_enabled),
-      onTap: () => BlocProvider.of<CompletedScreenBLoC>(context)
-          .add(CompletedScreenEvent.updateContact(widget.connection)),
-    ));
+    return data != null
+        ? InkWell(
+            child: ListTile(
+            leading: CircleAvatar(
+              backgroundColor: UiAssets.randomColor(),
+              backgroundImage: contactHasDefaultPhoto
+                  ? AssetImage(UiAssets.randomAvatar())
+                  : CachedNetworkImageProvider(data.photos![0].url!)
+                      as ImageProvider,
+            ),
+            title: Text('${data.names?[0].displayNameLastFirst}'),
+            subtitle: Text('${data.phoneNumbers?[0].value}'),
+            trailing: const Icon(Icons.phone_enabled),
+            onTap: () {
+              BlocProvider.of<CompletedScreenBLoC>(context)
+                  .add(CompletedScreenEvent.updateContact(widget.connection));
+              BlocProvider.of<DetailSheetBLoC>(context)
+                  .add(const DetailSheetEvent.start());
+            },
+          ))
+        : Text('Не удалось загрузить данные контакта');
   }
 }

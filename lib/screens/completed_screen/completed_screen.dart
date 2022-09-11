@@ -7,6 +7,8 @@ import 'package:unfamous_phone_book/screens/completed_screen/completed_screen_ap
 import 'package:unfamous_phone_book/screens/completed_screen/completed_screen_bloc/completed_screen_bloc.dart';
 import 'package:unfamous_phone_book/screens/completed_screen/completed_screen_bloc/completed_screen_repository.dart';
 import 'package:unfamous_phone_book/screens/completed_screen/contacts_scroll_widget.dart';
+import 'package:unfamous_phone_book/screens/detail_sheet/detail_sheet_bloc/detail_sheet_bloc.dart';
+import 'package:unfamous_phone_book/screens/detail_sheet/detail_sheet_bloc/detail_sheet_repository.dart';
 import 'package:unfamous_phone_book/screens/detail_sheet/detail_sheet_widget.dart';
 import 'package:unfamous_phone_book/screens/enter_screen/enter_screen_bloc/enter_screen_bloc.dart';
 import 'package:unfamous_phone_book/ui_components.dart';
@@ -24,12 +26,19 @@ class _CompletedScreenState extends State<CompletedScreen> {
   @override
   Widget build(BuildContext context) {
     final user = context.read<EnterScreenBLoC>().state.data.user!;
-    return BlocProvider<CompletedScreenBLoC>(
-        create: (context) => CompletedScreenBLoC(
-            repository: ICompletedScreenRepository(user: user))
-          ..add(const CompletedScreenEvent.readAllContacts()),
-        child: SafeArea(
-            child: Scaffold(
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<CompletedScreenBLoC>(
+            create: (context) => CompletedScreenBLoC(
+                repository: ICompletedScreenRepository(user: user))
+              ..add(const CompletedScreenEvent.readAllContacts())),
+        BlocProvider<DetailSheetBLoC>(
+          create: (context) =>
+              DetailSheetBLoC(repository: IDetailSheetRepository()),
+        ),
+      ],
+      child: SafeArea(
+        child: Scaffold(
           appBar: CompletedScreenAppBar(searchController: _searchController),
           floatingActionButton: const AddContactButton(),
           body: BlocBuilder<CompletedScreenBLoC, CompletedScreenState>(
@@ -48,7 +57,9 @@ class _CompletedScreenState extends State<CompletedScreen> {
               )
             ]),
           ),
-        )));
+        ),
+      ),
+    );
   }
 }
 
