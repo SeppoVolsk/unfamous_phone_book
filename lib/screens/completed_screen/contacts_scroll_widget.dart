@@ -98,6 +98,6 @@ class _ContactCardState extends State<ContactCard> {
                   .add(const DetailSheetEvent.start());
             },
           ))
-        : Text('Не удалось загрузить данные контакта');
+        : const Text('Не удалось загрузить данные контакта');
   }
 }

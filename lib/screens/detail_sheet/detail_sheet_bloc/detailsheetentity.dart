@@ -5,6 +5,5 @@ part 'detailsheetentity.freezed.dart';
 
 @freezed
 class DetailSheetEntity with _$DetailSheetEntity {
-  factory DetailSheetEntity({Connection? connectionForChange}) =
-      _DetailSheetEntity;
+  factory DetailSheetEntity({Connection? connection}) = _DetailSheetEntity;
 }

@@ -19,19 +19,25 @@ mixin _$DetailSheetEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() start,
-    required TResult Function() finish,
+    required TResult Function(Connection? initialConnection,
+            String? newGivenName, String? newFamilyName, String? newPhoneNumber)
+        finish,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? start,
-    TResult Function()? finish,
+    TResult Function(Connection? initialConnection, String? newGivenName,
+            String? newFamilyName, String? newPhoneNumber)?
+        finish,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? start,
-    TResult Function()? finish,
+    TResult Function(Connection? initialConnection, String? newGivenName,
+            String? newFamilyName, String? newPhoneNumber)?
+        finish,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -119,7 +125,9 @@ class _$StartActionDetailSheetEvent extends StartActionDetailSheetEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() start,
-    required TResult Function() finish,
+    required TResult Function(Connection? initialConnection,
+            String? newGivenName, String? newFamilyName, String? newPhoneNumber)
+        finish,
   }) {
     return start();
   }
@@ -128,7 +136,9 @@ class _$StartActionDetailSheetEvent extends StartActionDetailSheetEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? start,
-    TResult Function()? finish,
+    TResult Function(Connection? initialConnection, String? newGivenName,
+            String? newFamilyName, String? newPhoneNumber)?
+        finish,
   }) {
     return start?.call();
   }
@@ -137,7 +147,9 @@ class _$StartActionDetailSheetEvent extends StartActionDetailSheetEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? start,
-    TResult Function()? finish,
+    TResult Function(Connection? initialConnection, String? newGivenName,
+            String? newFamilyName, String? newPhoneNumber)?
+        finish,
     required TResult orElse(),
   }) {
     if (start != null) {
@@ -189,6 +201,13 @@ abstract class _$$FinishActionDetailSheetEventCopyWith<$Res> {
           _$FinishActionDetailSheetEvent value,
           $Res Function(_$FinishActionDetailSheetEvent) then) =
       __$$FinishActionDetailSheetEventCopyWithImpl<$Res>;
+  $Res call(
+      {Connection? initialConnection,
+      String? newGivenName,
+      String? newFamilyName,
+      String? newPhoneNumber});
+
+  $ConnectionCopyWith<$Res>? get initialConnection;
 }
 
 /// @nodoc
@@ -203,55 +222,135 @@ class __$$FinishActionDetailSheetEventCopyWithImpl<$Res>
   @override
   _$FinishActionDetailSheetEvent get _value =>
       super._value as _$FinishActionDetailSheetEvent;
+
+  @override
+  $Res call({
+    Object? initialConnection = freezed,
+    Object? newGivenName = freezed,
+    Object? newFamilyName = freezed,
+    Object? newPhoneNumber = freezed,
+  }) {
+    return _then(_$FinishActionDetailSheetEvent(
+      initialConnection: initialConnection == freezed
+          ? _value.initialConnection
+          : initialConnection // ignore: cast_nullable_to_non_nullable
+              as Connection?,
+      newGivenName: newGivenName == freezed
+          ? _value.newGivenName
+          : newGivenName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      newFamilyName: newFamilyName == freezed
+          ? _value.newFamilyName
+          : newFamilyName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      newPhoneNumber: newPhoneNumber == freezed
+          ? _value.newPhoneNumber
+          : newPhoneNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+
+  @override
+  $ConnectionCopyWith<$Res>? get initialConnection {
+    if (_value.initialConnection == null) {
+      return null;
+    }
+
+    return $ConnectionCopyWith<$Res>(_value.initialConnection!, (value) {
+      return _then(_value.copyWith(initialConnection: value));
+    });
+  }
 }
 
 /// @nodoc
 
 class _$FinishActionDetailSheetEvent extends FinishActionDetailSheetEvent {
-  const _$FinishActionDetailSheetEvent() : super._();
+  const _$FinishActionDetailSheetEvent(
+      {this.initialConnection,
+      this.newGivenName,
+      this.newFamilyName,
+      this.newPhoneNumber})
+      : super._();
+
+  @override
+  final Connection? initialConnection;
+  @override
+  final String? newGivenName;
+  @override
+  final String? newFamilyName;
+  @override
+  final String? newPhoneNumber;
 
   @override
   String toString() {
-    return 'DetailSheetEvent.finish()';
+    return 'DetailSheetEvent.finish(initialConnection: $initialConnection, newGivenName: $newGivenName, newFamilyName: $newFamilyName, newPhoneNumber: $newPhoneNumber)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FinishActionDetailSheetEvent);
+            other is _$FinishActionDetailSheetEvent &&
+            const DeepCollectionEquality()
+                .equals(other.initialConnection, initialConnection) &&
+            const DeepCollectionEquality()
+                .equals(other.newGivenName, newGivenName) &&
+            const DeepCollectionEquality()
+                .equals(other.newFamilyName, newFamilyName) &&
+            const DeepCollectionEquality()
+                .equals(other.newPhoneNumber, newPhoneNumber));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(initialConnection),
+      const DeepCollectionEquality().hash(newGivenName),
+      const DeepCollectionEquality().hash(newFamilyName),
+      const DeepCollectionEquality().hash(newPhoneNumber));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$FinishActionDetailSheetEventCopyWith<_$FinishActionDetailSheetEvent>
+      get copyWith => __$$FinishActionDetailSheetEventCopyWithImpl<
+          _$FinishActionDetailSheetEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() start,
-    required TResult Function() finish,
+    required TResult Function(Connection? initialConnection,
+            String? newGivenName, String? newFamilyName, String? newPhoneNumber)
+        finish,
   }) {
-    return finish();
+    return finish(
+        initialConnection, newGivenName, newFamilyName, newPhoneNumber);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? start,
-    TResult Function()? finish,
+    TResult Function(Connection? initialConnection, String? newGivenName,
+            String? newFamilyName, String? newPhoneNumber)?
+        finish,
   }) {
-    return finish?.call();
+    return finish?.call(
+        initialConnection, newGivenName, newFamilyName, newPhoneNumber);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? start,
-    TResult Function()? finish,
+    TResult Function(Connection? initialConnection, String? newGivenName,
+            String? newFamilyName, String? newPhoneNumber)?
+        finish,
     required TResult orElse(),
   }) {
     if (finish != null) {
-      return finish();
+      return finish(
+          initialConnection, newGivenName, newFamilyName, newPhoneNumber);
     }
     return orElse();
   }
@@ -289,8 +388,20 @@ class _$FinishActionDetailSheetEvent extends FinishActionDetailSheetEvent {
 }
 
 abstract class FinishActionDetailSheetEvent extends DetailSheetEvent {
-  const factory FinishActionDetailSheetEvent() = _$FinishActionDetailSheetEvent;
+  const factory FinishActionDetailSheetEvent(
+      {final Connection? initialConnection,
+      final String? newGivenName,
+      final String? newFamilyName,
+      final String? newPhoneNumber}) = _$FinishActionDetailSheetEvent;
   const FinishActionDetailSheetEvent._() : super._();
+
+  Connection? get initialConnection;
+  String? get newGivenName;
+  String? get newFamilyName;
+  String? get newPhoneNumber;
+  @JsonKey(ignore: true)
+  _$$FinishActionDetailSheetEventCopyWith<_$FinishActionDetailSheetEvent>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc

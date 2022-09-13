@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$DetailSheetEntity {
-  Connection? get connectionForChange => throw _privateConstructorUsedError;
+  Connection? get connection => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $DetailSheetEntityCopyWith<DetailSheetEntity> get copyWith =>
@@ -28,7 +28,9 @@ abstract class $DetailSheetEntityCopyWith<$Res> {
   factory $DetailSheetEntityCopyWith(
           DetailSheetEntity value, $Res Function(DetailSheetEntity) then) =
       _$DetailSheetEntityCopyWithImpl<$Res>;
-  $Res call({Connection? connectionForChange});
+  $Res call({Connection? connection});
+
+  $ConnectionCopyWith<$Res>? get connection;
 }
 
 /// @nodoc
@@ -42,14 +44,25 @@ class _$DetailSheetEntityCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? connectionForChange = freezed,
+    Object? connection = freezed,
   }) {
     return _then(_value.copyWith(
-      connectionForChange: connectionForChange == freezed
-          ? _value.connectionForChange
-          : connectionForChange // ignore: cast_nullable_to_non_nullable
+      connection: connection == freezed
+          ? _value.connection
+          : connection // ignore: cast_nullable_to_non_nullable
               as Connection?,
     ));
+  }
+
+  @override
+  $ConnectionCopyWith<$Res>? get connection {
+    if (_value.connection == null) {
+      return null;
+    }
+
+    return $ConnectionCopyWith<$Res>(_value.connection!, (value) {
+      return _then(_value.copyWith(connection: value));
+    });
   }
 }
 
@@ -60,7 +73,10 @@ abstract class _$$_DetailSheetEntityCopyWith<$Res>
           $Res Function(_$_DetailSheetEntity) then) =
       __$$_DetailSheetEntityCopyWithImpl<$Res>;
   @override
-  $Res call({Connection? connectionForChange});
+  $Res call({Connection? connection});
+
+  @override
+  $ConnectionCopyWith<$Res>? get connection;
 }
 
 /// @nodoc
@@ -76,12 +92,12 @@ class __$$_DetailSheetEntityCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? connectionForChange = freezed,
+    Object? connection = freezed,
   }) {
     return _then(_$_DetailSheetEntity(
-      connectionForChange: connectionForChange == freezed
-          ? _value.connectionForChange
-          : connectionForChange // ignore: cast_nullable_to_non_nullable
+      connection: connection == freezed
+          ? _value.connection
+          : connection // ignore: cast_nullable_to_non_nullable
               as Connection?,
     ));
   }
@@ -90,14 +106,14 @@ class __$$_DetailSheetEntityCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_DetailSheetEntity implements _DetailSheetEntity {
-  _$_DetailSheetEntity({this.connectionForChange});
+  _$_DetailSheetEntity({this.connection});
 
   @override
-  final Connection? connectionForChange;
+  final Connection? connection;
 
   @override
   String toString() {
-    return 'DetailSheetEntity(connectionForChange: $connectionForChange)';
+    return 'DetailSheetEntity(connection: $connection)';
   }
 
   @override
@@ -106,12 +122,12 @@ class _$_DetailSheetEntity implements _DetailSheetEntity {
         (other.runtimeType == runtimeType &&
             other is _$_DetailSheetEntity &&
             const DeepCollectionEquality()
-                .equals(other.connectionForChange, connectionForChange));
+                .equals(other.connection, connection));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(connectionForChange));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(connection));
 
   @JsonKey(ignore: true)
   @override
@@ -121,11 +137,11 @@ class _$_DetailSheetEntity implements _DetailSheetEntity {
 }
 
 abstract class _DetailSheetEntity implements DetailSheetEntity {
-  factory _DetailSheetEntity({final Connection? connectionForChange}) =
+  factory _DetailSheetEntity({final Connection? connection}) =
       _$_DetailSheetEntity;
 
   @override
-  Connection? get connectionForChange;
+  Connection? get connection;
   @override
   @JsonKey(ignore: true)
   _$$_DetailSheetEntityCopyWith<_$_DetailSheetEntity> get copyWith =>

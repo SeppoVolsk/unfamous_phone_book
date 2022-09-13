@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart' as bloc_concurrency;
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:unfamous_phone_book/domain/contacts_list/connection.dart';
 import 'package:unfamous_phone_book/screens/detail_sheet/detail_sheet_bloc/detail_sheet_repository.dart';
 import 'package:unfamous_phone_book/screens/detail_sheet/detail_sheet_bloc/detailsheetentity.dart';
 
@@ -15,7 +16,11 @@ class DetailSheetEvent with _$DetailSheetEvent {
 
   const factory DetailSheetEvent.start() = StartActionDetailSheetEvent;
 
-  const factory DetailSheetEvent.finish() = FinishActionDetailSheetEvent;
+  const factory DetailSheetEvent.finish(
+      {Connection? initialConnection,
+      String? newGivenName,
+      String? newFamilyName,
+      String? newPhoneNumber}) = FinishActionDetailSheetEvent;
 }
 
 /* DetailSheet States */
@@ -88,8 +93,6 @@ class DetailSheetBLoC extends Bloc<DetailSheetEvent, DetailSheetState>
       print('В DetailSheetBLoC произошла ошибка: $err $stackTrace');
       emit(DetailSheetState.error(data: state.data));
       rethrow;
-    } finally {
-      emit(DetailSheetState.idle(data: state.data));
     }
   }
 
@@ -98,14 +101,18 @@ class DetailSheetBLoC extends Bloc<DetailSheetEvent, DetailSheetState>
       Emitter<DetailSheetState> emit) async {
     try {
       emit(DetailSheetState.processing(data: state.data));
-      //final newData = await _repository.();
-      //emit(DetailSheetState.successful(data: newData));
+      print(
+          'FINISH DETAIL BLOC FUNCTION ${event.newFamilyName} ${event.newGivenName} ${event.newPhoneNumber}');
+      final newData = _repository.changeConnection(
+          initialConnection: event.initialConnection!,
+          newFamilyName: event.newFamilyName,
+          newGivenName: event.newGivenName,
+          newPhoneNumber: event.newPhoneNumber);
+      emit(DetailSheetState.successful(data: newData));
     } on Object catch (err, stackTrace) {
       print('В DetailSheetBLoC произошла ошибка: $err, $stackTrace');
       emit(DetailSheetState.error(data: state.data));
       rethrow;
-    } finally {
-      emit(DetailSheetState.idle(data: state.data));
     }
   }
 

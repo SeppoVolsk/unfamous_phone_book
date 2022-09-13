@@ -45,8 +45,12 @@ class _DetailSheetWidgetState extends State<DetailSheetWidget> {
           IconButton(
             icon: const Icon(Icons.done_outline_sharp),
             onPressed: () {
-              BlocProvider.of<DetailSheetBLoC>(context)
-                  .add(const DetailSheetEvent.finish());
+              BlocProvider.of<DetailSheetBLoC>(context).add(
+                  DetailSheetEvent.finish(
+                      initialConnection: widget.currentConnection,
+                      newFamilyName: familyNameController.text,
+                      newGivenName: givenNameController.text,
+                      newPhoneNumber: phoneNumbersController.text));
               BlocProvider.of<CompletedScreenBLoC>(context)
                   .add(const CompletedScreenEvent.readAllContacts());
             },
@@ -64,18 +68,19 @@ class _DetailSheetInputField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
+        controller: controller,
         decoration: InputDecoration(
-      hintText: hintText,
-      contentPadding: const EdgeInsets.all(10),
-      fillColor: Colors.white,
-      filled: true,
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(16),
-        borderSide: const BorderSide(
-          width: 0,
-          style: BorderStyle.none,
-        ),
-      ),
-    ));
+          hintText: hintText,
+          contentPadding: const EdgeInsets.all(10),
+          fillColor: Colors.white,
+          filled: true,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16),
+            borderSide: const BorderSide(
+              width: 0,
+              style: BorderStyle.none,
+            ),
+          ),
+        ));
   }
 }
