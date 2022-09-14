@@ -17,8 +17,8 @@ class CompletedScreenEvent with _$CompletedScreenEvent {
   const factory CompletedScreenEvent.createContact() =
       CreateCompletedScreenEvent;
 
-  const factory CompletedScreenEvent.readAllContacts() =
-      ReadCompletedScreenEvent;
+  const factory CompletedScreenEvent.readAllContacts(
+      {Connection? addNewConnection}) = ReadCompletedScreenEvent;
 
   const factory CompletedScreenEvent.updateContact(
       Connection? currentConnection) = UpdateCompletedScreenEvent;
@@ -130,7 +130,8 @@ class CompletedScreenBLoC
       Emitter<CompletedScreenState> emit) async {
     try {
       emit(CompletedScreenState.processing(data: state.data));
-      final newData = await _repository.read();
+      final newData =
+          await _repository.read(addNewContact: event.addNewConnection);
       emit(CompletedScreenState.showAllContacts(data: newData));
     } on Object catch (err, stackTrace) {
       print('В CompletedScreenBLoC произошла ошибка: $err, $stackTrace');

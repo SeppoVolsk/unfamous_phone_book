@@ -19,7 +19,7 @@ mixin _$CompletedScreenEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() createContact,
-    required TResult Function() readAllContacts,
+    required TResult Function(Connection? addNewConnection) readAllContacts,
     required TResult Function(Connection? currentConnection) updateContact,
     required TResult Function() deleteContact,
   }) =>
@@ -27,7 +27,7 @@ mixin _$CompletedScreenEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? createContact,
-    TResult Function()? readAllContacts,
+    TResult Function(Connection? addNewConnection)? readAllContacts,
     TResult Function(Connection? currentConnection)? updateContact,
     TResult Function()? deleteContact,
   }) =>
@@ -35,7 +35,7 @@ mixin _$CompletedScreenEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createContact,
-    TResult Function()? readAllContacts,
+    TResult Function(Connection? addNewConnection)? readAllContacts,
     TResult Function(Connection? currentConnection)? updateContact,
     TResult Function()? deleteContact,
     required TResult orElse(),
@@ -131,7 +131,7 @@ class _$CreateCompletedScreenEvent extends CreateCompletedScreenEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() createContact,
-    required TResult Function() readAllContacts,
+    required TResult Function(Connection? addNewConnection) readAllContacts,
     required TResult Function(Connection? currentConnection) updateContact,
     required TResult Function() deleteContact,
   }) {
@@ -142,7 +142,7 @@ class _$CreateCompletedScreenEvent extends CreateCompletedScreenEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? createContact,
-    TResult Function()? readAllContacts,
+    TResult Function(Connection? addNewConnection)? readAllContacts,
     TResult Function(Connection? currentConnection)? updateContact,
     TResult Function()? deleteContact,
   }) {
@@ -153,7 +153,7 @@ class _$CreateCompletedScreenEvent extends CreateCompletedScreenEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createContact,
-    TResult Function()? readAllContacts,
+    TResult Function(Connection? addNewConnection)? readAllContacts,
     TResult Function(Connection? currentConnection)? updateContact,
     TResult Function()? deleteContact,
     required TResult orElse(),
@@ -212,6 +212,9 @@ abstract class _$$ReadCompletedScreenEventCopyWith<$Res> {
   factory _$$ReadCompletedScreenEventCopyWith(_$ReadCompletedScreenEvent value,
           $Res Function(_$ReadCompletedScreenEvent) then) =
       __$$ReadCompletedScreenEventCopyWithImpl<$Res>;
+  $Res call({Connection? addNewConnection});
+
+  $ConnectionCopyWith<$Res>? get addNewConnection;
 }
 
 /// @nodoc
@@ -225,61 +228,97 @@ class __$$ReadCompletedScreenEventCopyWithImpl<$Res>
   @override
   _$ReadCompletedScreenEvent get _value =>
       super._value as _$ReadCompletedScreenEvent;
+
+  @override
+  $Res call({
+    Object? addNewConnection = freezed,
+  }) {
+    return _then(_$ReadCompletedScreenEvent(
+      addNewConnection: addNewConnection == freezed
+          ? _value.addNewConnection
+          : addNewConnection // ignore: cast_nullable_to_non_nullable
+              as Connection?,
+    ));
+  }
+
+  @override
+  $ConnectionCopyWith<$Res>? get addNewConnection {
+    if (_value.addNewConnection == null) {
+      return null;
+    }
+
+    return $ConnectionCopyWith<$Res>(_value.addNewConnection!, (value) {
+      return _then(_value.copyWith(addNewConnection: value));
+    });
+  }
 }
 
 /// @nodoc
 
 class _$ReadCompletedScreenEvent extends ReadCompletedScreenEvent {
-  const _$ReadCompletedScreenEvent() : super._();
+  const _$ReadCompletedScreenEvent({this.addNewConnection}) : super._();
+
+  @override
+  final Connection? addNewConnection;
 
   @override
   String toString() {
-    return 'CompletedScreenEvent.readAllContacts()';
+    return 'CompletedScreenEvent.readAllContacts(addNewConnection: $addNewConnection)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ReadCompletedScreenEvent);
+            other is _$ReadCompletedScreenEvent &&
+            const DeepCollectionEquality()
+                .equals(other.addNewConnection, addNewConnection));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(addNewConnection));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$ReadCompletedScreenEventCopyWith<_$ReadCompletedScreenEvent>
+      get copyWith =>
+          __$$ReadCompletedScreenEventCopyWithImpl<_$ReadCompletedScreenEvent>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() createContact,
-    required TResult Function() readAllContacts,
+    required TResult Function(Connection? addNewConnection) readAllContacts,
     required TResult Function(Connection? currentConnection) updateContact,
     required TResult Function() deleteContact,
   }) {
-    return readAllContacts();
+    return readAllContacts(addNewConnection);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? createContact,
-    TResult Function()? readAllContacts,
+    TResult Function(Connection? addNewConnection)? readAllContacts,
     TResult Function(Connection? currentConnection)? updateContact,
     TResult Function()? deleteContact,
   }) {
-    return readAllContacts?.call();
+    return readAllContacts?.call(addNewConnection);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createContact,
-    TResult Function()? readAllContacts,
+    TResult Function(Connection? addNewConnection)? readAllContacts,
     TResult Function(Connection? currentConnection)? updateContact,
     TResult Function()? deleteContact,
     required TResult orElse(),
   }) {
     if (readAllContacts != null) {
-      return readAllContacts();
+      return readAllContacts(addNewConnection);
     }
     return orElse();
   }
@@ -323,8 +362,14 @@ class _$ReadCompletedScreenEvent extends ReadCompletedScreenEvent {
 }
 
 abstract class ReadCompletedScreenEvent extends CompletedScreenEvent {
-  const factory ReadCompletedScreenEvent() = _$ReadCompletedScreenEvent;
+  const factory ReadCompletedScreenEvent({final Connection? addNewConnection}) =
+      _$ReadCompletedScreenEvent;
   const ReadCompletedScreenEvent._() : super._();
+
+  Connection? get addNewConnection;
+  @JsonKey(ignore: true)
+  _$$ReadCompletedScreenEventCopyWith<_$ReadCompletedScreenEvent>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -411,7 +456,7 @@ class _$UpdateCompletedScreenEvent extends UpdateCompletedScreenEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() createContact,
-    required TResult Function() readAllContacts,
+    required TResult Function(Connection? addNewConnection) readAllContacts,
     required TResult Function(Connection? currentConnection) updateContact,
     required TResult Function() deleteContact,
   }) {
@@ -422,7 +467,7 @@ class _$UpdateCompletedScreenEvent extends UpdateCompletedScreenEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? createContact,
-    TResult Function()? readAllContacts,
+    TResult Function(Connection? addNewConnection)? readAllContacts,
     TResult Function(Connection? currentConnection)? updateContact,
     TResult Function()? deleteContact,
   }) {
@@ -433,7 +478,7 @@ class _$UpdateCompletedScreenEvent extends UpdateCompletedScreenEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createContact,
-    TResult Function()? readAllContacts,
+    TResult Function(Connection? addNewConnection)? readAllContacts,
     TResult Function(Connection? currentConnection)? updateContact,
     TResult Function()? deleteContact,
     required TResult orElse(),
@@ -539,7 +584,7 @@ class _$DeleteCompletedScreenEvent extends DeleteCompletedScreenEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() createContact,
-    required TResult Function() readAllContacts,
+    required TResult Function(Connection? addNewConnection) readAllContacts,
     required TResult Function(Connection? currentConnection) updateContact,
     required TResult Function() deleteContact,
   }) {
@@ -550,7 +595,7 @@ class _$DeleteCompletedScreenEvent extends DeleteCompletedScreenEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? createContact,
-    TResult Function()? readAllContacts,
+    TResult Function(Connection? addNewConnection)? readAllContacts,
     TResult Function(Connection? currentConnection)? updateContact,
     TResult Function()? deleteContact,
   }) {
@@ -561,7 +606,7 @@ class _$DeleteCompletedScreenEvent extends DeleteCompletedScreenEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? createContact,
-    TResult Function()? readAllContacts,
+    TResult Function(Connection? addNewConnection)? readAllContacts,
     TResult Function(Connection? currentConnection)? updateContact,
     TResult Function()? deleteContact,
     required TResult orElse(),

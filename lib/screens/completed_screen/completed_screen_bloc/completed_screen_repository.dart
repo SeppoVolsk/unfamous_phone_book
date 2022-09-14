@@ -13,10 +13,11 @@ class ICompletedScreenRepository {
   final cache = CacheManager();
   ContactsList? contactsList;
 
-  Future<CompletedScreenEntity> read() async {
-    print('USER ID: \n ${_user.id}');
-
+  Future<CompletedScreenEntity> read({Connection? addNewContact}) async {
     contactsList ??= await _firstContactsListReading();
+    if (addNewContact != null) {
+      _addNewConnectionToContactsList(addNewContact);
+    }
 
     return CompletedScreenEntity(contactsList: contactsList);
   }
@@ -41,7 +42,11 @@ class ICompletedScreenRepository {
     return ContactsList.fromJson(contactsJson!);
   }
 
-  void _refreshContactsList({int? indexForChange}) {
-    final connectionForChange = contactsList?.connections?[indexForChange ?? 0];
+  void _addNewConnectionToContactsList(Connection newConection) {
+    final searchId = newConection.names?.first.metadata?.source?.id;
+    final connectionForRefresh = contactsList?.connections?.singleWhere(
+        (element) => element.names?.first.metadata?.source?.id == searchId);
+    print(
+        'SEARCH ID: $searchId FOR REFRESH: ${connectionForRefresh?.names?.first.metadata?.source?.id}');
   }
 }
