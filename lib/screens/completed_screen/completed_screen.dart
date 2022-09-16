@@ -42,11 +42,26 @@ class _CompletedScreenState extends State<CompletedScreen> {
           appBar: CompletedScreenAppBar(searchController: _searchController),
           floatingActionButton: const AddContactButton(),
           body: BlocBuilder<CompletedScreenBLoC, CompletedScreenState>(
-            builder: (context, state) => Stack(children: [
-              ContactsScrollWidget(
-                searchController: _searchController,
+            builder: (context, completedState) => Stack(children: [
+              BlocListener<DetailSheetBLoC, DetailSheetState>(
+                listener: (context, detailState) {
+                  if (detailState is SuccessfulDetailSheetState) {
+                    final newContactToBeAdded =
+                        BlocProvider.of<DetailSheetBLoC>(context)
+                            .state
+                            .data
+                            .connection;
+                    print('####### I SEE A NEW CONTACT $newContactToBeAdded');
+                    BlocProvider.of<CompletedScreenBLoC>(context).add(
+                        CompletedScreenEvent.readAllContacts(
+                            addNewConnection: newContactToBeAdded));
+                  }
+                },
+                child: ContactsScrollWidget(
+                  searchController: _searchController,
+                ),
               ),
-              state.maybeMap(
+              completedState.maybeMap(
                 createContact: (_) => Center(child: DetailSheetWidget()),
                 updateContact: (state) => Center(
                   child: DetailSheetWidget(

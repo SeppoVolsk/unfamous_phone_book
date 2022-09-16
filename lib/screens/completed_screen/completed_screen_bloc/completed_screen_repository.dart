@@ -15,6 +15,7 @@ class ICompletedScreenRepository {
 
   Future<CompletedScreenEntity> read({Connection? addNewContact}) async {
     contactsList ??= await _firstContactsListReading();
+    print('NEW CONTACT $addNewContact');
     if (addNewContact != null) {
       _addNewConnectionToContactsList(addNewContact);
     }
@@ -48,5 +49,14 @@ class ICompletedScreenRepository {
         (element) => element.names?.first.metadata?.source?.id == searchId);
     print(
         'SEARCH ID: $searchId FOR REFRESH: ${connectionForRefresh?.names?.first.metadata?.source?.id}');
+    final connectionIndex =
+        contactsList?.connections?.indexOf(connectionForRefresh!);
+    print('CONNECTION INDEX $connectionIndex');
+    List<Connection> tempConnectionsList =
+        List.from(contactsList!.connections!);
+    tempConnectionsList
+      ..remove(connectionForRefresh)
+      ..insert(connectionIndex ?? 0, newConection);
+    contactsList = contactsList?.copyWith(connections: tempConnectionsList);
   }
 }

@@ -51,14 +51,7 @@ class _DetailSheetWidgetState extends State<DetailSheetWidget> {
                       newFamilyName: familyNameController.text,
                       newGivenName: givenNameController.text,
                       newPhoneNumber: phoneNumbersController.text));
-              final newContactToBeAdded =
-                  BlocProvider.of<DetailSheetBLoC>(context)
-                      .state
-                      .data
-                      .connection;
-              BlocProvider.of<CompletedScreenBLoC>(context).add(
-                  CompletedScreenEvent.readAllContacts(
-                      addNewConnection: newContactToBeAdded));
+              var newContactToBeAdded;
             },
           ),
         ])));
