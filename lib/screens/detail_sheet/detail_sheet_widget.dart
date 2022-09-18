@@ -51,7 +51,6 @@ class _DetailSheetWidgetState extends State<DetailSheetWidget> {
                       newFamilyName: familyNameController.text,
                       newGivenName: givenNameController.text,
                       newPhoneNumber: phoneNumbersController.text));
-              var newContactToBeAdded;
             },
           ),
         ])));

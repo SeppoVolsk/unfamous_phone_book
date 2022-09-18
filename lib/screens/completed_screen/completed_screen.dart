@@ -51,7 +51,7 @@ class _CompletedScreenState extends State<CompletedScreen> {
                             .state
                             .data
                             .connection;
-                    print('####### I SEE A NEW CONTACT $newContactToBeAdded');
+
                     BlocProvider.of<CompletedScreenBLoC>(context).add(
                         CompletedScreenEvent.readAllContacts(
                             addNewConnection: newContactToBeAdded));

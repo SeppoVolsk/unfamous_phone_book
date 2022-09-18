@@ -12,20 +12,30 @@ class IDetailSheetRepository {
   final _modifiedPhoneNumbers = <PhoneNumber>[];
 
   DetailSheetEntity changeConnection(
-      {required Connection initialConnection,
+      {required Connection? initialConnection,
       String? newGivenName,
       String? newFamilyName,
       String? newPhoneNumber}) {
     print(
         'Change Connection Function: $newGivenName $newFamilyName $newPhoneNumber');
-    _modifiedNames.add(initialConnection.names!.first
-        .copyWith(givenName: newGivenName, familyName: newFamilyName));
-    _modifiedPhoneNumbers.add(
-        initialConnection.phoneNumbers!.first.copyWith(value: newPhoneNumber));
+    if (initialConnection != null) {
+      _modifiedNames.add(initialConnection.names!.first
+          .copyWith(givenName: newGivenName, familyName: newFamilyName));
+      _modifiedPhoneNumbers.add(initialConnection.phoneNumbers!.first
+          .copyWith(value: newPhoneNumber));
 
-    _modifiedConnection = initialConnection.copyWith(
-        names: _modifiedNames, phoneNumbers: _modifiedPhoneNumbers);
-    print('Изменённый коннекшн: $_modifiedConnection');
+      _modifiedConnection = initialConnection.copyWith(
+          names: _modifiedNames, phoneNumbers: _modifiedPhoneNumbers);
+      print('Изменённый коннекшн: $_modifiedConnection');
+    } else {
+      _modifiedConnection?.names?.first.givenName;
+      _modifiedNames.add(
+          Name().copyWith(givenName: newGivenName, familyName: newFamilyName));
+
+      _modifiedPhoneNumbers.add(PhoneNumber().copyWith(value: newPhoneNumber));
+      _modifiedConnection = Connection()
+          .copyWith(names: _modifiedNames, phoneNumbers: _modifiedPhoneNumbers);
+    }
     return DetailSheetEntity(connection: _modifiedConnection);
   }
 }

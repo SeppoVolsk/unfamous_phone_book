@@ -75,20 +75,22 @@ class ContactCard extends StatefulWidget {
 class _ContactCardState extends State<ContactCard> {
   @override
   Widget build(BuildContext context) {
-    final data = widget.connection!;
-    final contactHasDefaultPhoto = data.photos?[0].photoDefault == true;
+    final data = widget.connection;
+    final contactHasNoPhoto =
+        data?.photos?[0].photoDefault == true || data?.photos == null;
 
     return data != null
         ? InkWell(
             child: ListTile(
             leading: CircleAvatar(
               backgroundColor: UiAssets.randomColor(),
-              backgroundImage: contactHasDefaultPhoto
+              backgroundImage: contactHasNoPhoto
                   ? AssetImage(UiAssets.randomAvatar())
                   : CachedNetworkImageProvider(data.photos![0].url!)
                       as ImageProvider,
             ),
-            title: Text('${data.names?[0].displayNameLastFirst}'),
+            title: Text(
+                '${data.names?[0].givenName} ${data.names?[0].familyName}'),
             subtitle: Text('${data.phoneNumbers?[0].value}'),
             trailing: const Icon(Icons.phone_enabled),
             onTap: () {

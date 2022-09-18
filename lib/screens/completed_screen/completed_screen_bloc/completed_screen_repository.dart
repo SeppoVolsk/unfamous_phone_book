@@ -43,20 +43,27 @@ class ICompletedScreenRepository {
     return ContactsList.fromJson(contactsJson!);
   }
 
-  void _addNewConnectionToContactsList(Connection newConection) {
-    final searchId = newConection.names?.first.metadata?.source?.id;
-    final connectionForRefresh = contactsList?.connections?.singleWhere(
-        (element) => element.names?.first.metadata?.source?.id == searchId);
-    print(
-        'SEARCH ID: $searchId FOR REFRESH: ${connectionForRefresh?.names?.first.metadata?.source?.id}');
-    final connectionIndex =
-        contactsList?.connections?.indexOf(connectionForRefresh!);
-    print('CONNECTION INDEX $connectionIndex');
+  void _addNewConnectionToContactsList(Connection newConnection) {
+    final bool isItAbsolutelyNewConnection = newConnection.resourceName == null;
     List<Connection> tempConnectionsList =
         List.from(contactsList!.connections!);
-    tempConnectionsList
-      ..remove(connectionForRefresh)
-      ..insert(connectionIndex ?? 0, newConection);
+    if (isItAbsolutelyNewConnection) {
+      tempConnectionsList.insert(0, newConnection);
+    } else {
+      final searchId = newConnection.names?.first.metadata?.source?.id;
+      final connectionForRefresh = contactsList?.connections?.singleWhere(
+          (element) => element.names?.first.metadata?.source?.id == searchId);
+      print(
+          'SEARCH ID: $searchId FOR REFRESH: ${connectionForRefresh?.names?.first.metadata?.source?.id}');
+      final connectionIndex =
+          contactsList?.connections?.indexOf(connectionForRefresh!);
+      print('CONNECTION INDEX $connectionIndex');
+
+      tempConnectionsList
+        ..remove(connectionForRefresh)
+        ..insert(connectionIndex ?? 0, newConnection);
+    }
+
     contactsList = contactsList?.copyWith(connections: tempConnectionsList);
   }
 }
