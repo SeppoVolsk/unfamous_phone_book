@@ -99,6 +99,8 @@ class _ContactCardState extends State<ContactCard> {
               BlocProvider.of<DetailSheetBLoC>(context)
                   .add(const DetailSheetEvent.start());
             },
+            onLongPress: () => BlocProvider.of<CompletedScreenBLoC>(context)
+                .add(const CompletedScreenEvent.deleteContact()),
           ))
         : const Text('Не удалось загрузить данные контакта');
   }

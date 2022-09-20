@@ -11,6 +11,7 @@ import 'package:unfamous_phone_book/screens/detail_sheet/detail_sheet_bloc/detai
 import 'package:unfamous_phone_book/screens/detail_sheet/detail_sheet_bloc/detail_sheet_repository.dart';
 import 'package:unfamous_phone_book/screens/detail_sheet/detail_sheet_widget.dart';
 import 'package:unfamous_phone_book/screens/enter_screen/enter_screen_bloc/enter_screen_bloc.dart';
+import 'package:unfamous_phone_book/screens/remove_sheet/remove_sheet_widget.dart';
 import 'package:unfamous_phone_book/ui_components.dart';
 
 class CompletedScreen extends StatefulWidget {
@@ -68,6 +69,7 @@ class _CompletedScreenState extends State<CompletedScreen> {
                     currentConnection: state.data.currentConnection,
                   ),
                 ),
+                deleteContact: (_) => Center(child: RemoveSheetWidget()),
                 orElse: () => const SizedBox.shrink(),
               )
             ]),
