@@ -52,7 +52,7 @@ class EnterScreenState with _$EnterScreenState {
   /// Successful
   const factory EnterScreenState.notEntered({
     required final EnterScreenEntity data,
-    @Default('Not enteref') final String message,
+    @Default('Not entered') final String message,
   }) = SuccessfulEnterScreenState;
 
   /// An error has occurred

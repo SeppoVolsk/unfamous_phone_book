@@ -6,7 +6,7 @@ import 'dart:convert' show json;
 import 'package:unfamous_phone_book/data/google_api_client/google_api_client.dart';
 import 'package:unfamous_phone_book/domain/contacts_list/contacts_list.dart';
 
-/*
+/*====================================================================
 Получаем SHA1 ключ:
 cd android
 .\gradlew signinReport
@@ -14,13 +14,13 @@ cd android
 Создаём OAuth 2.0 Client ID в GoogleClouds.
 
 clientId: 405640864065-md0l5rmma6ajimg6mvifpvfoicjf9qgg.apps.googleusercontent.com
-*/
+========================================================================*/
 
 // GoogleSignInAccount? _currentUser;
 
 GoogleSignIn _googleSignIn = GoogleSignIn(
   // Optional clientId
-  // clientId: '40564...........apps.googleusercontent.com',
+  clientId: '688220728479-or3du188u9a72o24dc7f0ohq29msrpma.apps.googleusercontent.com',
   scopes: <String>[
     'email',
     'https://www.googleapis.com/auth/contacts.readonly',

@@ -10,7 +10,7 @@ class CacheManager {
   static SharedPreferences? _prefs;
 
   CacheManager._();
-  factory CacheManager() => _instance;
+  //factory CacheManager() => _instance;
 
   bool get isReady => _dir == null || _prefs == null ? false : true;
   bool get isEmpty {
@@ -21,6 +21,15 @@ class CacheManager {
   Future<void> init() async {
     _dir = await getApplicationDocumentsDirectory();
     _prefs = await SharedPreferences.getInstance();
+  }
+
+  ///getIt version
+  ///
+  CacheManager();
+  Future<CacheManager> initGetIt() async {
+    _dir = await getApplicationDocumentsDirectory();
+    _prefs = await SharedPreferences.getInstance();
+    return this;
   }
 
   Future<File> urlToFile(

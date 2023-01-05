@@ -924,7 +924,7 @@ class __$$SuccessfulEnterScreenStateCopyWithImpl<$Res>
 
 class _$SuccessfulEnterScreenState extends SuccessfulEnterScreenState {
   const _$SuccessfulEnterScreenState(
-      {required this.data, this.message = 'Not enteref'})
+      {required this.data, this.message = 'Not entered'})
       : super._();
 
   @override
