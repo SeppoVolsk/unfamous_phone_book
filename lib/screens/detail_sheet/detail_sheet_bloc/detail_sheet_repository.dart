@@ -7,35 +7,33 @@ import 'package:unfamous_phone_book/domain/contacts_list/phone_number.dart';
 import 'package:unfamous_phone_book/screens/detail_sheet/detail_sheet_bloc/detailsheetentity.dart';
 
 class IDetailSheetRepository {
-  Connection? _modifiedConnection;
-  final _modifiedNames = <Name>[];
-  final _modifiedPhoneNumbers = <PhoneNumber>[];
+  Connection? modifiedConnection;
 
   DetailSheetEntity changeConnection(
       {required Connection? initialConnection,
       String? newGivenName,
       String? newFamilyName,
       String? newPhoneNumber}) {
-    print(
-        'Change Connection Function: $newGivenName $newFamilyName $newPhoneNumber');
+    final modifiedNames = <Name>[];
+    final modifiedPhoneNumbers = <PhoneNumber>[];
     if (initialConnection != null) {
-      _modifiedNames.add(initialConnection.names!.first
+      modifiedNames.add(initialConnection.names!.first
           .copyWith(givenName: newGivenName, familyName: newFamilyName));
-      _modifiedPhoneNumbers.add(initialConnection.phoneNumbers!.first
+      modifiedPhoneNumbers.add(initialConnection.phoneNumbers!.first
           .copyWith(value: newPhoneNumber));
 
-      _modifiedConnection = initialConnection.copyWith(
-          names: _modifiedNames, phoneNumbers: _modifiedPhoneNumbers);
-      print('Изменённый коннекшн: $_modifiedConnection');
+      modifiedConnection = initialConnection.copyWith(
+          names: modifiedNames, phoneNumbers: modifiedPhoneNumbers);
+      print('Изменённый коннекшн: $modifiedConnection');
     } else {
-      _modifiedConnection?.names?.first.givenName;
-      _modifiedNames.add(
+      modifiedConnection?.names?.first.givenName;
+      modifiedNames.add(
           Name().copyWith(givenName: newGivenName, familyName: newFamilyName));
 
-      _modifiedPhoneNumbers.add(PhoneNumber().copyWith(value: newPhoneNumber));
-      _modifiedConnection = Connection()
-          .copyWith(names: _modifiedNames, phoneNumbers: _modifiedPhoneNumbers);
+      modifiedPhoneNumbers.add(PhoneNumber().copyWith(value: newPhoneNumber));
+      modifiedConnection = Connection()
+          .copyWith(names: modifiedNames, phoneNumbers: modifiedPhoneNumbers);
     }
-    return DetailSheetEntity(connection: _modifiedConnection);
+    return DetailSheetEntity(connection: modifiedConnection);
   }
 }

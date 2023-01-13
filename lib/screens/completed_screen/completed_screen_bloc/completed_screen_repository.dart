@@ -8,9 +8,10 @@ import 'package:unfamous_phone_book/domain/service_locator/service_locator.dart'
 import 'package:unfamous_phone_book/screens/completed_screen/completed_screen_bloc/completedscreenentity.dart';
 
 class ICompletedScreenRepository {
+  ICompletedScreenRepository.noUser();
   ICompletedScreenRepository({required GoogleSignInAccount user})
       : _user = user;
-  final GoogleSignInAccount _user;
+  dynamic _user;
   //final cache = CacheManager();
   ContactsList? contactsList;
 
@@ -18,7 +19,7 @@ class ICompletedScreenRepository {
     contactsList ??= await _firstContactsListReading();
     print('NEW CONTACT $addNewContact');
     if (addNewContact != null) {
-      _addNewConnectionToContactsList(addNewContact);
+      addNewConnectionToContactsList(addNewContact);
     }
 
     return CompletedScreenEntity(contactsList: contactsList);
@@ -44,27 +45,29 @@ class ICompletedScreenRepository {
     return ContactsList.fromJson(contactsJson!);
   }
 
-  void _addNewConnectionToContactsList(Connection newConnection) {
+  void addNewConnectionToContactsList(Connection newConnection) {
     final bool isItAbsolutelyNewConnection = newConnection.resourceName == null;
-    List<Connection> tempConnectionsList =
-        List.from(contactsList!.connections!);
+    List<Connection>? tempConnectionsList;
+
+    tempConnectionsList = List.from(contactsList!.connections!);
+
     if (isItAbsolutelyNewConnection) {
       tempConnectionsList.insert(0, newConnection);
     } else {
       final searchId = newConnection.names?.first.metadata?.source?.id;
+
       final connectionForRefresh = contactsList?.connections?.singleWhere(
           (element) => element.names?.first.metadata?.source?.id == searchId);
-      print(
-          'SEARCH ID: $searchId FOR REFRESH: ${connectionForRefresh?.names?.first.metadata?.source?.id}');
+
       final connectionIndex =
           contactsList?.connections?.indexOf(connectionForRefresh!);
-      print('CONNECTION INDEX $connectionIndex');
 
-      tempConnectionsList
-        ..remove(connectionForRefresh)
-        ..insert(connectionIndex ?? 0, newConnection);
+      final removeConnection = tempConnectionsList.remove(connectionForRefresh);
+
+      tempConnectionsList.insert(connectionIndex ?? 0, newConnection);
     }
 
     contactsList = contactsList?.copyWith(connections: tempConnectionsList);
+    //tempConnectionsList.clear();
   }
 }

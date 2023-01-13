@@ -5,7 +5,7 @@ class SimpleBlocObserver extends BlocObserver {
   @override
   void onEvent(Bloc bloc, Object? event) {
     super.onEvent(bloc, event);
-    debugPrint('$event');
+    debugPrint('EVENT WORKS $event');
   }
 
   @override
@@ -18,6 +18,6 @@ class SimpleBlocObserver extends BlocObserver {
   void onChange(BlocBase bloc, Change change) {
     super.onChange(bloc, change);
     debugPrint('CURRENT STATE: \n ${change.currentState}');
-    debugPrint('NEXT STATE: \n ${change.nextState}');
+    //debugPrint('NEXT STATE: \n ${change.nextState}');
   }
 }

@@ -49,15 +49,14 @@ class _ContactsScrollWidgetState extends State<ContactsScrollWidget> {
   Widget build(BuildContext context) {
     return BlocBuilder<CompletedScreenBLoC, CompletedScreenState>(
         builder: (context, state) {
-      final contactsList = state.data.contactsList;
-      return contactsList != null
+      return state.data.contactsList != null
           ? ListView.builder(
-              itemCount: _filteredContacts?.connections?.length,
+              //itemCount:
               itemBuilder: ((context, index) {
-                return ContactCard(
-                    connection: _filteredContacts?.connections?[index] ??
-                        contactsList.connections?[index]);
-              }))
+              return ContactCard(
+                  connection: _filteredContacts?.connections?[index] ??
+                      state.data.contactsList?.connections?[index]);
+            }))
           : const SizedBox.shrink();
     });
   }
@@ -75,27 +74,29 @@ class ContactCard extends StatefulWidget {
 class _ContactCardState extends State<ContactCard> {
   @override
   Widget build(BuildContext context) {
-    final data = widget.connection;
-    final contactHasNoPhoto =
-        data?.photos?[0].photoDefault == true || data?.photos == null;
+    final dataToShow = widget.connection;
 
-    return data != null
+    final contactHasNoPhoto = dataToShow?.photos?[0].photoDefault == true ||
+        dataToShow?.photos == null;
+
+    return dataToShow != null
         ? InkWell(
             child: ListTile(
             leading: CircleAvatar(
               backgroundColor: UiAssets.randomColor(),
               backgroundImage: contactHasNoPhoto
                   ? AssetImage(UiAssets.randomAvatar())
-                  : CachedNetworkImageProvider(data.photos![0].url!)
+                  : CachedNetworkImageProvider(dataToShow.photos![0].url!)
                       as ImageProvider,
             ),
             title: Text(
-                '${data.names?[0].givenName} ${data.names?[0].familyName}'),
-            subtitle: Text('${data.phoneNumbers?[0].value}'),
+                '${dataToShow.names?[0].givenName} ${dataToShow.names?[0].familyName}'),
+            subtitle: Text('${dataToShow.phoneNumbers?[0].value}'),
             trailing: const Icon(Icons.phone_enabled),
             onTap: () {
               BlocProvider.of<CompletedScreenBLoC>(context)
-                  .add(CompletedScreenEvent.updateContact(widget.connection));
+                  .add(CompletedScreenEvent.updateContact(dataToShow));
+              print('SEND TO UPDATE ${dataToShow.names?.first.givenName}');
               BlocProvider.of<DetailSheetBLoC>(context)
                   .add(const DetailSheetEvent.start());
             },

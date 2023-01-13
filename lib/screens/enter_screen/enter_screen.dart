@@ -14,17 +14,20 @@ class EnterScreen extends StatelessWidget {
       return state.map(
         loginCompleted: (state) => CompletedScreen(),
         processing: (_) => const CircularProgressIndicator(),
-        notEntered: (_) => Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            const Text('You are not currently signed in.'),
-            ElevatedButton(
-              onPressed: () => context
-                  .read<EnterScreenBLoC>()
-                  .add(const EnterScreenEvent.logIn()),
-              child: const Text('SIGN IN'),
-            ),
-          ],
+        notEntered: (_) => Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              const Text('You are not currently signed in.'),
+              ElevatedButton(
+                onPressed: () => context
+                    .read<EnterScreenBLoC>()
+                    .add(const EnterScreenEvent.logIn()),
+                child: const Text('SIGN IN'),
+              ),
+            ],
+          ),
         ),
         error: (_) => const Center(child: Text('ERROR STATE')),
       );
