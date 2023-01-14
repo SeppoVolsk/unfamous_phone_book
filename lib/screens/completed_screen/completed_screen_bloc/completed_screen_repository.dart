@@ -17,7 +17,6 @@ class ICompletedScreenRepository {
 
   Future<CompletedScreenEntity> read({Connection? addNewContact}) async {
     contactsList ??= await _firstContactsListReading();
-    print('NEW CONTACT $addNewContact');
     if (addNewContact != null) {
       addNewConnectionToContactsList(addNewContact);
     }
@@ -38,7 +37,6 @@ class ICompletedScreenRepository {
       await serviceLocator<CacheManager>()
           .write(key: _user.id, data: contactsJson as Map<String, dynamic>);
     } else {
-      print('CACHE IS EXIST');
       final jsonString = serviceLocator<CacheManager>().read(key: _user.id);
       contactsJson = jsonDecode(jsonString!);
     }

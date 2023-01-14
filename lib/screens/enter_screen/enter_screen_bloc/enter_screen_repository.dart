@@ -31,8 +31,6 @@ class IEnterScreenRepository {
   }
 
   Future<EnterScreenEntity> logIn() async {
-    print('LogIn Repo User $_currentUser');
-
     try {
       await _googleSignIn.signIn();
     } catch (error) {
@@ -43,7 +41,6 @@ class IEnterScreenRepository {
 
   Future<EnterScreenEntity> logOut() async {
     await _googleSignIn.disconnect();
-    print('LogOut');
     await serviceLocator<CacheManager>().delete(key: _currentUser!.id);
     await serviceLocator<CacheManager>().clearDirectory();
     // await cache.delete(key: _currentUser!.id);

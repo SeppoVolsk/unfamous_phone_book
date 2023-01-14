@@ -1,8 +1,5 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:unfamous_phone_book/domain/contacts_list/connection.dart';
-import 'package:unfamous_phone_book/domain/contacts_list/contacts_list.dart';
 import 'package:unfamous_phone_book/screens/completed_screen/completed_screen_appbar.dart';
 import 'package:unfamous_phone_book/screens/completed_screen/completed_screen_bloc/completed_screen_bloc.dart';
 import 'package:unfamous_phone_book/screens/completed_screen/completed_screen_bloc/completed_screen_repository.dart';

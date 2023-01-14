@@ -5,7 +5,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CacheManager {
-  static final CacheManager _instance = CacheManager._();
+  //static final CacheManager _instance = CacheManager._();
   static Directory? _dir;
   static SharedPreferences? _prefs;
 
@@ -35,7 +35,6 @@ class CacheManager {
   Future<File> urlToFile(
       {required String imageUrl, required String fileName}) async {
     File file = File('${_dir?.path}/$fileName${_Values.pngFileEnding}');
-    print(file.path);
     final url = Uri.parse(imageUrl);
     final request = await get(url);
     await file.writeAsBytes(request.bodyBytes);
@@ -51,7 +50,6 @@ class CacheManager {
       case Map<String, dynamic>:
         String jsonString = jsonEncode(data);
         await _prefs?.setString(key, jsonString);
-        print('CACHE WRITE $jsonString');
         break;
       default:
     }
@@ -61,9 +59,6 @@ class CacheManager {
   Future<Iterable<File>?> getFilesInDirectory() async {
     final List<FileSystemEntity>? dirEntities = await _dir?.list().toList();
     final files = dirEntities?.whereType<File>();
-    print('''GET FILES IN DIR FUNC: 
-             all files paths: 
-             $files''');
     final jpgFiles = files?.where((file) {
       return file.path.substring(file.path.length - 3) == _Values.pngFileEnding;
     });
@@ -76,7 +71,6 @@ class CacheManager {
 
   Future<void> clearDirectory() async {
     await _dir?.delete(recursive: true);
-    print('DIRECTORY WAS DELETED');
   }
 }
 

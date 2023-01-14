@@ -101,9 +101,6 @@ class DetailSheetBLoC extends Bloc<DetailSheetEvent, DetailSheetState>
       Emitter<DetailSheetState> emit) async {
     try {
       emit(DetailSheetState.processing(data: state.data));
-      print(
-          'FINISH DETAIL BLOC FUNCTION ${event.newFamilyName} ${event.newGivenName} ${event.newPhoneNumber}');
-
       final newData = _repository.changeConnection(
           initialConnection: event.initialConnection,
           newFamilyName: event.newFamilyName,

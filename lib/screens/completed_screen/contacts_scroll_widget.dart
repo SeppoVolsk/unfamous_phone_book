@@ -8,7 +8,7 @@ import 'package:unfamous_phone_book/screens/detail_sheet/detail_sheet_bloc/detai
 import 'package:unfamous_phone_book/ui_components.dart';
 
 class ContactsScrollWidget extends StatefulWidget {
-  ContactsScrollWidget({Key? key, required this.searchController})
+  const ContactsScrollWidget({Key? key, required this.searchController})
       : super(key: key);
   final TextEditingController searchController;
   @override
@@ -22,20 +22,16 @@ class _ContactsScrollWidgetState extends State<ContactsScrollWidget> {
     final searchQuery = widget.searchController.text;
     final fullContactsList =
         context.read<CompletedScreenBLoC>().state.data.contactsList;
-    print('Фильтрованные контакты: ${_filteredContacts?.connections?.length}');
+
     if (searchQuery.isNotEmpty) {
       _filteredContacts = fullContactsList?.copyWith(
           connections: fullContactsList.connections!.where((connection) {
         return connection.names?.first.displayName?.contains(searchQuery) ??
             false;
       }).toList());
-      print(
-          'SearchQuery filteredContact найдено ${_filteredContacts?.connections?.length}');
     } else {
-      print('ELSE');
       _filteredContacts = fullContactsList;
     }
-    print('Filterd Contacts ${_filteredContacts?.connections?.length}');
     setState(() {});
   }
 
@@ -63,9 +59,9 @@ class _ContactsScrollWidgetState extends State<ContactsScrollWidget> {
 }
 
 class ContactCard extends StatefulWidget {
-  Connection? connection;
+  final Connection? connection;
 
-  ContactCard({Key? key, required this.connection}) : super(key: key);
+  const ContactCard({Key? key, required this.connection}) : super(key: key);
 
   @override
   State<ContactCard> createState() => _ContactCardState();
@@ -90,13 +86,14 @@ class _ContactCardState extends State<ContactCard> {
                       as ImageProvider,
             ),
             title: Text(
-                '${dataToShow.names?[0].givenName} ${dataToShow.names?[0].familyName}'),
-            subtitle: Text('${dataToShow.phoneNumbers?[0].value}'),
+                '${hideLetters(word: dataToShow.names?[0].givenName)} ${hideLetters(word: dataToShow.names?[0].familyName)}'),
+            subtitle:
+                Text('${hideLetters(word: dataToShow.phoneNumbers?[0].value)}'),
             trailing: const Icon(Icons.phone_enabled),
             onTap: () {
               BlocProvider.of<CompletedScreenBLoC>(context)
                   .add(CompletedScreenEvent.updateContact(dataToShow));
-              print('SEND TO UPDATE ${dataToShow.names?.first.givenName}');
+
               BlocProvider.of<DetailSheetBLoC>(context)
                   .add(const DetailSheetEvent.start());
             },
@@ -105,4 +102,14 @@ class _ContactCardState extends State<ContactCard> {
           ))
         : const Text('Не удалось загрузить данные контакта');
   }
+}
+
+String? hideLetters({required String? word, int offset = 1}) {
+  if (word == null || word.length < 2) return word;
+  if (offset >= word.length / 2) offset = 1;
+  final lastLetterIndex = word.length - 1;
+  final replacementQuantity = lastLetterIndex + 1 - offset * 2;
+
+  return word.replaceRange(offset, lastLetterIndex + 1 - offset,
+      UiSymbols.blackCircle * replacementQuantity);
 }

@@ -28,3 +28,14 @@ class UiAssets {
 
   static int _randomNumber(int limit) => Random().nextInt(limit);
 }
+
+class UiSymbols {
+  static const String dotOperator = '⋅',
+      bulletOperator = '∙',
+      blackSlightySmallCircle = '🞄',
+      bullet = '•',
+      zNotationSpot = '⦁',
+      mediumBlackCircle = '⚫︎',
+      blackCircle = '●',
+      blackLargeCircle = '⬤';
+}
