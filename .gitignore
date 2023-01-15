@@ -3,6 +3,9 @@
 *.log
 *.pyc
 *.swp
+*.g.dart 
+*.freezed.dart
+*.json
 .DS_Store
 .atom/
 .buildlog/
@@ -37,6 +40,7 @@ lib/generated_plugin_registrant.dart
 
 # Symbolication related
 app.*.symbols
+
 
 # Obfuscation related
 app.*.map.json
