@@ -86,9 +86,9 @@ class _ContactCardState extends State<ContactCard> {
                       as ImageProvider,
             ),
             title: Text(
-                '${hideLetters(word: dataToShow.names?[0].givenName)} ${hideLetters(word: dataToShow.names?[0].familyName)}'),
-            subtitle:
-                Text('${hideLetters(word: dataToShow.phoneNumbers?[0].value)}'),
+                '${hideLetters(word: dataToShow.names?[0].givenName, offset: 2)} ${hideLetters(word: dataToShow.names?[0].familyName, offset: 2)}'),
+            subtitle: Text(
+                '${hideLetters(word: dataToShow.phoneNumbers?[0].value, offset: 3)}'),
             trailing: const Icon(Icons.phone_enabled),
             onTap: () {
               BlocProvider.of<CompletedScreenBLoC>(context)

@@ -12,8 +12,6 @@ import 'test_connections.dart';
 import 'test_json.dart';
 
 void main() {
-  /*   Add new Connection to contactsList test
- ///
   test('Add new Connection to contactsList test', () async {
     final testRepository = ICompletedScreenRepository.noUser();
     testRepository.contactsList = ContactsList.fromJson(testJson);
@@ -24,13 +22,5 @@ void main() {
     testRepository.addNewConnectionToContactsList(secondChangedConnection);
     Connection threeChangedConnection = Connection.fromJson(testConnections[2]);
     testRepository.addNewConnectionToContactsList(threeChangedConnection);
-  });
-*/
-  test('Hide letters function test', () {
-    print(hideLetters(word: 'null', offset: 2));
-    print(hideLetters(word: 'три'));
-    print(hideLetters(word: 'дв'));
-    print(hideLetters(word: '1'));
-    print(hideLetters(word: null));
   });
 }
