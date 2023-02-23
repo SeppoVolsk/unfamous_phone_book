@@ -24,7 +24,6 @@ class ICompletedScreenRepository {
     return CompletedScreenEntity(contactsList: contactsList);
   }
 
-  //117326814766099280985
   Future<CompletedScreenEntity> update(Connection? connectionForChange) async {
     return CompletedScreenEntity(
         contactsList: contactsList, currentConnection: connectionForChange);
@@ -66,6 +65,5 @@ class ICompletedScreenRepository {
     }
 
     contactsList = contactsList?.copyWith(connections: tempConnectionsList);
-    //tempConnectionsList.clear();
   }
 }

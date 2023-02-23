@@ -8,7 +8,6 @@ class EnterScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //final user = context.watch<EnterScreenBLoC>().state.data.user;
     return BlocBuilder<EnterScreenBLoC, EnterScreenState>(
         builder: (context, state) {
       return state.map(

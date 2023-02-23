@@ -33,15 +33,6 @@ class CompletedScreenEvent with _$CompletedScreenEvent {
 class CompletedScreenState with _$CompletedScreenState {
   const CompletedScreenState._();
 
-  // /// Is in idle state
-  // bool get idling => !isProcessing;
-
-  // /// Is in progress state
-  // bool get isProcessing => maybeMap<bool>(
-  //       orElse: () => true,
-  //       idle: (_) => false,
-  //     );
-
   /// If an error has occurred
   bool get hasError => maybeMap<bool>(orElse: () => false, error: (_) => true);
 
@@ -116,7 +107,6 @@ class CompletedScreenBLoC
       Emitter<CompletedScreenState> emit) async {
     try {
       emit(CompletedScreenState.processing(data: state.data));
-      //final newData = await _repository.();
       emit(CompletedScreenState.createContact(data: state.data));
     } on Object catch (err, stackTrace) {
       print('В CompletedScreenBLoC произошла ошибка: $err, $stackTrace');
@@ -159,8 +149,6 @@ class CompletedScreenBLoC
       Emitter<CompletedScreenState> emit) async {
     try {
       emit(CompletedScreenState.processing(data: state.data));
-      //final newData = await _repository.();
-      //emit(CompletedScreenState.successful(data: newData));
     } on Object catch (err, stackTrace) {
       print('В CompletedScreenBLoC произошла ошибка: $err, $stackTrace');
       emit(CompletedScreenState.error(data: state.data));
