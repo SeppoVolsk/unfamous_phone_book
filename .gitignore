@@ -1,4 +1,5 @@
 # Miscellaneous
+lib\screens\enter_screen\enter_screen_model.dart
 *.class
 *.log
 *.pyc
