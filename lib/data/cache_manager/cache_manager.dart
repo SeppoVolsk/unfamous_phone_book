@@ -1,9 +1,11 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart';
+import 'package:injectable/injectable.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+@singleton
 class CacheManager {
   //static final CacheManager _instance = CacheManager._();
   static Directory? _dir;
@@ -26,11 +28,11 @@ class CacheManager {
   ///getIt version
   ///
   CacheManager();
-  Future<CacheManager> initGetIt() async {
-    _dir = await getApplicationDocumentsDirectory();
-    _prefs = await SharedPreferences.getInstance();
-    return this;
-  }
+  // Future<CacheManager> initGetIt() async {
+  //   _dir = await getApplicationDocumentsDirectory();
+  //   _prefs = await SharedPreferences.getInstance();
+  //   return this;
+  // }
 
   Future<File> urlToFile(
       {required String imageUrl, required String fileName}) async {

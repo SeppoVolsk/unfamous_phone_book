@@ -1,8 +1,12 @@
 import 'package:get_it/get_it.dart';
-import 'package:unfamous_phone_book/data/cache_manager/cache_manager.dart';
+import 'package:injectable/injectable.dart';
+import 'package:unfamous_phone_book/domain/service_locator/service_locator.config.dart';
 
 final serviceLocator = GetIt.instance;
-void setUp() {
-  serviceLocator.registerSingletonAsync<CacheManager>(
-      () async => CacheManager().initGetIt());
-}
+
+@InjectableInit()
+void setupDependencies() => serviceLocator.init();
+  // serviceLocator.registerSingletonAsync<CacheManager>(
+  //     () async => CacheManager().initGetIt());
+
+

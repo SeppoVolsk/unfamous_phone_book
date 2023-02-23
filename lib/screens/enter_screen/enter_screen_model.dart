@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:unfamous_phone_book/data/google_api_client/google_api_client.dart';
 import 'package:unfamous_phone_book/domain/contacts_list/contacts_list.dart';
+import 'package:unfamous_phone_book/domain/service_locator/service_locator.dart';
 
 /*====================================================================
 Получаем SHA1 ключ:
@@ -64,24 +65,10 @@ class SignInDemoState extends State<SignInDemo> {
     setState(() {
       _contactText = 'Loading contact info...';
     });
-    // final http.Response response = await http.get(
-    //   Uri.parse('https://people.googleapis.com/v1/people/me/connections'
-    //       '?requestMask.includeField=person.names'),
-    //   headers: await user.authHeaders,
-    // );
-    // if (response.statusCode != 200) {
-    //   setState(() {
-    //     _contactText = 'People API gave a ${response.statusCode} '
-    //         'response. Check logs for details.';
-    //   });
-    //   print('People API ${response.statusCode} response: ${response.body}');
-    //   return;
-    // }
-    // final Map<String, dynamic> data =
-    //     json.decode(response.body) as Map<String, dynamic>;
-    // print('JSON:\n');
-    // print(data);
-    final data = await GoogleApiClient.getContacts(currentUser: user);
+
+    final data = await serviceLocator
+        .get<GoogleApiClient>()
+        .getContacts(currentUser: user);
     final String? namedContact = _pickFirstNamedContact(data!);
     setState(() {
       if (namedContact != null) {
@@ -93,23 +80,8 @@ class SignInDemoState extends State<SignInDemo> {
   }
 
   String? _pickFirstNamedContact(Map<String, dynamic> data) {
-    // final List<dynamic>? connections = data['connections'] as List<dynamic>?;
-    // final Map<String, dynamic>? contact = connections?.firstWhere(
-    //   (dynamic contact) => contact['names'] != null,
-    //   orElse: () => null,
-    // ) as Map<String, dynamic>?;
-    // if (contact != null) {
-    //   final Map<String, dynamic>? name = contact['names'].firstWhere(
-    //     (dynamic name) => name['displayName'] != null,
-    //     orElse: () => null,
-    //   ) as Map<String, dynamic>?;
-    //   if (name != null) {
-    //     return name['displayName'] as String?;
-    //   }
-    // }
-    // return null;
     final testContact = ContactsList.fromJson(data);
-    //return data['connections'][0]['names'][0]['givenName'];
+
     return testContact.connections?[20].names?[0].displayNameLastFirst;
   }
 

@@ -11,7 +11,7 @@ import 'package:unfamous_phone_book/simple_bloc_observer.dart';
 
 void main() {
   Bloc.observer = SimpleBlocObserver();
-  setUp();
+  setupDependencies();
   runApp(const MaterialApp(
     home: MyApp(),
     debugShowCheckedModeBanner: false,

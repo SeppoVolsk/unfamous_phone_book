@@ -32,7 +32,9 @@ class ICompletedScreenRepository {
   Future<ContactsList?> _firstContactsListReading() async {
     Map<String, dynamic>? contactsJson;
     if (serviceLocator<CacheManager>().isEmpty) {
-      contactsJson = await GoogleApiClient.getContacts(currentUser: _user);
+      contactsJson = await serviceLocator
+          .get<GoogleApiClient>()
+          .getContacts(currentUser: _user);
       await serviceLocator<CacheManager>()
           .write(key: _user.id, data: contactsJson as Map<String, dynamic>);
     } else {

@@ -37,7 +37,7 @@ class _RemoveSheetWidgetState extends State<RemoveSheetWidget> {
                       ),
                       onPressed: () {}),
                 ),
-                Spacer(),
+                const Spacer(),
                 Flexible(
                   child: IconButton(
                     icon: const Icon(Icons.cancel_outlined),

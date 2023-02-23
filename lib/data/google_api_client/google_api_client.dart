@@ -1,8 +1,10 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:injectable/injectable.dart';
 
+@singleton
 class GoogleApiClient {
-  static Future<Map<String, dynamic>?> getContacts({currentUser}) async {
+  Future<Map<String, dynamic>?> getContacts({currentUser}) async {
     Query.assembleStandartQuery();
     final http.Response response = await http.get(
       Uri.parse(Query.fetchNamePhonePhoto),
